@@ -455,6 +455,9 @@ footer{background:#060d1a;color:#94a3b8;padding:60px 0 32px}
 /* ===================================================
    SCHULDEN PAGE
    =================================================== */
+.calc-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.9375rem;color:var(--text);background:var(--bg-muted);transition:var(--t);font-family:inherit;outline:none;-webkit-appearance:none;appearance:none}
+.calc-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,130,246,.15);background:var(--bg-card)}
+[data-theme="dark"] .calc-input{color:var(--text);background:var(--bg-muted)}
 .debt-row{display:grid;grid-template-columns:2fr 1.5fr 1fr 1.5fr auto;gap:12px;align-items:end;padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px}
 .debt-row-label{font-size:.8125rem;font-weight:600;color:var(--text-muted);margin-bottom:6px;display:block}
 .debt-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
