@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Börsenlexikon mit über 60 wichtigen Finanz- und Börsenbegriffen einfach erklärt – durchsuchbar und kostenlos.">
+  <title>Börsenlexikon – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <div class="nav-logo-icon">📈</div>
+      FinanzenCampus
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/lexikon.html" class="active">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/index.html">Startseite</a></li>
+    <li><a href="/rechner.html">Rechner</a></li>
+    <li><a href="/lexikon.html">Lexikon</a></li>
+    <li><a href="/wissen.html">Wissen</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>📚 Börsenlexikon</h1>
+    <p>Über 60 wichtige Finanz- und Börsenbegriffe einfach und verständlich erklärt – von Aktie bis Zinseszins.</p>
+  </div>
+</div>
+
+<div class="search-section">
+  <div class="container">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Begriff suchen, z.B. ETF, Dividende, Inflation …" oninput="filterTerms()" autocomplete="off">
+    </div>
+    <p class="search-count" id="searchCount">65 Begriffe verfügbar</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- ALPHA NAV -->
+    <div class="alpha-nav" id="alphNav">
+      <a href="#A" class="alpha-btn active">A</a><a href="#B" class="alpha-btn active">B</a>
+      <a href="#C" class="alpha-btn active">C</a><a href="#D" class="alpha-btn active">D</a>
+      <a href="#E" class="alpha-btn active">E</a><a href="#F" class="alpha-btn active">F</a>
+      <a href="#G" class="alpha-btn active">G</a><a href="#H" class="alpha-btn active">H</a>
+      <a href="#I" class="alpha-btn active">I</a><a href="#J" class="alpha-btn" style="opacity:.4;cursor:default">J</a>
+      <a href="#K" class="alpha-btn active">K</a><a href="#L" class="alpha-btn active">L</a>
+      <a href="#M" class="alpha-btn active">M</a><a href="#N" class="alpha-btn active">N</a>
+      <a href="#O" class="alpha-btn active">O</a><a href="#P" class="alpha-btn active">P</a>
+      <a href="#Q" class="alpha-btn" style="opacity:.4;cursor:default">Q</a>
+      <a href="#R" class="alpha-btn active">R</a><a href="#S" class="alpha-btn active">S</a>
+      <a href="#T" class="alpha-btn active">T</a><a href="#U" class="alpha-btn active">U</a>
+      <a href="#V" class="alpha-btn active">V</a><a href="#W" class="alpha-btn active">W</a>
+      <a href="#X" class="alpha-btn" style="opacity:.4;cursor:default">X</a>
+      <a href="#Y" class="alpha-btn" style="opacity:.4;cursor:default">Y</a>
+      <a href="#Z" class="alpha-btn active">Z</a>
+    </div>
+
+    <div id="lexikonContent">
+
+    <!-- A -->
+    <div class="lex-section" id="sec-A">
+      <div class="alpha-heading" id="A">A</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="aktie aktiengesellschaft wertpapier anteil börse">
+          <h3>Aktie <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein Wertpapier, das einen Eigentumsanteil an einer Aktiengesellschaft (AG) verbrieft. Als Aktionär bist du Miteigentümer des Unternehmens und hast Anrecht auf anteilige Gewinne (Dividenden) sowie Stimmrechte bei der Hauptversammlung.</p>
+        </div>
+        <div class="term-card" data-term="anleihe bond schuldverschreibung festverzinslich zins">
+          <h3>Anleihe (Bond) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Ein festverzinsliches Wertpapier, mit dem sich Staaten oder Unternehmen Kapital leihen. Der Käufer erhält regelmäßige Zinszahlungen (Kupon) und am Laufzeitende das Nominale zurück. Gilt als sicherer als Aktien, bietet aber niedrigere Renditen.</p>
+        </div>
+        <div class="term-card" data-term="asset allocation vermögensaufteilung anlageklassen portfolio">
+          <h3>Asset Allocation <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die strategische Aufteilung eines Portfolios auf verschiedene Anlageklassen wie Aktien, Anleihen, Immobilien und Rohstoffe. Ziel ist die optimale Balance zwischen Renditeerwartung und Risikobereitschaft.</p>
+        </div>
+        <div class="term-card" data-term="ausschüttung dividende ertrag fonds auszahlung">
+          <h3>Ausschüttung <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die Auszahlung von Erträgen (Dividenden, Zinsen, Gewinne) an die Anteilsinhaber eines Fonds oder Unternehmens. Ausschüttende ETFs zahlen Erträge regelmäßig aus, thesaurierende ETFs reinvestieren diese automatisch.</p>
+        </div>
+        <div class="term-card" data-term="aktienrückkauf buyback eigene aktien">
+          <h3>Aktienrückkauf (Buyback) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Ein Unternehmen kauft eigene Aktien vom Markt zurück und reduziert damit die Anzahl umlaufender Aktien. Dies erhöht den Gewinn pro Aktie (EPS) und gilt als Signal des Managements, die Aktie für unterbewertet zu halten.</p>
+        </div>
+        <div class="term-card" data-term="arbitrage preisdifferenz risikolos gewinn märkte">
+          <h3>Arbitrage <span class="term-badge b-adv">Experten</span></h3>
+          <p>Ausnutzung von Preisunterschieden desselben Vermögenswerts auf verschiedenen Märkten. Durch gleichzeitigen Kauf und Verkauf wird risikoloser Gewinn erzielt. Durch computergestützte Arbitrage sind solche Gelegenheiten heute kaum mehr manuell nutzbar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="lex-section" id="sec-B">
+      <div class="alpha-heading" id="B">B</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="bär bear market bärenmarkt kursverluste baisse">
+          <h3>Bärenmarkt (Bear Market) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Eine Marktphase mit anhaltend fallenden Kursen – definiert als Rückgang von mindestens 20 % vom letzten Hochpunkt. Bärenmärkte entstehen oft in wirtschaftlichen Abschwungphasen, Krisen oder bei übertriebener Überbewertung der Märkte.</p>
+        </div>
+        <div class="term-card" data-term="benchmark index vergleich performance messlatte">
+          <h3>Benchmark <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Ein Vergleichsmaßstab, an dem die Performance einer Anlage gemessen wird. Typische Benchmarks sind der MSCI World für globale Aktien, der DAX für deutsche Aktien oder der S&P 500 für US-Aktien.</p>
+        </div>
+        <div class="term-card" data-term="blue chip großunternehmen stabil qualitätsaktie dax dow jones">
+          <h3>Blue Chip <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Aktien finanzstarker, bewährter Großunternehmen mit stabiler Marktposition und langer Geschichte regelmäßiger Dividendenzahlungen. Beispiele: Apple, LVMH, Siemens. Gelten als verlässlicher, aber wachsen oft langsamer als kleinere Unternehmen.</p>
+        </div>
+        <div class="term-card" data-term="börse marktplatz wertpapierhandel frankfurter börse xetra">
+          <h3>Börse <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein organisierter, regulierter Marktplatz für den Handel mit Wertpapieren, Devisen und Rohstoffen. In Deutschland ist die Frankfurter Wertpapierbörse die größte, weltweit führt die NYSE (New York Stock Exchange).</p>
+        </div>
+        <div class="term-card" data-term="bip bruttoinlandsprodukt volkswirtschaft wirtschaftsleistung">
+          <h3>BIP (Bruttoinlandsprodukt) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der Gesamtwert aller im Inland produzierten Güter und Dienstleistungen innerhalb eines Jahres. Das BIP ist der wichtigste Indikator für die wirtschaftliche Leistung eines Landes. Wächst es über zwei Quartale nicht, spricht man von einer Rezession.</p>
+        </div>
+        <div class="term-card" data-term="bulle bull market hausse steigende kurse optimismus">
+          <h3>Bullenmarkt (Bull Market) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Eine Marktphase mit anhaltend steigenden Kursen, die von Optimismus und Kaufbereitschaft geprägt ist. Das Gegenteil des Bärenmarkts. Historisch dauern Bullenmärkte im Schnitt länger als Bärenmärkte.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="lex-section" id="sec-C">
+      <div class="alpha-heading" id="C">C</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="cashflow geldfluss liquidität einnahmen ausgaben unternehmen">
+          <h3>Cashflow <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der tatsächliche Geldzu- und -abfluss eines Unternehmens in einem Zeitraum. Positiver Cashflow bedeutet, mehr Geld fließt ein als aus. Er ist oft aussagekräftiger als der Buchgewinn, da er Manipulationen weniger zugänglich ist.</p>
+        </div>
+        <div class="term-card" data-term="cagr wachstumsrate rendite jährlich compound">
+          <h3>CAGR <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Compound Annual Growth Rate – die durchschnittliche jährliche Wachstumsrate einer Investition über einen bestimmten Zeitraum. CAGR = (Endwert / Startwert)^(1/Jahre) − 1. Ideal zum Vergleich verschiedener Investitionen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="lex-section" id="sec-D">
+      <div class="alpha-heading" id="D">D</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="depot wertpapierdepot konto bank broker verwaltung">
+          <h3>Depot <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein Konto zur Verwahrung und Verwaltung von Wertpapieren wie Aktien, ETFs oder Anleihen. Wird von Banken oder Online-Brokern geführt. Neben dem Depot benötigt man ein Verrechnungskonto für Käufe und Verkäufe.</p>
+        </div>
+        <div class="term-card" data-term="derivat option future hebel basiswert finanzinstrument">
+          <h3>Derivat <span class="term-badge b-adv">Experten</span></h3>
+          <p>Ein Finanzinstrument, dessen Wert sich von einem Basiswert (z.B. Aktie, Index, Rohstoff) ableitet. Zu Derivaten gehören Optionen, Futures, Swaps und CFDs. Sie werden zur Absicherung oder Spekulation eingesetzt und tragen hohes Risiko.</p>
+        </div>
+        <div class="term-card" data-term="diversifikation streuung risiko portfolio anlageklassen">
+          <h3>Diversifikation <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die Streuung von Investitionen auf verschiedene Anlagen, Branchen und Regionen zur Risikoreduzierung. „Lege nicht alle Eier in einen Korb." Ein breit gestreuter ETF auf den MSCI World bietet automatische Diversifikation über ~1.500 Unternehmen.</p>
+        </div>
+        <div class="term-card" data-term="dividende gewinnbeteiligung aktionär ausschüttung rendite">
+          <h3>Dividende <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Der Anteil am Unternehmensgewinn, der an Aktionäre ausgeschüttet wird. Wird meist jährlich (Deutschland) oder quartalsweise (USA) gezahlt. Die Dividendenrendite = Dividende ÷ Aktienkurs × 100 %.</p>
+        </div>
+        <div class="term-card" data-term="dca dollar cost averaging regelmäßig investieren sparplan">
+          <h3>Dollar Cost Averaging (DCA) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Strategie, bei der ein fester Betrag regelmäßig (z.B. monatlich) investiert wird – unabhängig vom aktuellen Kurs. Bei hohen Kursen kaufst du weniger Anteile, bei niedrigen mehr. Reduziert das Risiko eines ungünstigen Einstiegszeitpunkts.</p>
+        </div>
+        <div class="term-card" data-term="duration anleihe zinsen laufzeit sensitivität">
+          <h3>Duration <span class="term-badge b-adv">Experten</span></h3>
+          <p>Maß für die Zinssensitivität einer Anleihe. Je höher die Duration, desto stärker reagiert der Kurs auf Zinsänderungen. Eine Duration von 5 bedeutet: steigen die Zinsen um 1 %, fällt der Kurs um ca. 5 %.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="lex-section" id="sec-E">
+      <div class="alpha-heading" id="E">E</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="etf indexfonds börsengehandelt passiv msci world s&p 500">
+          <h3>ETF (Exchange Traded Fund) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein börsengehandelter Fonds, der einen Index (z.B. MSCI World, DAX, S&P 500) passiv nachbildet. ETFs vereinen breite Diversifikation mit niedrigen Kosten (TER oft unter 0,3 % p.a.) und werden wie Aktien an der Börse gehandelt.</p>
+        </div>
+        <div class="term-card" data-term="einlagensicherung bank schutz guthaben insolvenz">
+          <h3>Einlagensicherung <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Staatliche Absicherung von Bankguthaben im Insolvenzfall. In der EU sind Einlagen bis 100.000 € pro Kunde und Bank gesetzlich geschützt. Wertpapierdepots sind davon unabhängig – sie gelten als Sondervermögen.</p>
+        </div>
+        <div class="term-card" data-term="eigenkapitalrendite roe gewinn unternehmen profitabilität">
+          <h3>Eigenkapitalrendite (ROE) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Return on Equity – misst, wie effizient ein Unternehmen das Eigenkapital der Aktionäre einsetzt. ROE = Jahresgewinn ÷ Eigenkapital × 100 %. Ein hoher ROE deutet auf ein profitables Geschäftsmodell hin.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="lex-section" id="sec-F">
+      <div class="alpha-heading" id="F">F</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="fire finanzielle unabhängigkeit rente frühzeitig retire early">
+          <h3>FIRE <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Financial Independence, Retire Early – Bewegung, die auf finanzielle Freiheit und frühzeitigen Ruhestand abzielt. Die 4%-Regel besagt: Hat man das 25-fache seiner Jahresausgaben angespart, kann man jährlich 4 % entnehmen, ohne das Kapital zu verbrauchen.</p>
+        </div>
+        <div class="term-card" data-term="fonds investmentfonds kapitalanlagegesellschaft verwaltung">
+          <h3>Fonds / Investmentfonds <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Eine gemeinschaftliche Kapitalanlage, die das Geld vieler Anleger bündelt und diversifiziert investiert. Aktiv verwaltete Fonds haben höhere Kosten als passive ETFs und schlagen den Markt auf lange Sicht selten.</p>
+        </div>
+        <div class="term-card" data-term="freistellungsauftrag sparerpauschbetrag steuer bank kapitalertrag">
+          <h3>Freistellungsauftrag <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Auftrag an die Bank, Kapitalerträge bis zum Sparerpauschbetrag (1.000 € für Einzelpersonen, 2.000 € für Ehepaare) automatisch steuerfrei zu stellen. Wird der Betrag nicht ausgeschöpft, wird keine Kapitalertragsteuer abgeführt.</p>
+        </div>
+        <div class="term-card" data-term="fundamentalanalyse unternehmensbewertung kgv umsatz buchwert">
+          <h3>Fundamentalanalyse <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Bewertung von Wertpapieren auf Basis von Unternehmenskennzahlen (KGV, Umsatz, Gewinn, Buchwert) und makroökonomischen Faktoren. Ziel: den „inneren Wert" zu bestimmen und unter- oder überbewertete Aktien zu identifizieren.</p>
+        </div>
+        <div class="term-card" data-term="futures terminkontrakt lieferung basiswert rohstoff index">
+          <h3>Futures <span class="term-badge b-adv">Experten</span></h3>
+          <p>Standardisierte Terminkontrakte, die die Lieferung eines Basiswerts (Rohstoff, Index, Währung) zu einem vereinbarten Preis zu einem zukünftigen Zeitpunkt festlegen. Werden an Terminbörsen gehandelt und vorwiegend zur Absicherung oder Spekulation genutzt.</p>
+        </div>
+        <div class="term-card" data-term="free float streubesitz aktien umlauf öffentlich handel">
+          <h3>Free Float (Streubesitz) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der Anteil der Aktien eines Unternehmens, der sich im freien Umlauf befindet und frei handelbar ist – also nicht von Großaktionären, Gründern oder dem Staat langfristig gehalten wird. Relevant für die Gewichtung in Indizes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- G -->
+    <div class="lex-section" id="sec-G">
+      <div class="alpha-heading" id="G">G</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="gesamtrendite total return kursgewinn dividenden ertrag">
+          <h3>Gesamtrendite (Total Return) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die Gesamtrendite einer Investition inkl. Kursgewinne, Dividenden und Zinsen. Sie ist aussagekräftiger als die reine Kursentwicklung. Ein thesaurierender ETF reinvestiert Erträge, was langfristig den Total Return steigert.</p>
+        </div>
+        <div class="term-card" data-term="growth investing wachstum unternehmen technik potenzial">
+          <h3>Growth Investing <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Anlagestrategie, die gezielt auf Unternehmen mit überdurchschnittlichem Wachstumspotenzial setzt – oft in Technologie, Biotech oder Konsumgütern. Wachstumsaktien zahlen meist keine Dividenden und sind oft hoch bewertet (hohes KGV).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- H -->
+    <div class="lex-section" id="sec-H">
+      <div class="alpha-heading" id="H">H</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="hedge absicherung risiko gegenposition währung">
+          <h3>Hedge / Absicherung <span class="term-badge b-adv">Experten</span></h3>
+          <p>Eine Gegenposition zu einer bestehenden Investition, die potenzielle Verluste absichern soll. Beispiel: Ein Aktienanleger kauft Put-Optionen auf seine Aktien, um sich gegen Kursverluste zu schützen. Hedging reduziert Risiko, aber auch Rendite.</p>
+        </div>
+        <div class="term-card" data-term="hauptversammlung hv aktionäre abstimmung dividende vorstand">
+          <h3>Hauptversammlung (HV) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Das jährliche Treffen der Aktionäre einer Aktiengesellschaft, bei dem über Dividendenausschüttung, Vorstandsentlastung, Kapitalmaßnahmen und andere wichtige Beschlüsse abgestimmt wird. Aktionäre haben dabei Stimmrecht.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- I -->
+    <div class="lex-section" id="sec-I">
+      <div class="alpha-heading" id="I">I</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="index dax s&p msci world kursindex performance wertentwicklung">
+          <h3>Index <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Eine Kennzahl, die die Wertentwicklung einer definierten Gruppe von Wertpapieren abbildet. Der DAX umfasst die 40 größten deutschen Börsenwerte, der MSCI World ca. 1.500 Unternehmen aus 23 Industrieländern. Indizes sind die Basis für ETFs.</p>
+        </div>
+        <div class="term-card" data-term="inflation kaufkraft preissteigerung geldwert verbraucherpreisindex">
+          <h3>Inflation <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Allgemeiner Anstieg des Preisniveaus, der die Kaufkraft des Geldes mindert. Bei 3 % Inflation verliert Geld in 24 Jahren die Hälfte seines Wertes. Deshalb ist das Investieren wichtig: Nur durch Renditen über der Inflationsrate wird realer Vermögensaufbau möglich.</p>
+        </div>
+        <div class="term-card" data-term="ipo börsengang erstausgabe aktien erstnotiz emission">
+          <h3>IPO (Börsengang) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Initial Public Offering – die erstmalige Ausgabe von Aktien eines Unternehmens an der Börse. Beim IPO wird ein Ausgabepreis festgelegt, zu dem Anleger erstmals Aktien kaufen können. Danach wird die Aktie frei an der Börse gehandelt.</p>
+        </div>
+        <div class="term-card" data-term="insolvenz pleite bankrott zahlungsunfähigkeit unternehmen">
+          <h3>Insolvenz <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Zahlungsunfähigkeit oder Überschuldung eines Unternehmens oder Privatpersons. Im Insolvenzfall werden Aktionäre zuletzt bedient – nach allen Gläubigern. Im schlimmsten Fall verlieren Aktionäre ihr gesamtes investiertes Kapital.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- K -->
+    <div class="lex-section" id="sec-K">
+      <div class="alpha-heading" id="K">K</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="kapitalertragsteuer abgeltungsteuer 25% dividenden zinsen kursgewinne">
+          <h3>Kapitalertragsteuer <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>In Deutschland werden Kapitalerträge (Dividenden, Zinsen, Kursgewinne) pauschal mit 25 % (+ Soli + ggf. Kirchensteuer) besteuert. Die Steuer wird automatisch von der Depotbank abgeführt. Freistellungsauftrag und Verlusttöpfe reduzieren die Steuerlast.</p>
+        </div>
+        <div class="term-card" data-term="kgv kurs-gewinn-verhältnis bewertung aktie preis earnings">
+          <h3>KGV (Kurs-Gewinn-Verhältnis) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Verhältnis des Aktienkurses zum Gewinn je Aktie (KGV = Kurs ÷ EPS). Zeigt, wie viele Jahre ein Unternehmen bei aktuellem Gewinn braucht, um seinen Börsenwert zu verdienen. Ein KGV von 20 gilt als fair, über 30 als teuer.</p>
+        </div>
+        <div class="term-card" data-term="kredit darlehen zinsen tilgung bank laufzeit">
+          <h3>Kredit / Darlehen <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die befristete Überlassung von Geld durch einen Kreditgeber (Bank) gegen Zinszahlung. Die Rückzahlung erfolgt in Raten bestehend aus Tilgung (Rückzahlung des Hauptbetrags) und Zinsen. Kreditkosten sind stark abhängig von Zinssatz und Laufzeit.</p>
+        </div>
+        <div class="term-card" data-term="korrelation zusammenhang portfolio diversifikation risiko">
+          <h3>Korrelation <span class="term-badge b-adv">Experten</span></h3>
+          <p>Statistisches Maß für den Zusammenhang zwischen zwei Anlagen (−1 bis +1). Korrelation von +1 bedeutet identische Bewegung, −1 spiegelbildliche Bewegung. Für Diversifikation sind Anlagen mit niedriger oder negativer Korrelation wertvoll.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- L -->
+    <div class="lex-section" id="sec-L">
+      <div class="alpha-heading" id="L">L</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="leerverkauf short selling spekulieren fallende kurse geliehene aktien">
+          <h3>Leerverkauf (Short Selling) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Verkauf geliehener Wertpapiere in der Erwartung, diese später günstiger zurückzukaufen und die Differenz als Gewinn einzustreichen. Extrem riskant, da theoretisch unbegrenzte Verluste möglich sind. Meist Profis und Hedgefonds vorbehalten.</p>
+        </div>
+        <div class="term-card" data-term="leverage hebel fremdkapital risiko rendite verstärken">
+          <h3>Leverage (Hebel) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Einsatz von Fremdkapital (Kredite) zur Steigerung des Investitionsvolumens und damit des Renditepotenzials. Hebel verstärkt sowohl Gewinne als auch Verluste. Leveraged ETFs mit 2x oder 3x Hebel sind für Langzeitanleger ungeeignet.</p>
+        </div>
+        <div class="term-card" data-term="liquidität handel verkaufen schnell geldmarkt verfügbar">
+          <h3>Liquidität <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die Fähigkeit, Vermögenswerte schnell und ohne wesentlichen Preisabschlag in Geld umzuwandeln. Aktien großer Unternehmen sind hoch liquide. Immobilien oder Private Equity dagegen illiquide. Liquidität ist ein wichtiger Faktor bei der Portfolioplanung.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- M -->
+    <div class="lex-section" id="sec-M">
+      <div class="alpha-heading" id="M">M</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="marktkapitalisierung börsenwert aktien umlauf kurs unternehmen">
+          <h3>Marktkapitalisierung <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Gesamtwert aller ausstehenden Aktien eines Unternehmens (Kurs × Anzahl Aktien). Apple hat z.B. eine Marktkapitalisierung von über 3 Billionen US-Dollar. Die Marktkapitalisierung bestimmt auch die Gewichtung in Indizes.</p>
+        </div>
+        <div class="term-card" data-term="msci world globaler index aktien industrie länder etf">
+          <h3>MSCI World <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein globaler Aktienindex mit rund 1.500 Unternehmen aus 23 Industrieländern. Enthält ca. 70 % US-Aktien. Gilt als Basis-Investment für passivinvestierende Anleger. Schwellenländer sind im MSCI World nicht enthalten (dafür: MSCI Emerging Markets).</p>
+        </div>
+        <div class="term-card" data-term="momentum trend strategie performance aktie kurs stärke">
+          <h3>Momentum-Strategie <span class="term-badge b-adv">Experten</span></h3>
+          <p>Anlagestrategie, die auf Wertpapiere setzt, die in der jüngsten Vergangenheit besonders gut abgeschnitten haben. Basiert auf der Beobachtung, dass starke Performer ihre Stärke kurzfristig fortführen. Erfordert regelmäßiges Rebalancing.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- N -->
+    <div class="lex-section" id="sec-N">
+      <div class="alpha-heading" id="N">N</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="nav nettoinventarwert fonds wert vermögen anteile">
+          <h3>NAV (Nettoinventarwert) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Net Asset Value – der Gesamtwert aller Vermögenswerte eines Fonds abzüglich der Verbindlichkeiten, geteilt durch die Anzahl der Anteile. Gibt den „fairen Wert" eines Fondsanteils an. ETFs handeln nahezu immer sehr nah am NAV.</p>
+        </div>
+        <div class="term-card" data-term="nennwert nominal par value anleihe aktie ursprung">
+          <h3>Nennwert (Nominal) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der aufgedruckte oder buchhalterische Ursprungswert eines Wertpapiers – oft ungleich dem aktuellen Marktwert. Bei Anleihen ist der Nennwert der Betrag, den der Emittent bei Fälligkeit zurückzahlt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- O -->
+    <div class="lex-section" id="sec-O">
+      <div class="alpha-heading" id="O">O</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="option call put recht kaufen verkaufen prämie derivat">
+          <h3>Option (Call / Put) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Ein Recht (nicht Pflicht), einen Basiswert zu einem festgelegten Preis (Strike) bis zu einem Verfallsdatum zu kaufen (Call) oder zu verkaufen (Put). Optionen bieten Hebelwirkung und können zur Absicherung oder Spekulation eingesetzt werden.</p>
+        </div>
+        <div class="term-card" data-term="order kauf verkauf limitorder marktorder depot broker">
+          <h3>Order (Kauf-/Verkaufsauftrag) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein Kauf- oder Verkaufsauftrag für Wertpapiere. Market Orders werden sofort zum aktuellen Kurs ausgeführt, Limit Orders erst wenn der Kurs ein bestimmtes Niveau erreicht. Stop-Loss Orders verkaufen automatisch bei Unterschreiten einer Kursmarke.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- P -->
+    <div class="lex-section" id="sec-P">
+      <div class="alpha-heading" id="P">P</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="portfolio depot vermögen anlagen zusammensetzung wertpapiere">
+          <h3>Portfolio <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die Gesamtheit aller Vermögenswerte einer Person oder Institution. Ein gut diversifiziertes Portfolio enthält verschiedene Anlageklassen (Aktien, Anleihen, Immobilien), Regionen und Branchen, um das Risiko zu streuen.</p>
+        </div>
+        <div class="term-card" data-term="passives investieren index etf buy and hold kosten günstig">
+          <h3>Passives Investieren <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Anlagestrategie, die auf das aktive Auswählen von Einzelwerten verzichtet und stattdessen einen breiten Marktindex durch ETFs abbildet. Studien zeigen, dass passives Investieren auf lange Sicht die meisten aktiv verwalteten Fonds schlägt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- R -->
+    <div class="lex-section" id="sec-R">
+      <div class="alpha-heading" id="R">R</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="rebalancing portfolio gewichtung wiederherstellen risikosteuerung">
+          <h3>Rebalancing <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Wiederherstellung der ursprünglich gewählten Gewichtung im Portfolio. Wenn Aktien stark gestiegen sind, erhöhen sie ihren Anteil – Rebalancing verkauft Gewinner und kauft Verlierer nach. Empfohlene Frequenz: einmal jährlich.</p>
+        </div>
+        <div class="term-card" data-term="reit immobilien investment trust dividende börse">
+          <h3>REIT (Real Estate Investment Trust) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Eine börsennotierte Immobiliengesellschaft, die mindestens 90 % ihrer Gewinne als Dividende ausschütten muss. REITs ermöglichen es, in Immobilien zu investieren wie in Aktien – ohne eine eigene Immobilie zu kaufen.</p>
+        </div>
+        <div class="term-card" data-term="rendite ertrag kapital anlage prozent jährlich return">
+          <h3>Rendite <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Der erzielte Ertrag einer Kapitalanlage, ausgedrückt als Prozentsatz des eingesetzten Kapitals. Setzt sich zusammen aus Kursgewinnen und Ausschüttungen. Der MSCI World erzielte historisch eine durchschnittliche Rendite von ca. 7–10 % p.a.</p>
+        </div>
+        <div class="term-card" data-term="rezession wirtschaft abschwung bip negativ wachstum">
+          <h3>Rezession <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Wirtschaftliche Abschwächung, definiert als mindestens zwei aufeinanderfolgende Quartale mit negativem BIP-Wachstum. Rezessionen sind normal im Konjunkturzyklus und enden langfristig immer. Für langfristige Anleger sind sie oft Einstiegsgelegenheiten.</p>
+        </div>
+        <div class="term-card" data-term="rohstoff gold öl silber weizen kupfer ressourcen">
+          <h3>Rohstoffe <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Physische Grundmaterialien wie Gold, Silber, Öl, Gas, Weizen oder Kupfer. Als Anlageklasse bieten sie Inflationsschutz und niedrige Korrelation zu Aktien. Investierbar über ETCs (Exchange Traded Commodities) oder Rohstoff-Futures.</p>
+        </div>
+        <div class="term-card" data-term="risikostreuung risikomanagement verlust portfolio anlagen">
+          <h3>Risikostreuung <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die gezielte Verteilung von Anlagen, um das Gesamtrisiko zu minimieren. Wenn eine Investition schlecht läuft, können andere das ausgleichen. Zeitliche Streuung (regelmäßiges Investieren) reduziert zusätzlich das Timing-Risiko.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- S -->
+    <div class="lex-section" id="sec-S">
+      <div class="alpha-heading" id="S">S</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="sparplan regelmäßig investieren etf monatlich automatisch">
+          <h3>Sparplan <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Regelmäßige Investition eines festen Betrags in ein Wertpapier oder einen Fonds – oft monatlich. Sparplanfähige ETFs sind bei Neobrokern oft kostenlos besparbar. Kombiniert mit dem Zinseszinseffekt ist ein Sparplan das mächtigste Werkzeug zum Vermögensaufbau.</p>
+        </div>
+        <div class="term-card" data-term="spread geld-brief-spanne kaufkurs verkaufskurs differenz kosten">
+          <h3>Spread <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die Differenz zwischen dem Kaufkurs (Ask) und Verkaufskurs (Bid) eines Wertpapiers. Der Spread ist eine implizite Handelsgebühr. Bei liquiden ETFs oder Aktien ist er minimal, bei exotischen Produkten kann er erheblich sein.</p>
+        </div>
+        <div class="term-card" data-term="stagflation stagnation inflation wirtschaft stagnierende preise">
+          <h3>Stagflation <span class="term-badge b-adv">Experten</span></h3>
+          <p>Das gleichzeitige Auftreten von wirtschaftlicher Stagnation (geringes oder negatives Wachstum) und hoher Inflation. Eine schwierige Situation für Notenbanken, da Zinssenkungen die Inflation anheizen und Zinserhöhungen das Wachstum bremsen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- T -->
+    <div class="lex-section" id="sec-T">
+      <div class="alpha-heading" id="T">T</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="technische analyse chartanalyse kurs muster trend volumen">
+          <h3>Technische Analyse <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Analyse von historischen Kursverläufen, Handelsvolumina und Chartmustern zur Prognose zukünftiger Kursbewegungen. Im Gegensatz zur Fundamentalanalyse werden keine Unternehmenskennzahlen betrachtet. Umstritten in der Wissenschaft.</p>
+        </div>
+        <div class="term-card" data-term="ter total expense ratio kosten etf fonds verwaltungsgebühr">
+          <h3>TER (Total Expense Ratio) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Gesamtkostenquote eines Fonds – gibt die jährlichen laufenden Kosten als Prozentsatz des Fondsvermögens an. Gute ETFs haben eine TER von 0,07–0,3 %. Aktiv verwaltete Fonds kosten oft 1–2 %, was die Rendite langfristig stark schmälert.</p>
+        </div>
+        <div class="term-card" data-term="thesaurierend reinvestieren erträge dividenden steuerstundung wachstum">
+          <h3>Thesaurierend <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein thesaurierender Fonds oder ETF reinvestiert erwirtschaftete Erträge (Dividenden, Zinsen) automatisch statt sie auszuschütten. Das steigert durch den Zinseszinseffekt langfristig den Wert des Investments. Besonders steuergünstig in bestimmten Konstellationen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- U -->
+    <div class="lex-section" id="sec-U">
+      <div class="alpha-heading" id="U">U</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="übernahme akquisition m&a fusionen unternehmen kauf">
+          <h3>Übernahme / Akquisition (M&A) <span class="term-badge b-adv">Experten</span></h3>
+          <p>Der Kauf oder die Übernahme eines Unternehmens durch ein anderes. Feindliche Übernahmen erfolgen ohne Zustimmung des Vorstands. Bei Übernahmen wird oft ein Aufschlag auf den aktuellen Aktienkurs gezahlt (Übernahmeprämie).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- V -->
+    <div class="lex-section" id="sec-V">
+      <div class="alpha-heading" id="V">V</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="value investing unterbewertung innerer wert buffett graham">
+          <h3>Value Investing <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Anlagestrategie, bei der nach unterbewerteten Aktien gesucht wird – deren Marktpreis unter dem geschätzten inneren Wert liegt. Berühmteste Vertreter: Benjamin Graham und Warren Buffett. Erfordert Geduld und fundierte Unternehmensanalyse.</p>
+        </div>
+        <div class="term-card" data-term="volatilität schwankung risiko standardabweichung kursschwankungen">
+          <h3>Volatilität <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Maß für die Schwankungsbreite des Kurses eines Wertpapiers, ausgedrückt als Standardabweichung der Renditen. Hohe Volatilität = hohes Risiko, aber auch Chance. Für langfristige Anleger ist kurzfristige Volatilität weniger relevant.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- W -->
+    <div class="lex-section" id="sec-W">
+      <div class="alpha-heading" id="W">W</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="wertpapier aktie anleihe urkunde eigentumsrecht vermögen">
+          <h3>Wertpapier <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Eine Urkunde oder ein digitaler Eintrag, der ein Vermögensrecht verbrieft. Zu Wertpapieren zählen Aktien (Eigentumsanteil), Anleihen (Forderungsrecht) und Fonds. In Deutschland werden Wertpapiere auf einem Depot verwahrt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Z -->
+    <div class="lex-section" id="sec-Z">
+      <div class="alpha-heading" id="Z">Z</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="zinseszins zinseszinseffekt wachstum exponentiell kapital rendite">
+          <h3>Zinseszins <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Der Effekt, bei dem erwirtschaftete Zinsen dem Kapital zugeschlagen werden und anschließend selbst wieder Zinsen erwirtschaften. Dies führt zu exponentiellem Wachstum. Formel: A = P × (1 + r)^t. Je früher man investiert, desto stärker wirkt der Zinseszins.</p>
+        </div>
+        <div class="term-card" data-term="zinssatz leitzins zentralbank europäische EZB zinspolitik">
+          <h3>Zinssatz / Leitzins <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Der Preis für geliehenes Kapital, ausgedrückt als Prozentsatz. Der Leitzins wird von Zentralbanken (EZB, Fed) festgelegt und beeinflusst alle anderen Zinsen in der Wirtschaft. Niedrige Zinsen fördern Investitionen, hohe Zinsen bremsen Inflation.</p>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /lexikonContent -->
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col"><h4>Rechner</h4><ul class="footer-links"><li><a href="/rechner.html">Alle Rechner</a></li></ul></div>
+      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li></ul></div>
+      <div class="footer-col"><h4>Navigation</h4><ul class="footer-links"><li><a href="/index.html">Startseite</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung</span></div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script>
+function filterTerms(){
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.term-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = (card.dataset.term + ' ' + card.innerText).toLowerCase();
+    const show = !q || text.includes(q);
+    card.classList.toggle('hidden', !show);
+    if(show) visible++;
+  });
+  // Hide/show sections
+  document.querySelectorAll('.lex-section').forEach(sec => {
+    const any = [...sec.querySelectorAll('.term-card')].some(c => !c.classList.contains('hidden'));
+    sec.classList.toggle('hidden', !any);
+  });
+  document.getElementById('searchCount').textContent = visible + ' Begriff' + (visible !== 1 ? 'e' : '') + ' gefunden';
+}
+</script>
+</body>
+</html>
