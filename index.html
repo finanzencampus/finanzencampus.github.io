@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FinanzenCampus – kostenlose Finanzrechner, Börsenlexikon, Fundamentalanalyse und Finanzwissen für Einsteiger und Fortgeschrittene.">
+  <meta name="description" content="FinanzenCampus – kostenlose Finanzrechner, Börsenlexikon, Fundamentalanalyse, Schuldenrechner und Finanzwissen. Evidenzbasiert, ohne Anmeldung.">
   <title>FinanzenCampus – Finanzielle Bildung für alle</title>
   <link rel="icon" href="/images/favicon.ico">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
@@ -14,13 +14,14 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <img src="/images/logo.png" alt="FinanzenCampus Logo" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="nav-logo-fallback" style="display:none">📈</div>
       <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
       <li><a href="/index.html" class="active">Startseite</a></li>
       <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/schulden.html">Schulden</a></li>
       <li><a href="/fundamentalanalyse.html">Analyse</a></li>
       <li><a href="/lexikon.html">Lexikon</a></li>
       <li><a href="/wissen.html">Wissen</a></li>
@@ -31,122 +32,165 @@
         <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       </button>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="/index.html">Startseite</a></li>
-    <li><a href="/rechner.html">Rechner</a></li>
-    <li><a href="/fundamentalanalyse.html">Analyse</a></li>
-    <li><a href="/lexikon.html">Lexikon</a></li>
-    <li><a href="/wissen.html">Wissen</a></li>
-    <li><a href="/quiz.html">Quiz</a></li>
-  </ul>
-</div>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li>
+  <li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/schulden.html">Schulden</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+  <li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+  <li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">🎓 Kostenlose Finanzbildung</div>
-      <h1 class="hero-title">
-        Finanzielle Bildung<br>für <span>alle Menschen</span>
-      </h1>
-      <p class="hero-subtitle">
-        Berechne dein Vermögenswachstum, lerne Aktien fundamental zu analysieren, verstehe Börsenbegriffe und entdecke die wichtigsten Grundlagen der persönlichen Finanzen – kostenlos, ohne Anmeldung.
-      </p>
-      <div class="hero-buttons">
-        <a href="/rechner.html" class="btn-primary">Zu den Rechnern →</a>
-        <a href="/fundamentalanalyse.html" class="btn-secondary">Fundamentalanalyse</a>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Kostenlos · Ohne Anmeldung · Evidenzbasiert</p>
+        <h1 class="hero-title">Finanzen verstehen.<br><span>Einfach erklärt.</span></h1>
+        <p class="hero-subtitle">Rechner, Lexikon, Aktienanalyse und Schuldenmanager – verständlich aufbereitet, direkt im Browser nutzbar. Für alle, die ihre Finanzen selbst in die Hand nehmen.</p>
+        <div class="hero-buttons">
+          <a href="/rechner.html" class="btn-primary">Alle Rechner →</a>
+          <a href="/wissen.html" class="btn-ghost">Wissen aufbauen</a>
+        </div>
+      </div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat-card featured">
+          <div class="hsc-num">8+</div>
+          <div class="hsc-label">Finanzrechner</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hsc-num">88+</div>
+          <div class="hsc-label">Börsenbegriffe</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hsc-num">15</div>
+          <div class="hsc-label">Quiz-Fragen</div>
+        </div>
+        <div class="hero-stat-card featured">
+          <div class="hsc-num">100%</div>
+          <div class="hsc-label">Kostenlos</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item"><h3>7</h3><p>Finanzrechner</p></div>
-      <div class="stat-item"><h3>65+</h3><p>Börsenbegriffe</p></div>
-      <div class="stat-item"><h3>15</h3><p>Quiz-Fragen</p></div>
-      <div class="stat-item"><h3>100%</h3><p>Kostenlos</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
+<!-- TOOLS -->
+<section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Was dich erwartet</span>
-      <h2 class="section-title">Alles, was du für deine Finanzen brauchst</h2>
-      <p class="section-desc">Von interaktiven Rechnern bis hin zu fundiertem Wissen – FinanzenCampus macht Finanzbildung für alle zugänglich.</p>
+      <span class="section-label">Alle Werkzeuge</span>
+      <h2 class="section-title">Was dich erwartet</h2>
+      <p class="section-desc">Jedes Tool läuft vollständig im Browser – keine Server, keine APIs, keine Datenübertragung.</p>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon icon-blue">🧮</div>
-        <h3>Finanzrechner</h3>
-        <p>7 interaktive Rechner für Zinseszins, Sparplan, Inflation, Kredit, Rendite, Dividenden und FIRE – mit Diagrammen.</p>
-        <a href="/rechner.html" class="card-link">Rechner starten →</a>
+    <div class="tools-grid">
+      <a href="/rechner.html" class="tool-card">
+        <div class="tc-icon">🧮</div>
+        <div>
+          <h3>Finanzrechner</h3>
+          <p>Zinseszins, Sparplan, Inflation, Kredit, Rendite, Dividenden, FIRE</p>
+        </div>
+        <span class="tc-tag">7 Rechner</span>
+      </a>
+      <a href="/schulden.html" class="tool-card tc-accent">
+        <div class="tc-icon">💳</div>
+        <div>
+          <h3>Schulden tilgen</h3>
+          <p>Avalanche vs. Snowball – welche Methode spart mehr Zinsen?</p>
+        </div>
+        <span class="tc-tag tc-new">Neu</span>
+      </a>
+      <a href="/fundamentalanalyse.html" class="tool-card">
+        <div class="tc-icon">🔬</div>
+        <div>
+          <h3>Fundamentalanalyse</h3>
+          <p>KGV, KBV, ROE, DCF – Aktien wie ein Profi bewerten</p>
+        </div>
+        <span class="tc-tag">7 Kennzahlen</span>
+      </a>
+      <a href="/lexikon.html" class="tool-card">
+        <div class="tc-icon">📚</div>
+        <div>
+          <h3>Börsenlexikon</h3>
+          <p>88 Begriffe von A–Z, durchsuchbar, mit Schwierigkeitsgrad</p>
+        </div>
+        <span class="tc-tag">Nachschlagewerk</span>
+      </a>
+      <a href="/wissen.html" class="tool-card">
+        <div class="tc-icon">🎓</div>
+        <div>
+          <h3>Finanzwissen</h3>
+          <p>ETFs, Börse, FIRE, Behavioral Finance, Steuern und mehr</p>
+        </div>
+        <span class="tc-tag">Artikel</span>
+      </a>
+      <a href="/quiz.html" class="tool-card">
+        <div class="tc-icon">🧠</div>
+        <div>
+          <h3>Finanz-Quiz</h3>
+          <p>15 Fragen zu Börse und Investieren – wie gut kennst du dich aus?</p>
+        </div>
+        <span class="tc-tag">15 Fragen</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SCHULDEN TEASER -->
+<section class="section">
+  <div class="container">
+    <div class="split-section">
+      <div>
+        <span class="section-label">Neues Feature</span>
+        <h2 class="section-title" style="text-align:left;max-width:none;font-size:clamp(1.5rem,3vw,2rem)">Schulden mit System tilgen</h2>
+        <p style="color:var(--text-muted);font-size:1rem;line-height:1.75;margin-bottom:8px">Trag deine Schulden ein – der Rechner vergleicht automatisch beide Strategien und zeigt dir, wie viel Zinsen du mit der richtigen Reihenfolge sparen kannst.</p>
+        <p style="color:var(--text-muted);font-size:.9rem;line-height:1.65;margin-bottom:24px">Alles lokal im Browser, keine Daten werden gespeichert oder übertragen.</p>
+        <a href="/schulden.html" class="btn-primary">Zum Schulden-Rechner →</a>
       </div>
-      <div class="card">
-        <div class="card-icon icon-orange">🔬</div>
-        <h3>Fundamentalanalyse</h3>
-        <p>Lerne, wie Profis Aktien bewerten: KGV, KBV, ROE und mehr – einfach erklärt mit Beispielen, Checkliste und Mini-Rechnern.</p>
-        <a href="/fundamentalanalyse.html" class="card-link">Analyse lernen →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon icon-green">📚</div>
-        <h3>Börsenlexikon</h3>
-        <p>Über 65 wichtige Finanz- und Börsenbegriffe einfach erklärt – von Aktie bis Zinseszins, mit Schwierigkeitsgrad.</p>
-        <a href="/lexikon.html" class="card-link">Lexikon öffnen →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon icon-purple">🎓</div>
-        <h3>Finanzwissen</h3>
-        <p>Verständliche Artikel über Investieren, Sparen, ETFs, Behavioural Finance und die wichtigsten Regeln für finanzielle Freiheit.</p>
-        <a href="/wissen.html" class="card-link">Wissen entdecken →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon icon-blue">🧠</div>
-        <h3>Finanz-Quiz</h3>
-        <p>Teste dein Wissen mit 15 Fragen zu Börse, ETFs, Investieren und Grundlagen. Wie gut kennst du dich aus?</p>
-        <a href="/quiz.html" class="card-link">Quiz starten →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon icon-green">🔒</div>
-        <h3>100 % Privat</h3>
-        <p>Alle Berechnungen laufen lokal in deinem Browser. Keine Anmeldung, keine APIs, kein Tracking – deine Daten bleiben bei dir.</p>
-        <span style="font-size:.875rem;color:var(--text-faint)">Kein Account nötig</span>
+      <div class="method-preview">
+        <div class="method-card">
+          <div class="method-icon">🏔️</div>
+          <h4>Avalanche</h4>
+          <p>Höchster Zinssatz zuerst</p>
+          <small>Mathematisch optimal</small>
+        </div>
+        <div class="vs-divider">vs.</div>
+        <div class="method-card">
+          <div class="method-icon">❄️</div>
+          <h4>Snowball</h4>
+          <p>Kleinste Schuld zuerst</p>
+          <small>Psychologisch motivierend</small>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CALCULATOR PREVIEW -->
+<!-- RECHNER ÜBERSICHT -->
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
       <span class="section-label">Finanzrechner</span>
-      <h2 class="section-title">Deine Finanzen durchrechnen</h2>
-      <p class="section-desc">Sieben kostenlose Rechner helfen dir, finanzielle Entscheidungen besser zu verstehen und zu planen.</p>
+      <h2 class="section-title">Deine Zahlen durchrechnen</h2>
+      <p class="section-desc">Sieben interaktive Rechner für die wichtigsten finanziellen Fragen – mit Diagrammen, kostenlos.</p>
     </div>
     <div class="calc-grid">
       <a href="/rechner.html#zinseszins" class="calc-card">
         <span class="ci">📈</span>
         <h3>Zinseszinsrechner</h3>
-        <p>Wie wächst dein Kapital durch den Zinseszinseffekt über Zeit?</p>
+        <p>Wie wächst dein Kapital durch den Zinseszinseffekt?</p>
         <span class="arrow">Berechnen →</span>
       </a>
       <a href="/rechner.html#sparplan" class="calc-card">
         <span class="ci">💰</span>
         <h3>Sparplanrechner</h3>
-        <p>Monatlich sparen + Zinsen = Wie viel hast du am Ende?</p>
+        <p>Monatlich sparen + Zinsen – wie viel hast du am Ende?</p>
         <span class="arrow">Berechnen →</span>
       </a>
       <a href="/rechner.html#inflation" class="calc-card">
@@ -155,102 +199,61 @@
         <p>Was ist dein Geld in 10 oder 20 Jahren noch wert?</p>
         <span class="arrow">Berechnen →</span>
       </a>
-      <a href="/rechner.html#kredit" class="calc-card">
-        <span class="ci">🏦</span>
-        <h3>Kreditrechner</h3>
-        <p>Monatliche Rate, Gesamtzinsen und Tilgungsplan im Überblick.</p>
-        <span class="arrow">Berechnen →</span>
-      </a>
       <a href="/rechner.html#dividenden" class="calc-card">
         <span class="ci">🪙</span>
         <h3>Dividendenrechner</h3>
-        <p>Wie viel passives Einkommen bringt dein Portfolio durch Dividenden?</p>
+        <p>Wie viel passives Einkommen bringt dein Portfolio?</p>
         <span class="arrow">Berechnen →</span>
       </a>
-      <a href="/rechner.html#rendite" class="calc-card">
-        <span class="ci">📊</span>
-        <h3>Renditerechner (CAGR)</h3>
-        <p>Berechne die jährliche Rendite deiner Investition.</p>
+      <a href="/rechner.html#kredit" class="calc-card">
+        <span class="ci">🏦</span>
+        <h3>Kreditrechner</h3>
+        <p>Monatliche Rate, Gesamtzinsen und Tilgungsplan.</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#fire" class="calc-card">
+        <span class="ci">🎯</span>
+        <h3>FIRE-Rechner</h3>
+        <p>Wann erreichst du finanzielle Unabhängigkeit?</p>
         <span class="arrow">Berechnen →</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- WHY SECTION -->
+<!-- WHY -->
 <section class="section">
   <div class="container">
-    <div class="text-2col">
-      <div>
-        <span class="section-label">Warum FinanzenCampus?</span>
-        <h2 class="section-title" style="text-align:left;max-width:none">Finanzbildung sollte keine Frage des Geldes sein</h2>
-        <p style="color:var(--text-muted);font-size:1.0625rem;line-height:1.75;margin-bottom:28px">
-          Viele Menschen scheuen das Thema Finanzen, weil es kompliziert wirkt. Dabei sind einfache Grundkenntnisse der Schlüssel zu mehr finanzieller Sicherheit – egal ob Schüler, Student oder Berufstätiger.
-        </p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="/wissen.html" class="btn-outline">Jetzt Wissen aufbauen</a>
-          <a href="/quiz.html" class="btn-outline" style="border-color:var(--accent);color:var(--accent)">Quiz starten</a>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <div class="card" style="padding:20px">
-          <div style="display:flex;align-items:center;gap:14px">
-            <div class="card-icon icon-green" style="margin:0;flex-shrink:0;width:44px;height:44px;font-size:1.2rem">⚡</div>
-            <div><h4 style="font-weight:700;margin-bottom:3px;color:var(--text-strong)">Keine Anmeldung nötig</h4><p style="margin:0;font-size:.875rem;color:var(--text-muted)">Alle Tools sofort nutzbar – ohne Account oder E-Mail.</p></div>
-          </div>
-        </div>
-        <div class="card" style="padding:20px">
-          <div style="display:flex;align-items:center;gap:14px">
-            <div class="card-icon icon-blue" style="margin:0;flex-shrink:0;width:44px;height:44px;font-size:1.2rem">🌙</div>
-            <div><h4 style="font-weight:700;margin-bottom:3px;color:var(--text-strong)">Dark Mode</h4><p style="margin:0;font-size:.875rem;color:var(--text-muted)">Augenschonender Dark Mode, der automatisch deiner Systemeinstellung folgt.</p></div>
-          </div>
-        </div>
-        <div class="card" style="padding:20px">
-          <div style="display:flex;align-items:center;gap:14px">
-            <div class="card-icon icon-purple" style="margin:0;flex-shrink:0;width:44px;height:44px;font-size:1.2rem">🎯</div>
-            <div><h4 style="font-weight:700;margin-bottom:3px;color:var(--text-strong)">Anfängerfreundlich</h4><p style="margin:0;font-size:.875rem;color:var(--text-muted)">Jeder Begriff wird erklärt – kein Vorwissen nötig.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FUNDAMENTALANALYSE TEASER -->
-<section class="section section-alt">
-  <div class="container">
     <div class="section-header">
-      <span class="section-label">Aktienanalyse</span>
-      <h2 class="section-title">Lerne, Aktien wie ein Profi zu bewerten</h2>
-      <p class="section-desc">Mit Fundamentalanalyse kannst du den wahren Wert eines Unternehmens einschätzen – unabhängig von Kursschwankungen.</p>
+      <span class="section-label">Über FinanzenCampus</span>
+      <h2 class="section-title">Finanzbildung. Für alle.</h2>
+      <p class="section-desc">Viele Menschen scheuen das Thema Finanzen, weil es kompliziert klingt. Das muss nicht so sein.</p>
     </div>
-    <div class="calc-grid" style="margin-bottom:32px">
-      <a href="/fundamentalanalyse.html#kgv" class="calc-card">
-        <span class="ci">📐</span>
-        <h3>KGV erklärt</h3>
-        <p>Das Kurs-Gewinn-Verhältnis – die wichtigste Bewertungskennzahl für Aktien.</p>
-        <span class="arrow">Mehr erfahren →</span>
-      </a>
-      <a href="/fundamentalanalyse.html#roe" class="calc-card">
-        <span class="ci">📈</span>
-        <h3>Eigenkapitalrendite</h3>
-        <p>ROE zeigt, wie effizient ein Unternehmen mit dem Kapital seiner Aktionäre umgeht.</p>
-        <span class="arrow">Mehr erfahren →</span>
-      </a>
-      <a href="/fundamentalanalyse.html#checkliste" class="calc-card">
-        <span class="ci">✅</span>
-        <h3>Aktien-Checkliste</h3>
-        <p>10 Punkte, die du vor jedem Aktienkauf prüfen solltest.</p>
-        <span class="arrow">Zur Checkliste →</span>
-      </a>
-    </div>
-    <div class="text-center">
-      <a href="/fundamentalanalyse.html" class="btn-primary">Zur vollständigen Anleitung →</a>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-num">01</span>
+        <h4>Keine Anmeldung</h4>
+        <p>Alle Tools stehen sofort zur Verfügung. Kein Account, keine E-Mail, kein Abo.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">02</span>
+        <h4>100 % lokal</h4>
+        <p>Alle Berechnungen laufen direkt im Browser. Deine Zahlen verlassen nie dein Gerät.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">03</span>
+        <h4>Anfängerfreundlich</h4>
+        <p>Jeder Begriff wird erklärt. Du brauchst kein Vorwissen – nur Neugier.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num">04</span>
+        <h4>Evidenzbasiert</h4>
+        <p>Alle Inhalte beruhen auf anerkannten Finanzprinzipien. Keine Hypes, keine Renditeversprechen.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -269,8 +272,8 @@
           <li><a href="/rechner.html#sparplan">Sparplan</a></li>
           <li><a href="/rechner.html#inflation">Inflation</a></li>
           <li><a href="/rechner.html#dividenden">Dividenden</a></li>
-          <li><a href="/rechner.html#kredit">Kredit</a></li>
           <li><a href="/rechner.html#fire">FIRE</a></li>
+          <li><a href="/schulden.html">Schulden tilgen</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -285,9 +288,9 @@
       <div class="footer-col">
         <h4>Themen</h4>
         <ul class="footer-links">
-          <li><a href="/wissen.html">ETF & Fonds</a></li>
-          <li><a href="/wissen.html">Aktienanalyse</a></li>
-          <li><a href="/wissen.html">Sparen</a></li>
+          <li><a href="/wissen.html#investieren">ETF &amp; Aktien</a></li>
+          <li><a href="/wissen.html#psychologie">Behavioral Finance</a></li>
+          <li><a href="/wissen.html#sparen">Sparen</a></li>
           <li><a href="/wissen.html">FIRE-Bewegung</a></li>
         </ul>
       </div>
