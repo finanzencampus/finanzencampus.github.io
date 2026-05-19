@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Schulden tilgen mit System: Avalanche vs. Snowball – vergleiche beide Strategien, spare Zinsen und werde schneller schuldenfrei.">
+  <title>Schulden tilgen – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/schulden.html" class="active">Schulden</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/quiz.html">Quiz</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild wechseln" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li>
+  <li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/schulden.html">Schulden</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+  <li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+  <li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>💳 Schulden tilgen</h1>
+    <p>Trag deine Schulden ein und vergleiche Avalanche vs. Snowball – sieh auf einen Blick, welche Methode dir mehr Zinsen spart.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+
+    <!-- SCHULDEN EINGABE -->
+    <div class="section-header" style="margin-bottom:24px">
+      <span class="section-label">Schritt 1</span>
+      <h2 class="section-title">Deine Schulden eintragen</h2>
+      <p class="section-desc">Füge alle Schulden hinzu – Kreditkarten, Ratenkredite, Dispokredite usw. Mindestens eine Schuld wird benötigt.</p>
+    </div>
+
+    <div id="debtList"></div>
+
+    <button class="add-debt-btn" onclick="addDebtRow()">+ Neue Schuld hinzufügen</button>
+
+    <!-- EXTRA ZAHLUNG -->
+    <div class="card" style="padding:22px;margin-bottom:24px">
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end">
+        <div style="flex:1;min-width:200px">
+          <label class="debt-row-label" for="extraPayment">Zusatzzahlung pro Monat (€)</label>
+          <input type="number" id="extraPayment" class="calc-input" value="100" min="0" step="10" style="width:100%">
+          <p style="font-size:.8125rem;color:var(--text-faint);margin-top:6px;line-height:1.5">Betrag über alle Mindestbeträge hinaus – fließt je nach Methode zur priorisierten Schuld.</p>
+        </div>
+        <div>
+          <button class="btn-primary" onclick="calculate()">Vergleich berechnen →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERGEBNISSE -->
+    <div id="results" style="display:none">
+
+      <div class="section-header" style="margin-bottom:24px">
+        <span class="section-label">Schritt 2</span>
+        <h2 class="section-title">Ergebnis</h2>
+      </div>
+
+      <!-- METHODEN-VERGLEICH -->
+      <div class="debt-compare-grid" style="margin-bottom:28px">
+        <div class="debt-method-card" id="avalancheCard">
+          <div class="debt-method-title">🏔️ Avalanche <span id="avalancheBadge" style="font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--accent-subtle);color:var(--accent)"></span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:.8rem;color:var(--text-faint);margin-bottom:3px">Dauer</div>
+              <div id="avalancheMonths" style="font-size:1.375rem;font-weight:800;color:var(--text-strong)">–</div>
+            </div>
+            <div>
+              <div style="font-size:.8rem;color:var(--text-faint);margin-bottom:3px">Gezahlte Zinsen</div>
+              <div id="avalancheInterest" style="font-size:1.375rem;font-weight:800;color:var(--text-strong)">–</div>
+            </div>
+          </div>
+          <p style="font-size:.8125rem;color:var(--text-muted);margin-top:14px;line-height:1.6">Schuld mit dem <strong>höchsten Zinssatz</strong> wird zuerst abgezahlt. Mathematisch optimal – minimiert die gesamten Zinskosten.</p>
+        </div>
+        <div class="debt-method-card" id="snowballCard">
+          <div class="debt-method-title">❄️ Snowball <span id="snowballBadge" style="font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--accent-subtle);color:var(--accent)"></span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:.8rem;color:var(--text-faint);margin-bottom:3px">Dauer</div>
+              <div id="snowballMonths" style="font-size:1.375rem;font-weight:800;color:var(--text-strong)">–</div>
+            </div>
+            <div>
+              <div style="font-size:.8rem;color:var(--text-faint);margin-bottom:3px">Gezahlte Zinsen</div>
+              <div id="snowballInterest" style="font-size:1.375rem;font-weight:800;color:var(--text-strong)">–</div>
+            </div>
+          </div>
+          <p style="font-size:.8125rem;color:var(--text-muted);margin-top:14px;line-height:1.6">Schuld mit dem <strong>kleinsten Betrag</strong> wird zuerst getilgt. Psychologisch motivierend – schnelle erste Erfolge.</p>
+        </div>
+      </div>
+
+      <!-- ERSPARNIS HINWEIS -->
+      <div id="savingsBanner" class="card" style="padding:18px 22px;margin-bottom:28px;border-left:3px solid var(--accent);display:none">
+        <p style="margin:0;font-size:.9375rem;color:var(--text-strong)" id="savingsText"></p>
+      </div>
+
+      <!-- CHART -->
+      <div class="card" style="padding:22px;margin-bottom:28px">
+        <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:18px">Schuldenabbau im Vergleich</h3>
+        <div style="position:relative;height:300px">
+          <canvas id="debtChart"></canvas>
+        </div>
+      </div>
+
+      <!-- TILGUNGSPLAN TABELLE -->
+      <div class="card" style="padding:22px;margin-bottom:28px">
+        <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">Jährlicher Tilgungsplan</h3>
+        <div style="overflow-x:auto">
+          <table id="planTable" style="width:100%;border-collapse:collapse;font-size:.875rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:10px 12px;color:var(--text-faint);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em">Jahr</th>
+                <th style="text-align:right;padding:10px 12px;color:var(--text-faint);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em">Avalanche Restschuld</th>
+                <th style="text-align:right;padding:10px 12px;color:var(--text-faint);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em">Snowball Restschuld</th>
+              </tr>
+            </thead>
+            <tbody id="planBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /results -->
+
+  </div>
+</div>
+
+<!-- ERKLÄRUNGSBEREICH -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Hintergrundwissen</span>
+      <h2 class="section-title">Die zwei Methoden erklärt</h2>
+      <p class="section-desc">Beide Strategien nutzen denselben Mechanismus: Sobald eine Schuld abbezahlt ist, wird ihre frei gewordene Rate auf die nächste Schuld aufgestapelt – der sogenannte „Schneeball-Effekt".</p>
+    </div>
+    <div class="split-section" style="align-items:start;gap:40px">
+      <div>
+        <div class="card" style="padding:24px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="font-size:1.5rem">🏔️</span>
+            <div>
+              <h3 style="font-size:1rem;font-weight:700;color:var(--text-strong);margin:0">Avalanche-Methode</h3>
+              <span style="font-size:.8rem;color:var(--text-faint)">Mathematisch optimal</span>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:12px">Alle Mindestbeträge werden bezahlt, die gesamte Extrarate fließt in die Schuld mit dem <strong>höchsten Zinssatz</strong>. Ist diese abbezahlt, wandert die Extrarate zur nächsten teuersten Schuld.</p>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin:0"><strong>Vorteil:</strong> Minimiert die gesamten Zinskosten über die gesamte Laufzeit. Bei hohen Zinsdifferenzen kann die Ersparnis erheblich sein.</p>
+        </div>
+        <div class="card" style="padding:24px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <span style="font-size:1.5rem">❄️</span>
+            <div>
+              <h3 style="font-size:1rem;font-weight:700;color:var(--text-strong);margin:0">Snowball-Methode</h3>
+              <span style="font-size:.8rem;color:var(--text-faint)">Psychologisch motivierend</span>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:12px">Alle Mindestbeträge werden bezahlt, die Extrarate fließt in die Schuld mit dem <strong>kleinsten Restbetrag</strong>. Ist diese getilgt, kommt die nächstkleinste dran.</p>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin:0"><strong>Vorteil:</strong> Erste Schulden werden schnell abgehakt. Studien zeigen, dass dieser Motivationseffekt die Durchhalterate bei der Entschuldung erhöht.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="padding:24px;margin-bottom:16px">
+          <h4 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:14px">Was beide Methoden gemeinsam haben</h4>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:.875rem;color:var(--text-muted);line-height:1.6;display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;flex-shrink:0">→</span>Alle Mindestbeträge werden immer bezahlt – kein Verzug, keine Strafzinsen</li>
+            <li style="font-size:.875rem;color:var(--text-muted);line-height:1.6;display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;flex-shrink:0">→</span>Freigewordene Raten werden sofort auf die nächste Schuld umgeleitet</li>
+            <li style="font-size:.875rem;color:var(--text-muted);line-height:1.6;display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;flex-shrink:0">→</span>Je mehr Extrarate du einzahlst, desto schneller bist du schuldenfrei</li>
+            <li style="font-size:.875rem;color:var(--text-muted);line-height:1.6;display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;flex-shrink:0">→</span>Die Gesamtmonatszahlung bleibt konstant, bis eine Schuld abbezahlt ist</li>
+          </ul>
+        </div>
+        <div class="card" style="padding:24px;background:var(--primary-subtle);border-color:rgba(59,130,246,.25)">
+          <h4 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:10px">Welche Methode sollte ich wählen?</h4>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:10px">Wenn die Zinsdifferenzen zwischen deinen Schulden groß sind, spart Avalanche deutlich mehr. Sind die Zinsen ähnlich hoch oder kämpfst du mit Motivation, ist Snowball oft die bessere Wahl.</p>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.7;margin:0">Beide Methoden sind besser als kein Plan. Der wichtigste Schritt ist, Extrabeträge konsequent einzusetzen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="footer-brand-icon" style="display:none">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon, Fundamentalanalyse und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html#inflation">Inflation</a></li>
+          <li><a href="/rechner.html#dividenden">Dividenden</a></li>
+          <li><a href="/rechner.html#fire">FIRE</a></li>
+          <li><a href="/schulden.html">Schulden tilgen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li>
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+          <li><a href="/quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Themen</h4>
+        <ul class="footer-links">
+          <li><a href="/wissen.html#investieren">ETF &amp; Aktien</a></li>
+          <li><a href="/wissen.html#psychologie">Behavioral Finance</a></li>
+          <li><a href="/wissen.html#sparen">Sparen</a></li>
+          <li><a href="/wissen.html">FIRE-Bewegung</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+      <span>Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script>
+(function() {
+  let debtCounter = 0;
+  let chartInstance = null;
+
+  function fmt(n) {
+    return new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + ' €';
+  }
+
+  function fmtMonths(m) {
+    const y = Math.floor(m / 12);
+    const mo = m % 12;
+    if (y === 0) return mo + ' Monat' + (mo !== 1 ? 'e' : '');
+    if (mo === 0) return y + ' Jahr' + (y !== 1 ? 'e' : '');
+    return y + ' J. ' + mo + ' Mon.';
+  }
+
+  window.addDebtRow = function(name, balance, rate, minPayment) {
+    debtCounter++;
+    const id = debtCounter;
+    const div = document.createElement('div');
+    div.className = 'debt-row';
+    div.id = 'debt-' + id;
+    div.innerHTML = `
+      <div>
+        <span class="debt-row-label">Bezeichnung</span>
+        <input type="text" class="calc-input debt-name" value="${name || ''}" placeholder="z.B. Kreditkarte" style="width:100%">
+      </div>
+      <div>
+        <span class="debt-row-label">Restschuld (€)</span>
+        <input type="number" class="calc-input debt-balance" value="${balance || ''}" placeholder="3500" min="1" step="100" style="width:100%">
+      </div>
+      <div>
+        <span class="debt-row-label">Zinssatz (%)</span>
+        <input type="number" class="calc-input debt-rate" value="${rate || ''}" placeholder="18.9" min="0.1" max="100" step="0.1" style="width:100%">
+      </div>
+      <div>
+        <span class="debt-row-label">Mindestrate (€/Mon.)</span>
+        <input type="number" class="calc-input debt-min" value="${minPayment || ''}" placeholder="70" min="1" step="10" style="width:100%">
+      </div>
+      <div>
+        <button class="dbl-btn" onclick="removeDebt(${id})" title="Entfernen">✕</button>
+      </div>
+    `;
+    document.getElementById('debtList').appendChild(div);
+  };
+
+  window.removeDebt = function(id) {
+    const el = document.getElementById('debt-' + id);
+    if (el) el.remove();
+  };
+
+  function getDebts() {
+    const rows = document.querySelectorAll('.debt-row');
+    const debts = [];
+    rows.forEach(row => {
+      const name = row.querySelector('.debt-name').value.trim() || 'Schuld';
+      const balance = parseFloat(row.querySelector('.debt-balance').value);
+      const rate = parseFloat(row.querySelector('.debt-rate').value);
+      const minPayment = parseFloat(row.querySelector('.debt-min').value);
+      if (balance > 0 && rate > 0 && minPayment > 0) {
+        debts.push({ name, balance, rate, minPayment });
+      }
+    });
+    return debts;
+  }
+
+  function simulate(debtsInput, extraPaymentBase, method) {
+    const debts = debtsInput.map(d => ({ ...d }));
+    const totalMinimums = debtsInput.reduce((s, d) => s + d.minPayment, 0);
+    const totalMonthlyPayment = totalMinimums + extraPaymentBase;
+    let month = 0;
+    let totalInterest = 0;
+    const balanceHistory = [debts.reduce((s, d) => s + d.balance, 0)];
+
+    while (debts.some(d => d.balance > 0.005) && month < 600) {
+      month++;
+
+      // Accrue interest on all active debts
+      debts.forEach(d => {
+        if (d.balance > 0.005) {
+          const interest = d.balance * (d.rate / 100 / 12);
+          totalInterest += interest;
+          d.balance += interest;
+        }
+      });
+
+      const active = debts.filter(d => d.balance > 0.005);
+
+      // Pick target debt for extra payment
+      let target = null;
+      if (active.length > 0) {
+        if (method === 'avalanche') {
+          target = active.reduce((a, b) => b.rate > a.rate ? b : a);
+        } else {
+          target = active.reduce((a, b) => b.balance < a.balance ? b : a);
+        }
+      }
+
+      // Pay minimums on all non-target debts first
+      let remaining = totalMonthlyPayment;
+      debts.forEach(d => {
+        if (d.balance > 0.005 && d !== target) {
+          const pay = Math.min(d.balance, d.minPayment);
+          d.balance = Math.max(0, d.balance - pay);
+          remaining -= pay;
+        }
+      });
+
+      // Apply remaining to target
+      if (target && remaining > 0) {
+        target.balance = Math.max(0, target.balance - remaining);
+      }
+
+      balanceHistory.push(Math.max(0, debts.reduce((s, d) => s + d.balance, 0)));
+    }
+
+    return { months: month, totalInterest, balanceHistory };
+  }
+
+  window.calculate = function() {
+    const debts = getDebts();
+    if (debts.length === 0) {
+      alert('Bitte füge mindestens eine gültige Schuld hinzu (Restschuld, Zinssatz und Mindestrate sind Pflichtfelder).');
+      return;
+    }
+
+    const extra = parseFloat(document.getElementById('extraPayment').value) || 0;
+
+    const av = simulate(debts, extra, 'avalanche');
+    const sn = simulate(debts, extra, 'snowball');
+
+    // Populate result cards
+    document.getElementById('avalancheMonths').textContent = fmtMonths(av.months);
+    document.getElementById('avalancheInterest').textContent = fmt(av.totalInterest);
+    document.getElementById('snowballMonths').textContent = fmtMonths(sn.months);
+    document.getElementById('snowballInterest').textContent = fmt(sn.totalInterest);
+
+    // Determine winner
+    const avCard = document.getElementById('avalancheCard');
+    const snCard = document.getElementById('snowballCard');
+    const avBadge = document.getElementById('avalancheBadge');
+    const snBadge = document.getElementById('snowballBadge');
+    avCard.classList.remove('winner');
+    snCard.classList.remove('winner');
+    avBadge.textContent = '';
+    snBadge.textContent = '';
+
+    if (av.totalInterest < sn.totalInterest) {
+      avCard.classList.add('winner');
+      avBadge.textContent = 'Zinssparend';
+    } else if (sn.totalInterest < av.totalInterest) {
+      snCard.classList.add('winner');
+      snBadge.textContent = 'Zinssparend';
+    } else {
+      avBadge.textContent = 'Gleich';
+    }
+
+    // Savings banner
+    const savings = Math.abs(av.totalInterest - sn.totalInterest);
+    const banner = document.getElementById('savingsBanner');
+    const savingsText = document.getElementById('savingsText');
+    if (savings > 0.5) {
+      const cheaper = av.totalInterest < sn.totalInterest ? 'Avalanche' : 'Snowball';
+      savingsText.innerHTML = `Mit der <strong>${cheaper}-Methode</strong> sparst du im Vergleich zur anderen Strategie <strong>${fmt(savings)}</strong> an Zinsen.`;
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+
+    // Chart
+    const maxLen = Math.max(av.balanceHistory.length, sn.balanceHistory.length);
+    const labels = [];
+    for (let i = 0; i < maxLen; i++) {
+      if (i % 6 === 0) labels.push('M' + i);
+      else labels.push('');
+    }
+
+    // Pad shorter history with zeros
+    const avData = [...av.balanceHistory];
+    const snData = [...sn.balanceHistory];
+    while (avData.length < maxLen) avData.push(0);
+    while (snData.length < maxLen) snData.push(0);
+
+    if (chartInstance) chartInstance.destroy();
+
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+    const textColor = isDark ? '#94a3b8' : '#64748b';
+
+    chartInstance = new Chart(document.getElementById('debtChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Avalanche',
+            data: avData,
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59,130,246,0.08)',
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: true,
+            tension: 0.3
+          },
+          {
+            label: 'Snowball',
+            data: snData,
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245,158,11,0.08)',
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: true,
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { intersect: false, mode: 'index' },
+        plugins: {
+          legend: { position: 'top', labels: { color: textColor, font: { size: 13 }, usePointStyle: true, pointStyleWidth: 12 } },
+          tooltip: {
+            callbacks: {
+              label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.parsed.y)
+            }
+          }
+        },
+        scales: {
+          x: { grid: { color: gridColor }, ticks: { color: textColor, maxTicksLimit: 12 } },
+          y: {
+            grid: { color: gridColor },
+            ticks: {
+              color: textColor,
+              callback: v => new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(v) + ' €'
+            }
+          }
+        }
+      }
+    });
+
+    // Plan table
+    const tbody = document.getElementById('planBody');
+    tbody.innerHTML = '';
+    const maxYears = Math.ceil(maxLen / 12);
+    for (let y = 0; y <= maxYears; y++) {
+      const idx = y * 12;
+      const avVal = avData[Math.min(idx, avData.length - 1)] || 0;
+      const snVal = snData[Math.min(idx, snData.length - 1)] || 0;
+      const tr = document.createElement('tr');
+      tr.style.borderBottom = '1px solid var(--border)';
+      const isEven = y % 2 === 0;
+      tr.style.background = isEven ? 'transparent' : 'var(--bg-muted)';
+      tr.innerHTML = `
+        <td style="padding:10px 12px;color:var(--text-muted);font-weight:600">${y === 0 ? 'Start' : 'Jahr ' + y}</td>
+        <td style="padding:10px 12px;text-align:right;color:${avVal === 0 && y > 0 ? 'var(--accent)' : 'var(--text-strong)'}">
+          ${avVal < 0.01 && y > 0 ? '✓ Abbezahlt' : fmt(avVal)}
+        </td>
+        <td style="padding:10px 12px;text-align:right;color:${snVal === 0 && y > 0 ? 'var(--accent)' : 'var(--text-strong)'}">
+          ${snVal < 0.01 && y > 0 ? '✓ Abbezahlt' : fmt(snVal)}
+        </td>
+      `;
+      tbody.appendChild(tr);
+      if (avVal < 0.01 && snVal < 0.01 && y > 0) break;
+    }
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // Pre-populate with example data
+  addDebtRow('Kreditkarte', 3500, 18.9, 70);
+  addDebtRow('Ratenkredit', 8000, 6.5, 200);
+})();
+</script>
+</body>
+</html>
