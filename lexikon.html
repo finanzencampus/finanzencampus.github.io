@@ -6,6 +6,7 @@
   <meta name="description" content="Börsenlexikon mit über 60 wichtigen Finanz- und Börsenbegriffen einfach erklärt – durchsuchbar und kostenlos.">
   <title>Börsenlexikon – FinanzenCampus</title>
   <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -13,28 +14,32 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <div class="nav-logo-icon">📈</div>
-      FinanzenCampus
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
       <li><a href="/index.html">Startseite</a></li>
       <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
       <li><a href="/lexikon.html" class="active">Lexikon</a></li>
       <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/quiz.html">Quiz</a></li>
     </ul>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="/index.html">Startseite</a></li>
-    <li><a href="/rechner.html">Rechner</a></li>
-    <li><a href="/lexikon.html">Lexikon</a></li>
-    <li><a href="/wissen.html">Wissen</a></li>
-  </ul>
-</div>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li><li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li><li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li><li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
 
 <div class="page-hero">
   <div class="container">
@@ -523,11 +528,11 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
+        <div class="footer-brand-name"><img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
       </div>
       <div class="footer-col"><h4>Rechner</h4><ul class="footer-links"><li><a href="/rechner.html">Alle Rechner</a></li></ul></div>
-      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li></ul></div>
+      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li><li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li><li><a href="/quiz.html">Quiz</a></li></ul></div>
       <div class="footer-col"><h4>Navigation</h4><ul class="footer-links"><li><a href="/index.html">Startseite</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung</span></div>
