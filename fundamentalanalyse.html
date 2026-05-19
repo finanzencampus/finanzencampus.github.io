@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fundamentalanalyse für Einsteiger: KGV, KBV, ROE, Dividendenrendite und mehr – lerne, Aktien wie ein Profi zu bewerten.">
+  <title>Fundamentalanalyse – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/fundamentalanalyse.html" class="active">Analyse</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/quiz.html">Quiz</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li><li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li><li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li><li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>🔬 Fundamentalanalyse</h1>
+    <p>Lerne, den inneren Wert eines Unternehmens zu bestimmen – mit den wichtigsten Kennzahlen, einer Aktien-Checkliste und interaktiven Rechnern.</p>
+  </div>
+</div>
+
+<!-- WAS IST FUNDAMENTALANALYSE -->
+<section class="section">
+  <div class="container">
+    <div class="text-2col">
+      <div>
+        <span class="section-label">Grundlagen</span>
+        <h2 class="section-title" style="text-align:left;max-width:none">Was ist Fundamentalanalyse?</h2>
+        <p style="color:var(--text-muted);font-size:1rem;line-height:1.75;margin-bottom:18px">
+          Fundamentalanalyse bedeutet, ein Unternehmen wie ein Geschäftsmann zu betrachten – nicht wie ein Spekulant. Du analysierst das Geschäftsmodell, die Finanzkennzahlen und das Wachstumspotenzial, um zu entscheiden, ob eine Aktie <strong style="color:var(--text-strong)">günstig, fair oder teuer</strong> bewertet ist.
+        </p>
+        <p style="color:var(--text-muted);font-size:1rem;line-height:1.75;margin-bottom:24px">
+          Das Ziel ist der <strong style="color:var(--text-strong)">innere Wert (Intrinsic Value)</strong>: Was ist das Unternehmen wirklich wert? Liegt der aktuelle Börsenkurs darunter, ist die Aktie potenziell unterbewertet – und könnte eine Kaufgelegenheit sein.
+        </p>
+        <div class="info-box info-blue">
+          💡 <strong>Warren Buffett:</strong> „Kaufe nur Aktien eines Unternehmens, dessen Geschäft du in 30 Sekunden erklären kannst."
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg-muted);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px">
+          <h3 style="font-size:1rem;font-weight:700;color:var(--text-strong);margin-bottom:18px">Fundamentalanalyse vs. Technische Analyse</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="padding:14px;background:var(--primary-subtle);border-radius:var(--radius-sm);border:1px solid rgba(59,130,246,.2)">
+              <div style="font-weight:700;color:var(--primary);font-size:.875rem;margin-bottom:6px">🔬 Fundamentalanalyse</div>
+              <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:4px">
+                <li>✓ Bewertet das Unternehmen (Was ist es wert?)</li>
+                <li>✓ Langfristiger Horizont (1–10+ Jahre)</li>
+                <li>✓ Basiert auf Finanzkennzahlen</li>
+                <li>✓ Für Value und Growth Investing</li>
+              </ul>
+            </div>
+            <div style="padding:14px;background:var(--bg-card);border-radius:var(--radius-sm);border:1px solid var(--border)">
+              <div style="font-weight:700;color:var(--text-muted);font-size:.875rem;margin-bottom:6px">📊 Technische Analyse</div>
+              <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:4px">
+                <li>• Bewertet den Kursverlauf (Wohin geht der Kurs?)</li>
+                <li>• Kurzfristiger Horizont (Tage–Monate)</li>
+                <li>• Basiert auf Charts & Mustern</li>
+                <li>• Für Trading und Market Timing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIE 7 WICHTIGSTEN KENNZAHLEN -->
+<section class="section section-alt" id="kennzahlen">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Kennzahlen</span>
+      <h2 class="section-title">Die 7 wichtigsten Kennzahlen</h2>
+      <p class="section-desc">Diese Kennzahlen bilden das Fundament jeder Aktienanalyse. Kein Profi kauft eine Aktie, ohne zumindest einige davon zu prüfen.</p>
+    </div>
+    <div class="kpi-grid">
+
+      <div class="kpi-card" id="kgv">
+        <span class="kpi-icon">📐</span>
+        <div class="kpi-label">Bewertung</div>
+        <div class="kpi-name">KGV</div>
+        <div class="kpi-full">Kurs-Gewinn-Verhältnis (P/E Ratio)</div>
+        <div class="kpi-desc">Das KGV zeigt, wie viele Jahre ein Unternehmen bei aktuellem Gewinn braucht, um seinen Börsenwert zu verdienen. <strong>KGV = Aktienkurs ÷ Gewinn je Aktie.</strong> Ein niedriges KGV kann auf Unterbewertung hindeuten – oder auf Probleme.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &lt;15 – Möglicherweise günstig (Value)</div>
+          <div class="kpi-range range-mid">~ 15–25 – Fair bewertet für stabile Unternehmen</div>
+          <div class="kpi-range range-bad">✗ &gt;30 – Teuer (nur bei hohem Wachstum ok)</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-icon">📚</span>
+        <div class="kpi-label">Bewertung</div>
+        <div class="kpi-name">KBV</div>
+        <div class="kpi-full">Kurs-Buchwert-Verhältnis (P/B Ratio)</div>
+        <div class="kpi-desc">Vergleicht den Börsenwert mit dem bilanziellen Eigenkapital. <strong>KBV = Aktienkurs ÷ Buchwert je Aktie.</strong> KBV unter 1 bedeutet: die Aktie ist günstiger als das Eigenkapital des Unternehmens. Oft genutzt bei Banken und Industrieunternehmen.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &lt;1 – Möglicherweise stark unterbewertet</div>
+          <div class="kpi-range range-mid">~ 1–3 – Normal für reife Unternehmen</div>
+          <div class="kpi-range range-bad">✗ &gt;5 – Sehr teuer (ggf. nur bei Qualität ok)</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-icon">💹</span>
+        <div class="kpi-label">Bewertung</div>
+        <div class="kpi-name">KUV</div>
+        <div class="kpi-full">Kurs-Umsatz-Verhältnis (P/S Ratio)</div>
+        <div class="kpi-desc">Setzt den Börsenwert ins Verhältnis zum Jahresumsatz. <strong>KUV = Marktkapitalisierung ÷ Jahresumsatz.</strong> Besonders nützlich für Wachstumsunternehmen, die noch keinen Gewinn machen. Je niedriger, desto günstiger relativ zum Umsatz.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &lt;2 – Günstig (für stabile Branchen)</div>
+          <div class="kpi-range range-mid">~ 2–5 – Akzeptabel für Wachstumsunternehmen</div>
+          <div class="kpi-range range-bad">✗ &gt;10 – Sehr teuer, hohes Wachstum nötig</div>
+        </div>
+      </div>
+
+      <div class="kpi-card" id="roe">
+        <span class="kpi-icon">⚙️</span>
+        <div class="kpi-label">Profitabilität</div>
+        <div class="kpi-name">ROE</div>
+        <div class="kpi-full">Eigenkapitalrendite (Return on Equity)</div>
+        <div class="kpi-desc">Misst, wie effizient ein Unternehmen das Kapital seiner Aktionäre einsetzt. <strong>ROE = Jahresgewinn ÷ Eigenkapital × 100.</strong> Ein hoher ROE über viele Jahre ist ein Zeichen eines hervorragenden Geschäftsmodells mit Wettbewerbsvorteil.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &gt;20 % – Ausgezeichnet (Burggraben)</div>
+          <div class="kpi-range range-mid">~ 10–20 % – Solide, branchenüblich</div>
+          <div class="kpi-range range-bad">✗ &lt;10 % – Schwach oder kapitalintensiv</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-icon">🪙</span>
+        <div class="kpi-label">Ertrag</div>
+        <div class="kpi-name">Div.-Rendite</div>
+        <div class="kpi-full">Dividendenrendite</div>
+        <div class="kpi-desc">Der Anteil der jährlichen Dividende am aktuellen Aktienkurs. <strong>Div.-Rendite = Dividende je Aktie ÷ Aktienkurs × 100.</strong> Eine hohe Dividendenrendite kann attraktiv sein – aber auch auf Probleme hinweisen, wenn der Kurs gefallen ist.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ 2–5 % – Attraktiv und nachhaltig</div>
+          <div class="kpi-range range-mid">~ 1–2 % – Moderat (Wachstumsfokus)</div>
+          <div class="kpi-range range-bad">✗ &gt;7 % – Warnsignal: Div.-Kürzung möglich</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-icon">🏗️</span>
+        <div class="kpi-label">Bewertung</div>
+        <div class="kpi-name">EV/EBITDA</div>
+        <div class="kpi-full">Enterprise Value / EBITDA</div>
+        <div class="kpi-desc">Eine kapitalstrukturunabhängige Bewertungskennzahl. <strong>EV = Marktkapitalisierung + Schulden − Cash.</strong> Besonders nützlich zum Vergleich von Unternehmen mit unterschiedlich hoher Verschuldung. Verbreitet bei M&A-Transaktionen.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &lt;10 – Günstig (zyklische Branchen)</div>
+          <div class="kpi-range range-mid">~ 10–20 – Normal für stabile Unternehmen</div>
+          <div class="kpi-range range-bad">✗ &gt;30 – Sehr ambitioniert bewertet</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-icon">⚖️</span>
+        <div class="kpi-label">Risiko</div>
+        <div class="kpi-name">Verschuldung</div>
+        <div class="kpi-full">Debt-to-Equity Ratio</div>
+        <div class="kpi-desc">Misst das Verhältnis von Fremd- zu Eigenkapital. <strong>D/E = Gesamtverschuldung ÷ Eigenkapital.</strong> Hohe Verschuldung erhöht das finanzielle Risiko, besonders in Krisenzeiten. In kapitalintensiven Branchen (z.B. Immobilien) sind höhere Werte normal.</div>
+        <div class="kpi-ranges">
+          <div class="kpi-range range-good">✓ &lt;0,5 – Konservativ finanziert</div>
+          <div class="kpi-range range-mid">~ 0,5–1,5 – Üblich, je nach Branche</div>
+          <div class="kpi-range range-bad">✗ &gt;2,0 – Hohes Verschuldungsrisiko</div>
+        </div>
+      </div>
+
+      <!-- placeholder to keep grid even -->
+      <div class="kpi-card" style="background:var(--bg-alt)">
+        <span class="kpi-icon">📋</span>
+        <div class="kpi-label">Merke</div>
+        <div class="kpi-name" style="font-size:.875rem;line-height:1.5;margin-bottom:10px">Keine Kennzahl allein reicht</div>
+        <div class="kpi-desc">Immer mehrere Kennzahlen kombinieren. Eine günstige Aktie mit schlechtem Geschäftsmodell ist keine gute Investition. Kontext und Branche sind entscheidend.</div>
+        <div class="info-box info-green" style="margin-top:14px">
+          ✓ Vergleiche immer mit Branchenkollegen (Peers)
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MINI-RECHNER -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Interaktiv</span>
+      <h2 class="section-title">Kennzahlen selbst berechnen</h2>
+      <p class="section-desc">Gib die Zahlen eines Unternehmens ein – die Rechner erledigen den Rest.</p>
+    </div>
+    <div class="mini-calc">
+      <div class="mini-calc-grid">
+        <!-- KGV Rechner -->
+        <div>
+          <h3>📐 KGV-Rechner</h3>
+          <div class="form-group" style="margin-top:16px"><label>Aktienkurs (€)</label><input type="number" id="mc-kurs" value="120" min="0" step="0.01" oninput="calcMiniKGV()"></div>
+          <div class="form-group"><label>Gewinn je Aktie / EPS (€)</label><input type="number" id="mc-eps" value="6.50" min="0" step="0.01" oninput="calcMiniKGV()"></div>
+          <div class="mini-result" id="mc-kgv-result">
+            <div class="mrl">KGV</div>
+            <div class="mrv" id="mc-kgv-val">–</div>
+            <div style="font-size:.8rem;color:var(--text-muted);margin-top:6px" id="mc-kgv-hint"></div>
+          </div>
+        </div>
+        <!-- Div-Rendite Rechner -->
+        <div>
+          <h3>🪙 Dividendenrendite-Rechner</h3>
+          <div class="form-group" style="margin-top:16px"><label>Aktienkurs (€)</label><input type="number" id="mc-kurs2" value="80" min="0" step="0.01" oninput="calcMiniDiv()"></div>
+          <div class="form-group"><label>Dividende je Aktie (€)</label><input type="number" id="mc-div" value="2.80" min="0" step="0.01" oninput="calcMiniDiv()"></div>
+          <div class="mini-result" id="mc-div-result">
+            <div class="mrl">Dividendenrendite</div>
+            <div class="mrv" id="mc-div-val">–</div>
+            <div style="font-size:.8rem;color:var(--text-muted);margin-top:6px" id="mc-div-hint"></div>
+          </div>
+        </div>
+        <!-- ROE Rechner -->
+        <div>
+          <h3>⚙️ ROE-Rechner</h3>
+          <div class="form-group" style="margin-top:16px"><label>Jahresgewinn (Mio. €)</label><input type="number" id="mc-gewinn" value="500" min="0" step="1" oninput="calcMiniROE()"></div>
+          <div class="form-group"><label>Eigenkapital (Mio. €)</label><input type="number" id="mc-ek" value="2000" min="0" step="1" oninput="calcMiniROE()"></div>
+          <div class="mini-result" id="mc-roe-result">
+            <div class="mrl">Eigenkapitalrendite (ROE)</div>
+            <div class="mrv" id="mc-roe-val">–</div>
+            <div style="font-size:.8rem;color:var(--text-muted);margin-top:6px" id="mc-roe-hint"></div>
+          </div>
+        </div>
+        <!-- KBV Rechner -->
+        <div>
+          <h3>📚 KBV-Rechner</h3>
+          <div class="form-group" style="margin-top:16px"><label>Aktienkurs (€)</label><input type="number" id="mc-kurs3" value="45" min="0" step="0.01" oninput="calcMiniKBV()"></div>
+          <div class="form-group"><label>Buchwert je Aktie (€)</label><input type="number" id="mc-bw" value="30" min="0" step="0.01" oninput="calcMiniKBV()"></div>
+          <div class="mini-result" id="mc-kbv-result">
+            <div class="mrl">KBV</div>
+            <div class="mrv" id="mc-kbv-val">–</div>
+            <div style="font-size:.8rem;color:var(--text-muted);margin-top:6px" id="mc-kbv-hint"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BILANZ EINFACH ERKLÄRT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Bilanzanalyse</span>
+      <h2 class="section-title">Bilanz & GuV einfach erklärt</h2>
+      <p class="section-desc">Eine Bilanz ist das Fundament der Fundamentalanalyse – sie zeigt, was ein Unternehmen besitzt und wie es finanziert ist.</p>
+    </div>
+    <div class="text-2col">
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">📊 Die Bilanz</h3>
+        <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:18px">
+          Eine Bilanz ist eine Momentaufnahme des Unternehmens zu einem Stichtag. Sie besteht immer aus zwei gleich großen Seiten: <strong style="color:var(--text-strong)">Aktiva = Passiva</strong>.
+        </p>
+        <div class="bilanz-grid">
+          <div class="bilanz-side bilanz-aktiva">
+            <h4>AKTIVA (Vermögen)</h4>
+            <div class="bilanz-row"><span>Anlagevermögen</span><span class="bilanz-val">300 Mio.</span></div>
+            <div class="bilanz-row"><span>Umlaufvermögen</span><span class="bilanz-val">150 Mio.</span></div>
+            <div class="bilanz-row"><span>Cash &amp; Äquivalente</span><span class="bilanz-val">50 Mio.</span></div>
+            <div class="bilanz-row"><span><strong>Summe Aktiva</strong></span><span class="bilanz-val">500 Mio.</span></div>
+          </div>
+          <div class="bilanz-side bilanz-passiva">
+            <h4>PASSIVA (Finanzierung)</h4>
+            <div class="bilanz-row"><span>Eigenkapital</span><span class="bilanz-val green">200 Mio.</span></div>
+            <div class="bilanz-row"><span>Langfr. Schulden</span><span class="bilanz-val">180 Mio.</span></div>
+            <div class="bilanz-row"><span>Kurzfr. Verbindl.</span><span class="bilanz-val">120 Mio.</span></div>
+            <div class="bilanz-row"><span><strong>Summe Passiva</strong></span><span class="bilanz-val">500 Mio.</span></div>
+          </div>
+        </div>
+        <div class="info-box info-blue mt-6">
+          💡 <strong>D/E-Ratio:</strong> Schulden (300 Mio.) ÷ Eigenkapital (200 Mio.) = <strong>1,5</strong> – solide, aber beachte die Branche.
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">📋 Die Gewinn- und Verlustrechnung (GuV)</h3>
+        <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:18px">
+          Die GuV zeigt, wie viel ein Unternehmen in einem Zeitraum verdient und ausgegeben hat – sie erklärt, wie der Gewinn entstanden ist.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--text-muted)">Umsatz (Revenue)</span>
+            <strong style="color:var(--text-strong)">1.000 Mio. €</strong>
+          </div>
+          <div style="text-align:center;font-size:.75rem;color:var(--text-faint)">− Herstellungskosten</div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--text-muted)">Bruttogewinn</span>
+            <strong style="color:var(--text-strong)">400 Mio. €</strong>
+          </div>
+          <div style="text-align:center;font-size:.75rem;color:var(--text-faint)">− Betriebs-/Vertriebskosten</div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--text-muted)">EBIT (Betriebsgewinn)</span>
+            <strong style="color:var(--text-strong)">180 Mio. €</strong>
+          </div>
+          <div style="text-align:center;font-size:.75rem;color:var(--text-faint)">− Zinsen − Steuern</div>
+          <div style="display:flex;justify-content:space-between;padding:12px 14px;background:var(--accent-subtle);border:1px solid rgba(52,211,153,.3);border-radius:var(--radius-sm);font-size:.9375rem">
+            <span style="color:var(--accent-dark);font-weight:600">Nettogewinn</span>
+            <strong style="color:var(--accent-dark)">120 Mio. €</strong>
+          </div>
+        </div>
+        <div class="info-box info-green mt-6">
+          📈 Nettomarge = 120 ÷ 1.000 = <strong>12 %</strong> – von jedem Euro Umsatz bleiben 12 Cent Gewinn übrig.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLISTE -->
+<section class="section" id="checkliste">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Vor dem Kauf</span>
+      <h2 class="section-title">10-Punkte Aktien-Checkliste</h2>
+      <p class="section-desc">Prüfe diese 10 Punkte, bevor du eine Aktie kaufst. Kein Profi kauft blind – und du solltest es auch nicht.</p>
+    </div>
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="cl-num">1</div>
+        <div class="cl-text"><h4>Verstehe das Geschäftsmodell</h4><p>Kannst du in 30 Sekunden erklären, womit das Unternehmen Geld verdient? Wenn nicht, kaufe es nicht.</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">2</div>
+        <div class="cl-text"><h4>Prüfe den Wettbewerbsvorteil (Burggraben)</h4><p>Hat das Unternehmen einen dauerhaften Vorteil? Marke, Patente, Netzwerkeffekte, Kostenführerschaft oder Wechselkosten?</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">3</div>
+        <div class="cl-text"><h4>Analysiere das Umsatz- und Gewinnwachstum</h4><p>Wächst der Umsatz in den letzten 5 Jahren konstant? Ist der Gewinn stetig gestiegen, oder schwankt er stark?</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">4</div>
+        <div class="cl-text"><h4>Überprüfe die Profitabilität (ROE, Nettomarge)</h4><p>ROE über 15 %? Nettomarge über 10 %? Das zeigt ein effizientes, wirtschaftlich starkes Unternehmen.</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">5</div>
+        <div class="cl-text"><h4>Bewerte die Verschuldung</h4><p>Ist der Verschuldungsgrad (D/E) angemessen für die Branche? Kann das Unternehmen seine Schulden komfortabel bedienen?</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">6</div>
+        <div class="cl-text"><h4>Analyse den Cashflow</h4><p>Ist der operative Cashflow positiv und wächst er? Freier Cashflow (FCF) ist oft aussagekräftiger als der Buchgewinn.</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">7</div>
+        <div class="cl-text"><h4>Prüfe die Bewertungskennzahlen</h4><p>KGV, KBV und EV/EBITDA im Branchenvergleich: Ist die Aktie fair, günstig oder teuer bewertet? Warum?</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">8</div>
+        <div class="cl-text"><h4>Beurteile das Management</h4><p>Handelt das Management im Interesse der Aktionäre? Insider-Käufe, Kapitalallokation, Vergütungsstruktur – all das zählt.</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">9</div>
+        <div class="cl-text"><h4>Analysiere Risiken und Branchentrends</h4><p>Was sind die größten Risiken? Disruption, Regulierung, Rohstoffpreise, Kundenverlust? Bist du bereit, diese zu tragen?</p></div>
+      </div>
+      <div class="checklist-item">
+        <div class="cl-num">10</div>
+        <div class="cl-text"><h4>Definiere deinen fairen Wert und Einstiegskurs</h4><p>Was ist das Unternehmen für dich wert? Kaufe nur mit einer Sicherheitsmarge (Margin of Safety) – mindestens 20–30 % unter deinem fairen Wert.</p></div>
+      </div>
+    </div>
+    <div class="info-box info-yellow mt-8">
+      ⚠️ <strong>Hinweis:</strong> Diese Checkliste dient der Bildung und ist keine Anlageberatung. Vergangene Zahlen garantieren keine zukünftige Performance.
+    </div>
+  </div>
+</section>
+
+<!-- DCF GRUNDKONZEPT -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Fortgeschritten</span>
+      <h2 class="section-title">Discounted Cashflow (DCF) – das Grundprinzip</h2>
+      <p class="section-desc">Der DCF ist die theoretisch sauberste Methode zur Unternehmensbewertung – und das Herzstück der Fundamentalanalyse.</p>
+    </div>
+    <div class="text-2col">
+      <div>
+        <p style="font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:18px">
+          Die DCF-Methode berechnet den <strong style="color:var(--text-strong)">heutigen Wert aller zukünftigen Cashflows</strong> eines Unternehmens. Der Kerngedanke: Ein Euro heute ist mehr wert als ein Euro in der Zukunft – weil man den heutigen Euro bereits investieren kann.
+        </p>
+        <p style="font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:18px">
+          Die Formel vereinfacht: <strong style="color:var(--text-strong)">Innerer Wert = Σ (Cashflow_t ÷ (1 + r)^t)</strong>
+        </p>
+        <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65">
+          Dabei ist <em>r</em> der Diskontierungszinssatz (Opportunitätskosten, oft 8–12 %) und <em>t</em> das jeweilige Jahr. Liegt der berechnete innere Wert über dem aktuellen Kurs → mögliche Unterbewertung.
+        </p>
+        <div class="info-box info-blue mt-6">
+          💡 Für Einsteiger empfehlen wir, zuerst die einfacheren Kennzahlen (KGV, ROE, D/E) zu meistern, bevor du DCF-Modelle baust.
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px">
+          <h4 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">Vereinfachtes DCF-Beispiel</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:.875rem">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);border:1px solid var(--border)">
+              <span style="color:var(--text-muted)">Cashflow Jahr 1</span><strong style="color:var(--text-strong)">100 Mio. €</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);border:1px solid var(--border)">
+              <span style="color:var(--text-muted)">Cashflow Jahr 2</span><strong style="color:var(--text-strong)">110 Mio. €</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);border:1px solid var(--border)">
+              <span style="color:var(--text-muted)">Diskontierungssatz (r)</span><strong style="color:var(--text-strong)">10 %</strong>
+            </div>
+            <div style="text-align:center;font-size:.75rem;color:var(--text-faint);padding:4px">Abgezinst auf heute (÷ 1,1^t)</div>
+            <div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--primary-subtle);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius-sm)">
+              <span style="color:var(--primary);font-weight:600">Barwert Jahr 1</span><strong style="color:var(--primary)">90,9 Mio. €</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:10px 12px;background:var(--primary-subtle);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius-sm)">
+              <span style="color:var(--primary);font-weight:600">Barwert Jahr 2</span><strong style="color:var(--primary)">90,9 Mio. €</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEITERFÜHREND -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Nächste Schritte</span>
+      <h2 class="section-title">Dein Lernpfad</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon icon-green">🧠</div>
+        <h3>Wissen testen</h3>
+        <p>Du hast die Grundlagen gelesen? Teste dein Finanzwissen jetzt mit 15 Fragen in unserem interaktiven Quiz.</p>
+        <a href="/quiz.html" class="card-link">Zum Quiz →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-blue">🧮</div>
+        <h3>Kennzahlen berechnen</h3>
+        <p>Nutze unsere Finanzrechner für Zinseszins, Dividenden, FIRE und mehr – alles interaktiv und kostenlos.</p>
+        <a href="/rechner.html" class="card-link">Zu den Rechnern →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-purple">📚</div>
+        <h3>Begriffe nachschlagen</h3>
+        <p>Mehr als 65 Börsenbegriffe einfach erklärt – von KGV bis Zinseszins, durchsuchbar und mit Schwierigkeitsgrad.</p>
+        <a href="/lexikon.html" class="card-link">Zum Lexikon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name"><img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon, Fundamentalanalyse und Wissen rund um Finanzen und Börse.</p>
+      </div>
+      <div class="footer-col"><h4>Kennzahlen</h4><ul class="footer-links">
+        <li><a href="#kgv">KGV</a></li><li><a href="#kennzahlen">KBV</a></li>
+        <li><a href="#roe">ROE</a></li><li><a href="#checkliste">Checkliste</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links">
+        <li><a href="/lexikon.html">Börsenlexikon</a></li>
+        <li><a href="/wissen.html">Finanzwissen</a></li>
+        <li><a href="/quiz.html">Quiz</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Tools</h4><ul class="footer-links">
+        <li><a href="/rechner.html">Alle Rechner</a></li>
+        <li><a href="/index.html">Startseite</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Inhalte ohne Gewähr</span></div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script>
+function calcMiniKGV(){
+  const k = parseFloat(document.getElementById('mc-kurs').value)||0;
+  const e = parseFloat(document.getElementById('mc-eps').value)||0;
+  if(!k||!e){document.getElementById('mc-kgv-val').textContent='–';return;}
+  const kgv = k/e;
+  document.getElementById('mc-kgv-val').textContent = kgv.toFixed(1).replace('.',',');
+  const h = kgv<15?'✓ Möglicherweise günstig':kgv<25?'~ Fair bewertet':'⚠ Teuer bewertet';
+  document.getElementById('mc-kgv-hint').textContent = h;
+}
+function calcMiniDiv(){
+  const k = parseFloat(document.getElementById('mc-kurs2').value)||0;
+  const d = parseFloat(document.getElementById('mc-div').value)||0;
+  if(!k||!d){document.getElementById('mc-div-val').textContent='–';return;}
+  const r = (d/k*100);
+  document.getElementById('mc-div-val').textContent = r.toFixed(2).replace('.',',')+' %';
+  const h = r>7?'⚠ Sehr hoch – Warnsignal prüfen':r>2?'✓ Attraktiv und nachhaltig':'~ Moderat';
+  document.getElementById('mc-div-hint').textContent = h;
+}
+function calcMiniROE(){
+  const g = parseFloat(document.getElementById('mc-gewinn').value)||0;
+  const e = parseFloat(document.getElementById('mc-ek').value)||0;
+  if(!g||!e){document.getElementById('mc-roe-val').textContent='–';return;}
+  const r = (g/e*100);
+  document.getElementById('mc-roe-val').textContent = r.toFixed(1).replace('.',',')+' %';
+  const h = r>20?'✓ Ausgezeichnet':r>10?'~ Solide':'⚠ Unterdurchschnittlich';
+  document.getElementById('mc-roe-hint').textContent = h;
+}
+function calcMiniKBV(){
+  const k = parseFloat(document.getElementById('mc-kurs3').value)||0;
+  const b = parseFloat(document.getElementById('mc-bw').value)||0;
+  if(!k||!b){document.getElementById('mc-kbv-val').textContent='–';return;}
+  const r = k/b;
+  document.getElementById('mc-kbv-val').textContent = r.toFixed(2).replace('.',',');
+  const h = r<1?'✓ Unter Buchwert (mögliche Unterbewertung)':r<3?'~ Normal':r<5?'~ Etwas teuer':'⚠ Sehr teuer';
+  document.getElementById('mc-kbv-hint').textContent = h;
+}
+calcMiniKGV(); calcMiniDiv(); calcMiniROE(); calcMiniKBV();
+</script>
+</body>
+</html>

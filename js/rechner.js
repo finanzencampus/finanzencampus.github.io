@@ -388,6 +388,56 @@ function calcFIRE(){
   });
 }
 
+// ============================================================
+// DIVIDENDEN
+// ============================================================
+function calcDividenden(){
+  const W = parseFloat(document.getElementById('dv-wert').value) || 0;
+  const rendite = (parseFloat(document.getElementById('dv-rendite').value) || 0) / 100;
+  const wachstum = (parseFloat(document.getElementById('dv-wachstum').value) || 0) / 100;
+  const t = parseInt(document.getElementById('dv-jahre').value) || 0;
+
+  if(W <= 0 || rendite <= 0 || t <= 0){ clearResult('dv-result'); return; }
+
+  const divJetzt = W * rendite;
+  const divMonat = divJetzt / 12;
+  const divFuture = divJetzt * Math.pow(1 + wachstum, t);
+  // Total dividends over period (growing annuity)
+  let total = 0;
+  for(let y = 0; y < t; y++) total += divJetzt * Math.pow(1 + wachstum, y);
+
+  const el = document.getElementById('dv-result');
+  el.innerHTML = `<h3>Ergebnis</h3>` + resultHTML(
+    'Aktuelle Jahresdividende',
+    fmtK(divJetzt),
+    `= ${fmtK(divMonat)} / Monat`,
+    [
+      {label:'Dividende / Monat (heute)', val: fmtK(divMonat), cls:'pos'},
+      {label:'Dividende / Jahr (heute)', val: fmtK(divJetzt), cls:'pos'},
+      {label:`Dividende / Jahr in ${t} Jahren`, val: fmtK(divFuture), cls:'pos'},
+      {label:`Gesamtausschüttung über ${t} Jahre`, val: fmtK(total)},
+      {label:'Dividendenwachstum p.a.', val: (wachstum*100).toFixed(1).replace('.',',')+' %'},
+    ],
+    'dv-chart'
+  );
+
+  const labels = [], data = [];
+  const step = t <= 20 ? 1 : Math.ceil(t/20);
+  for(let y = 0; y <= t; y += step){
+    labels.push(y + ' J.');
+    data.push(+(divJetzt * Math.pow(1 + wachstum, y)).toFixed(2));
+  }
+  makeChart('dv-chart', {
+    type: 'line',
+    data: { labels, datasets: [{label:'Jahresdividende (€)', data, borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.12)', fill:true, tension:0.3, pointRadius:3}] },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label: ctx => ' '+fmtK(ctx.raw)}}},
+      scales:{x:{ticks:{font:{size:10}}}, y:{ticks:{callback:v=>fmtK(v), font:{size:10}}}}
+    }
+  });
+}
+
 function clearResult(id){
   const icons = {
     'zz-result':'📊','sp-result':'💰','inf-result':'🔥',

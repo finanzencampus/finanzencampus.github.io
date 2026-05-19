@@ -6,6 +6,7 @@
   <meta name="description" content="Finanzwissen für Einsteiger und Fortgeschrittene: ETF, Zinseszins, Sparstrategien, FIRE-Bewegung und die wichtigsten Regeln des Investierens.">
   <title>Finanzwissen – FinanzenCampus</title>
   <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -13,28 +14,32 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <div class="nav-logo-icon">📈</div>
-      FinanzenCampus
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
       <li><a href="/index.html">Startseite</a></li>
       <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
       <li><a href="/lexikon.html">Lexikon</a></li>
       <li><a href="/wissen.html" class="active">Wissen</a></li>
+      <li><a href="/quiz.html">Quiz</a></li>
     </ul>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="/index.html">Startseite</a></li>
-    <li><a href="/rechner.html">Rechner</a></li>
-    <li><a href="/lexikon.html">Lexikon</a></li>
-    <li><a href="/wissen.html">Wissen</a></li>
-  </ul>
-</div>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li><li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li><li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li><li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
 
 <div class="page-hero">
   <div class="container">
@@ -78,15 +83,15 @@
           <p class="excerpt">Geld auf dem Girokonto zu lassen klingt sicher – ist es aber nicht. Inflation frisst die Kaufkraft leise und kontinuierlich auf.</p>
         </div>
         <div class="article-body">
-          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:14px">Bei 3 % Inflation verliert Geld innerhalb von 24 Jahren die Hälfte seiner Kaufkraft. Ein Betrag von 10.000 € heute ist in 20 Jahren real nur noch ~5.537 € wert.</p>
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px">Bei 3 % Inflation verliert Geld innerhalb von 24 Jahren die Hälfte seiner Kaufkraft. Ein Betrag von 10.000 € heute ist in 20 Jahren real nur noch ~5.537 € wert.</p>
           <div class="text-2col" style="gap:16px">
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:16px;text-align:center">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:16px;text-align:center">
               <div style="font-size:1.5rem;font-weight:800;color:#ef4444">−44%</div>
-              <div style="font-size:.8rem;color:var(--gray-500)">Kaufkraftverlust<br>in 20 Jahren bei 3% Inflation</div>
+              <div style="font-size:.8rem;color:var(--text-muted)">Kaufkraftverlust<br>in 20 Jahren bei 3% Inflation</div>
             </div>
-            <div style="background:var(--accent-light);border-radius:var(--radius-sm);padding:16px;text-align:center">
+            <div style="background:var(--accent-subtle);border-radius:var(--radius-sm);padding:16px;text-align:center">
               <div style="font-size:1.5rem;font-weight:800;color:var(--accent-dark)">+~200%</div>
-              <div style="font-size:.8rem;color:var(--gray-500)">Historische Rendite<br>MSCI World über 20 Jahre</div>
+              <div style="font-size:.8rem;color:var(--text-muted)">Historische Rendite<br>MSCI World über 20 Jahre</div>
             </div>
           </div>
           <div class="info-box info-yellow mt-6">
@@ -102,19 +107,19 @@
           <p class="excerpt">„Wer Zinsen versteht, verdient sie. Wer sie nicht versteht, zahlt sie." – Der Zinseszinseffekt ist der mächtigste Hebel im Vermögensaufbau.</p>
         </div>
         <div class="article-body">
-          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:16px">
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:16px">
             Bei 7 % Rendite verdoppelt sich Kapital alle ~10 Jahre (Faustregel: 72 ÷ Zinssatz = Verdopplungsjahre). Wer mit 25 Jahren 10.000 € investiert, hat mit 65 Jahren bei 7 % Rendite über 149.000 € – ohne einen Cent mehr einzuzahlen.
           </p>
-          <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px">
-            <div style="font-size:.8rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:8px">10.000 € bei 7 % Rendite</div>
+          <div style="background:var(--primary-subtle);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px">
+            <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">10.000 € bei 7 % Rendite</div>
             <div style="display:flex;justify-content:space-between;font-size:.875rem">
-              <span style="color:var(--gray-700)">Nach 10 J.</span><strong style="color:var(--primary)">~19.700 €</strong>
+              <span style="color:var(--text-strong)">Nach 10 J.</span><strong style="color:var(--primary)">~19.700 €</strong>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-top:4px">
-              <span style="color:var(--gray-700)">Nach 20 J.</span><strong style="color:var(--primary)">~38.700 €</strong>
+              <span style="color:var(--text-strong)">Nach 20 J.</span><strong style="color:var(--primary)">~38.700 €</strong>
             </div>
             <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-top:4px">
-              <span style="color:var(--gray-700)">Nach 40 J.</span><strong style="color:var(--primary)">~149.700 €</strong>
+              <span style="color:var(--text-strong)">Nach 40 J.</span><strong style="color:var(--primary)">~149.700 €</strong>
             </div>
           </div>
           <a href="/rechner.html#zinseszins" class="btn-outline" style="font-size:.875rem;padding:10px 18px">Selbst berechnen →</a>
@@ -133,7 +138,7 @@
             <div class="pl" style="background:#2563eb;width:90%">30 % – Wünsche &amp; Freizeit</div>
             <div class="pl" style="background:#334155;width:100%">50 % – Bedürfnisse (Miete, Essen, Transport)</div>
           </div>
-          <p style="font-size:.875rem;color:var(--gray-500);line-height:1.6">Die 20 % fließen in Notgroschen, Schuldenabbau und anschließend langfristiges Investieren. Wer mehr sparen möchte, kann die Regel anpassen – z.B. 50/20/30 oder 40/30/30.</p>
+          <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6">Die 20 % fließen in Notgroschen, Schuldenabbau und anschließend langfristiges Investieren. Wer mehr sparen möchte, kann die Regel anpassen – z.B. 50/20/30 oder 40/30/30.</p>
           <div class="article-tags">
             <span class="tag">Budgetierung</span>
             <span class="tag">Einsteiger</span>
@@ -183,9 +188,9 @@
         </div>
         <div class="article-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-            <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:14px">
+            <div style="background:var(--primary-subtle);border-radius:var(--radius-sm);padding:14px">
               <div style="font-weight:700;color:var(--primary);margin-bottom:8px;font-size:.875rem">ETFs</div>
-              <ul style="list-style:none;font-size:.8125rem;color:var(--gray-700);display:flex;flex-direction:column;gap:5px">
+              <ul style="list-style:none;font-size:.8125rem;color:var(--text-strong);display:flex;flex-direction:column;gap:5px">
                 <li>✓ Breite Diversifikation</li>
                 <li>✓ Niedrige Kosten</li>
                 <li>✓ Zeitaufwand minimal</li>
@@ -195,7 +200,7 @@
             </div>
             <div style="background:#fdf4ff;border-radius:var(--radius-sm);padding:14px">
               <div style="font-weight:700;color:#6b21a8;margin-bottom:8px;font-size:.875rem">Einzelaktien</div>
-              <ul style="list-style:none;font-size:.8125rem;color:var(--gray-700);display:flex;flex-direction:column;gap:5px">
+              <ul style="list-style:none;font-size:.8125rem;color:var(--text-strong);display:flex;flex-direction:column;gap:5px">
                 <li>✓ Überrendite möglich</li>
                 <li>✓ Lehrreich</li>
                 <li>✗ Höheres Einzelrisiko</li>
@@ -204,7 +209,7 @@
               </ul>
             </div>
           </div>
-          <p style="font-size:.875rem;color:var(--gray-500)">Empfehlung für Einsteiger: 80–90 % in breit diversifizierte ETFs, maximal 10–20 % in Einzelaktien als „Lernportfolio".</p>
+          <p style="font-size:.875rem;color:var(--text-muted)">Empfehlung für Einsteiger: 80–90 % in breit diversifizierte ETFs, maximal 10–20 % in Einzelaktien als „Lernportfolio".</p>
         </div>
       </div>
 
@@ -216,35 +221,35 @@
         </div>
         <div class="article-body">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" class="rules-grid">
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">📏</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Regel #1: Verliere kein Geld</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">Regel #2: Vergiss niemals Regel #1. Kapitalerhalt hat Priorität vor maximaler Rendite.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">Regel #2: Vergiss niemals Regel #1. Kapitalerhalt hat Priorität vor maximaler Rendite.</p>
             </div>
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">🕐</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kaufen und halten</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">„Our favorite holding period is forever." Zu häufiges Handeln kostet Rendite durch Steuern und Gebühren.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">„Our favorite holding period is forever." Zu häufiges Handeln kostet Rendite durch Steuern und Gebühren.</p>
             </div>
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">🔬</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Verstehe was du kaufst</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">Investiere nur in Unternehmen, deren Geschäftsmodell du in 30 Sekunden erklären kannst.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">Investiere nur in Unternehmen, deren Geschäftsmodell du in 30 Sekunden erklären kannst.</p>
             </div>
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">😨</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kaufe bei Angst</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">„Sei gierig wenn andere ängstlich sind, und ängstlich wenn andere gierig sind." Krisen = Kaufgelegenheiten.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">„Sei gierig wenn andere ängstlich sind, und ängstlich wenn andere gierig sind." Krisen = Kaufgelegenheiten.</p>
             </div>
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">🌍</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Langfristiger Horizont</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">Wer nicht 10 Jahre halten kann, sollte keine Aktien kaufen. Kurzfristige Schwankungen sind irrelevant.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">Wer nicht 10 Jahre halten kann, sollte keine Aktien kaufen. Kurzfristige Schwankungen sind irrelevant.</p>
             </div>
-            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:18px">
               <div style="font-size:1.5rem;margin-bottom:8px">💸</div>
               <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kosten minimieren</h4>
-              <p style="font-size:.8125rem;color:var(--gray-500)">Gebühren, Steuern und Handelskosten reduzieren die Rendite massiv. Einfache, günstige ETFs sind oft die beste Wahl.</p>
+              <p style="font-size:.8125rem;color:var(--text-muted)">Gebühren, Steuern und Handelskosten reduzieren die Rendite massiv. Einfache, günstige ETFs sind oft die beste Wahl.</p>
             </div>
           </div>
         </div>
@@ -320,19 +325,19 @@
           <p class="excerpt">Die Börse ist ein geregelter Marktplatz, auf dem Käufer und Verkäufer Wertpapiere handeln. Aber wie kommt ein Kurs zustande?</p>
         </div>
         <div class="article-body">
-          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:14px">Ein Aktienkurs entsteht durch Angebot und Nachfrage: Gibt es mehr Käufer als Verkäufer, steigt der Kurs. Gibt es mehr Verkäufer, fällt er. Die Börse handelt täglich von 9:00 bis 17:30 Uhr (Xetra).</p>
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px">Ein Aktienkurs entsteht durch Angebot und Nachfrage: Gibt es mehr Käufer als Verkäufer, steigt der Kurs. Gibt es mehr Verkäufer, fällt er. Die Börse handelt täglich von 9:00 bis 17:30 Uhr (Xetra).</p>
           <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+            <div style="display:flex;gap:12px;padding:10px;background:var(--bg-muted);border-radius:var(--radius-sm);align-items:center">
               <span style="font-size:1.2rem">🟢</span>
-              <div><strong style="font-size:.875rem">Kurs steigt</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → Mehr Käufer als Verkäufer (positives Sentiment)</span></div>
+              <div><strong style="font-size:.875rem">Kurs steigt</strong><span style="font-size:.8125rem;color:var(--text-muted)"> → Mehr Käufer als Verkäufer (positives Sentiment)</span></div>
             </div>
-            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+            <div style="display:flex;gap:12px;padding:10px;background:var(--bg-muted);border-radius:var(--radius-sm);align-items:center">
               <span style="font-size:1.2rem">🔴</span>
-              <div><strong style="font-size:.875rem">Kurs fällt</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → Mehr Verkäufer als Käufer (negative Nachrichten, Angst)</span></div>
+              <div><strong style="font-size:.875rem">Kurs fällt</strong><span style="font-size:.8125rem;color:var(--text-muted)"> → Mehr Verkäufer als Käufer (negative Nachrichten, Angst)</span></div>
             </div>
-            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+            <div style="display:flex;gap:12px;padding:10px;background:var(--bg-muted);border-radius:var(--radius-sm);align-items:center">
               <span style="font-size:1.2rem">📊</span>
-              <div><strong style="font-size:.875rem">Langfristig</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → folgen Kurse der wirtschaftlichen Realität (Gewinne, Wachstum)</span></div>
+              <div><strong style="font-size:.875rem">Langfristig</strong><span style="font-size:.8125rem;color:var(--text-muted)"> → folgen Kurse der wirtschaftlichen Realität (Gewinne, Wachstum)</span></div>
             </div>
           </div>
         </div>
@@ -346,14 +351,14 @@
         </div>
         <div class="article-body">
           <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
-              <strong>Korrektur (−10 bis −20 %):</strong><span style="color:var(--gray-500)"> Häufig, ca. jedes 1–2 Jahre. Normal im Börsenzyklus.</span>
+            <li style="padding:10px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Korrektur (−10 bis −20 %):</strong><span style="color:var(--text-muted)"> Häufig, ca. jedes 1–2 Jahre. Normal im Börsenzyklus.</span>
             </li>
-            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
-              <strong>Bärenmarkt (−20 % +):</strong><span style="color:var(--gray-500)"> Ca. alle 3–5 Jahre. Historisch immer überwunden.</span>
+            <li style="padding:10px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Bärenmarkt (−20 % +):</strong><span style="color:var(--text-muted)"> Ca. alle 3–5 Jahre. Historisch immer überwunden.</span>
             </li>
-            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
-              <strong>Crash (sehr schnell, −30 % +):</strong><span style="color:var(--gray-500)"> Selten, aber existent. 2008, 2020, 2022.</span>
+            <li style="padding:10px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Crash (sehr schnell, −30 % +):</strong><span style="color:var(--text-muted)"> Selten, aber existent. 2008, 2020, 2022.</span>
             </li>
           </ul>
           <div class="info-box info-green mt-6">
@@ -370,35 +375,35 @@
         </div>
         <div class="article-body">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" class="rules-grid">
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">MSCI World</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Global · ~1.500 Unternehmen</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">Umfasst Industrieländer weltweit. Für Langzeitanleger die wichtigste Benchmark. Ca. 70 % USA-Gewichtung.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">Global · ~1.500 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">Umfasst Industrieländer weltweit. Für Langzeitanleger die wichtigste Benchmark. Ca. 70 % USA-Gewichtung.</p>
             </div>
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">S&amp;P 500</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">USA · 500 Unternehmen</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">Die 500 größten börsennotierten US-Unternehmen. Ø Rendite ~10 % p.a. seit 1957. Maßstab für die US-Wirtschaft.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">USA · 500 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">Die 500 größten börsennotierten US-Unternehmen. Ø Rendite ~10 % p.a. seit 1957. Maßstab für die US-Wirtschaft.</p>
             </div>
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">DAX 40</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Deutschland · 40 Unternehmen</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">Die 40 größten deutschen Aktien. Inklusive Dividenden (Performanceindex). Wichtigster Indikator der deutschen Wirtschaft.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">Deutschland · 40 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">Die 40 größten deutschen Aktien. Inklusive Dividenden (Performanceindex). Wichtigster Indikator der deutschen Wirtschaft.</p>
             </div>
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">MSCI EM</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Schwellenländer · ~1.400 Unternehmen</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">China, Indien, Brasilien etc. Höheres Wachstumspotenzial, aber auch mehr Risiko und Volatilität.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">Schwellenländer · ~1.400 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">China, Indien, Brasilien etc. Höheres Wachstumspotenzial, aber auch mehr Risiko und Volatilität.</p>
             </div>
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">NASDAQ 100</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">USA · Tech-fokussiert</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">Die 100 größten Nicht-Finanz-Unternehmen der NASDAQ. Apple, Microsoft, Nvidia. Starkes Wachstum, aber hohe Volatilität.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">USA · Tech-fokussiert</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">Die 100 größten Nicht-Finanz-Unternehmen der NASDAQ. Apple, Microsoft, Nvidia. Starkes Wachstum, aber hohe Volatilität.</p>
             </div>
-            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px">
               <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">FTSE All-World</div>
-              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Global · ~4.000 Unternehmen</div>
-              <p style="font-size:.8125rem;color:var(--gray-700)">Einer der breitesten Indizes: enthält sowohl Industrie- als auch Schwellenländer. Basis für den Vanguard FTSE All-World ETF.</p>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px">Global · ~4.000 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--text-strong)">Einer der breitesten Indizes: enthält sowohl Industrie- als auch Schwellenländer. Basis für den Vanguard FTSE All-World ETF.</p>
             </div>
           </div>
         </div>
@@ -424,11 +429,11 @@
           <p class="excerpt">FIRE steht für Financial Independence, Retire Early. Das Ziel: so früh wie möglich nicht mehr auf Einkommen angewiesen zu sein.</p>
         </div>
         <div class="article-body">
-          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:16px">Die Kernidee: Spare einen hohen Anteil deines Einkommens (40–70 %), investiere es breit und erreiche so das 25-fache deiner jährlichen Ausgaben. Dann kannst du jährlich 4 % entnehmen, ohne das Kapital zu verbrauchen (4%-Regel).</p>
-          <div style="background:linear-gradient(135deg,var(--primary-light),var(--accent-light));border-radius:var(--radius);padding:18px;text-align:center">
-            <div style="font-size:.8rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:8px">FIRE-Formel</div>
-            <div style="font-size:1.125rem;font-weight:800;color:var(--dark)">Jahresausgaben × 25 = FIRE-Zahl</div>
-            <div style="font-size:.875rem;color:var(--gray-500);margin-top:6px">Beispiel: 2.500 €/Monat × 12 × 25 = 750.000 €</div>
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:16px">Die Kernidee: Spare einen hohen Anteil deines Einkommens (40–70 %), investiere es breit und erreiche so das 25-fache deiner jährlichen Ausgaben. Dann kannst du jährlich 4 % entnehmen, ohne das Kapital zu verbrauchen (4%-Regel).</p>
+          <div style="background:linear-gradient(135deg,var(--primary-subtle),var(--accent-subtle));border-radius:var(--radius);padding:18px;text-align:center">
+            <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">FIRE-Formel</div>
+            <div style="font-size:1.125rem;font-weight:800;color:var(--text)">Jahresausgaben × 25 = FIRE-Zahl</div>
+            <div style="font-size:.875rem;color:var(--text-muted);margin-top:6px">Beispiel: 2.500 €/Monat × 12 × 25 = 750.000 €</div>
           </div>
           <a href="/rechner.html#fire" class="btn-outline mt-6" style="font-size:.875rem;padding:10px 18px">FIRE-Rechner starten →</a>
         </div>
@@ -442,20 +447,20 @@
         </div>
         <div class="article-body">
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
               <span>Sparrate 10 %</span><strong style="color:#ef4444">~40+ Jahre bis FIRE</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
               <span>Sparrate 25 %</span><strong style="color:#f59e0b">~32 Jahre bis FIRE</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-muted);border-radius:var(--radius-sm);font-size:.875rem">
               <span>Sparrate 50 %</span><strong style="color:#10b981">~17 Jahre bis FIRE</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--accent-light);border-radius:var(--radius-sm);font-size:.875rem">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--accent-subtle);border-radius:var(--radius-sm);font-size:.875rem">
               <span>Sparrate 70 %</span><strong style="color:var(--accent-dark)">~8–9 Jahre bis FIRE</strong>
             </div>
           </div>
-          <p style="font-size:.8125rem;color:var(--gray-400)">* Annahme: 7 % Rendite p.a., aktuelles Vermögen = 0. Ohne Steuern.</p>
+          <p style="font-size:.8125rem;color:var(--text-faint)">* Annahme: 7 % Rendite p.a., aktuelles Vermögen = 0. Ohne Steuern.</p>
         </div>
       </div>
 
@@ -467,7 +472,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
+        <div class="footer-brand-name"><img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
       </div>
       <div class="footer-col">
@@ -486,6 +491,8 @@
           <li><a href="/wissen.html#grundlagen">Grundlagen</a></li>
           <li><a href="/wissen.html#investieren">Investieren</a></li>
           <li><a href="/wissen.html#boerse">Börse</a></li>
+          <li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li>
+          <li><a href="/quiz.html">Quiz</a></li>
         </ul>
       </div>
       <div class="footer-col">
