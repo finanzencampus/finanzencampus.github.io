@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Finanzwissen für Einsteiger und Fortgeschrittene: ETF, Zinseszins, Sparstrategien, FIRE-Bewegung und die wichtigsten Regeln des Investierens.">
+  <title>Finanzwissen – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <div class="nav-logo-icon">📈</div>
+      FinanzenCampus
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html" class="active">Wissen</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/index.html">Startseite</a></li>
+    <li><a href="/rechner.html">Rechner</a></li>
+    <li><a href="/lexikon.html">Lexikon</a></li>
+    <li><a href="/wissen.html">Wissen</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>🎓 Finanzwissen</h1>
+    <p>Verständliche Artikel über Investieren, Sparen, ETFs und die wichtigsten Grundlagen der persönlichen Finanzen.</p>
+  </div>
+</div>
+
+<!-- GRUNDLAGEN SECTION -->
+<section class="section" id="grundlagen">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Grundlagen</span>
+      <h2 class="section-title">Das Fundament deiner Finanzen</h2>
+      <p class="section-desc">Wer die Grundlagen versteht, trifft bessere finanzielle Entscheidungen – egal ob beim Sparen, Investieren oder Kreditaufnehmen.</p>
+    </div>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-g">Grundlagen</span>
+          <h3>Die 3 wichtigsten Finanzregeln für den Einstieg</h3>
+          <p class="excerpt">Bevor du mit dem Investieren beginnst, gibt es drei grundlegende Regeln, die deinen finanziellen Erfolg langfristig sichern.</p>
+        </div>
+        <div class="article-body">
+          <ul class="tips-list">
+            <li><span class="tip-n">1</span><span><strong>Notgroschen aufbauen:</strong> Halte 3–6 Monatsnettoeinkommen als liquide Reserve auf dem Tagesgeldkonto. Diese Absicherung verhindert, dass du in Notfällen investiertes Kapital auflösen musst.</span></li>
+            <li><span class="tip-n">2</span><span><strong>Schulden tilgen:</strong> Keine Investition bringt garantiert mehr als die Kosten eines Konsumkredits. Tilge Hochzinsschulden (über 4 %) zuerst, bevor du investierst.</span></li>
+            <li><span class="tip-n">3</span><span><strong>Erst zahle dich selbst:</strong> Überweise direkt nach Gehaltseingang einen festen Betrag auf dein Spar- oder Investmentkonto. Was nicht da ist, wird nicht ausgegeben.</span></li>
+          </ul>
+          <div class="info-box info-green mt-6">
+            💡 Die einfachste Sparformel: Einnahmen − Sparbetrag = Lebenshaltungskosten (nicht umgekehrt!)
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-g">Grundlagen</span>
+          <h3>Warum Inflation dein schlimmster Feind ist</h3>
+          <p class="excerpt">Geld auf dem Girokonto zu lassen klingt sicher – ist es aber nicht. Inflation frisst die Kaufkraft leise und kontinuierlich auf.</p>
+        </div>
+        <div class="article-body">
+          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:14px">Bei 3 % Inflation verliert Geld innerhalb von 24 Jahren die Hälfte seiner Kaufkraft. Ein Betrag von 10.000 € heute ist in 20 Jahren real nur noch ~5.537 € wert.</p>
+          <div class="text-2col" style="gap:16px">
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:16px;text-align:center">
+              <div style="font-size:1.5rem;font-weight:800;color:#ef4444">−44%</div>
+              <div style="font-size:.8rem;color:var(--gray-500)">Kaufkraftverlust<br>in 20 Jahren bei 3% Inflation</div>
+            </div>
+            <div style="background:var(--accent-light);border-radius:var(--radius-sm);padding:16px;text-align:center">
+              <div style="font-size:1.5rem;font-weight:800;color:var(--accent-dark)">+~200%</div>
+              <div style="font-size:.8rem;color:var(--gray-500)">Historische Rendite<br>MSCI World über 20 Jahre</div>
+            </div>
+          </div>
+          <div class="info-box info-yellow mt-6">
+            ⚠️ Wer sein Geld nicht investiert, verliert real gesehen Geld – auch wenn der Kontostand gleich bleibt.
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-g">Grundlagen</span>
+          <h3>Zinseszins verstehen: Das 8. Weltwunder</h3>
+          <p class="excerpt">„Wer Zinsen versteht, verdient sie. Wer sie nicht versteht, zahlt sie." – Der Zinseszinseffekt ist der mächtigste Hebel im Vermögensaufbau.</p>
+        </div>
+        <div class="article-body">
+          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:16px">
+            Bei 7 % Rendite verdoppelt sich Kapital alle ~10 Jahre (Faustregel: 72 ÷ Zinssatz = Verdopplungsjahre). Wer mit 25 Jahren 10.000 € investiert, hat mit 65 Jahren bei 7 % Rendite über 149.000 € – ohne einen Cent mehr einzuzahlen.
+          </p>
+          <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px">
+            <div style="font-size:.8rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:8px">10.000 € bei 7 % Rendite</div>
+            <div style="display:flex;justify-content:space-between;font-size:.875rem">
+              <span style="color:var(--gray-700)">Nach 10 J.</span><strong style="color:var(--primary)">~19.700 €</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-top:4px">
+              <span style="color:var(--gray-700)">Nach 20 J.</span><strong style="color:var(--primary)">~38.700 €</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-top:4px">
+              <span style="color:var(--gray-700)">Nach 40 J.</span><strong style="color:var(--primary)">~149.700 €</strong>
+            </div>
+          </div>
+          <a href="/rechner.html#zinseszins" class="btn-outline" style="font-size:.875rem;padding:10px 18px">Selbst berechnen →</a>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-g">Grundlagen</span>
+          <h3>Die 50/30/20-Regel für dein Budget</h3>
+          <p class="excerpt">Eine einfache Faustregel für die Aufteilung deines Nettogehalts in Bedürfnisse, Wünsche und Sparen/Investieren.</p>
+        </div>
+        <div class="article-body">
+          <div class="pyramid">
+            <div class="pl" style="background:#10b981;width:80%">20 % – Sparen &amp; Investieren</div>
+            <div class="pl" style="background:#2563eb;width:90%">30 % – Wünsche &amp; Freizeit</div>
+            <div class="pl" style="background:#334155;width:100%">50 % – Bedürfnisse (Miete, Essen, Transport)</div>
+          </div>
+          <p style="font-size:.875rem;color:var(--gray-500);line-height:1.6">Die 20 % fließen in Notgroschen, Schuldenabbau und anschließend langfristiges Investieren. Wer mehr sparen möchte, kann die Regel anpassen – z.B. 50/20/30 oder 40/30/30.</p>
+          <div class="article-tags">
+            <span class="tag">Budgetierung</span>
+            <span class="tag">Einsteiger</span>
+            <span class="tag">Sparstrategie</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIEREN SECTION -->
+<section class="section section-alt" id="investieren">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Investieren</span>
+      <h2 class="section-title">Wie und wo du investierst</h2>
+      <p class="section-desc">Von ETFs bis Aktien – hier lernst du die wichtigsten Anlageformen und Strategien kennen.</p>
+    </div>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">Investieren</span>
+          <h3>ETF – Das perfekte Investment für Einsteiger?</h3>
+          <p class="excerpt">Exchange Traded Funds bieten breite Diversifikation, niedrige Kosten und eine nachweislich überlegene Rendite gegenüber den meisten aktiv verwalteten Fonds.</p>
+        </div>
+        <div class="article-body">
+          <ul class="tips-list">
+            <li><span class="tip-c">✓</span><span><strong>Niedrige Kosten:</strong> Gute ETFs kosten 0,07–0,3 % p.a. (TER). Aktiv verwaltete Fonds kosten 1–2 % – bei schlechterer Rendite.</span></li>
+            <li><span class="tip-c">✓</span><span><strong>Automatische Diversifikation:</strong> Ein MSCI World ETF enthält ~1.500 Unternehmen aus 23 Ländern in einem einzigen Produkt.</span></li>
+            <li><span class="tip-c">✓</span><span><strong>Sondervermögen:</strong> ETF-Anteile sind Sondervermögen und bei Insolvenz der Depotbank geschützt.</span></li>
+            <li><span class="tip-c">✓</span><span><strong>Sparplanfähig:</strong> Ab 1 € monatlich können ETFs bei vielen Brokern im Sparplan bespart werden.</span></li>
+          </ul>
+          <div class="info-box info-blue mt-6">
+            📊 Studien zeigen: Über 80 % der aktiv verwalteten Fonds schlagen auf 15 Jahre ihren Vergleichsindex nicht (nach Kosten).
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">Investieren</span>
+          <h3>Aktien vs. ETFs: Was passt zu dir?</h3>
+          <p class="excerpt">Einzelaktien bieten höheres Renditepotenzial, erfordern aber Analyse und Disziplin. ETFs bieten Einfachheit und Diversifikation. Beides hat seine Berechtigung.</p>
+        </div>
+        <div class="article-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+            <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:14px">
+              <div style="font-weight:700;color:var(--primary);margin-bottom:8px;font-size:.875rem">ETFs</div>
+              <ul style="list-style:none;font-size:.8125rem;color:var(--gray-700);display:flex;flex-direction:column;gap:5px">
+                <li>✓ Breite Diversifikation</li>
+                <li>✓ Niedrige Kosten</li>
+                <li>✓ Zeitaufwand minimal</li>
+                <li>✗ Keine Überrendite möglich</li>
+                <li>✗ Enthält auch schlechte Firmen</li>
+              </ul>
+            </div>
+            <div style="background:#fdf4ff;border-radius:var(--radius-sm);padding:14px">
+              <div style="font-weight:700;color:#6b21a8;margin-bottom:8px;font-size:.875rem">Einzelaktien</div>
+              <ul style="list-style:none;font-size:.8125rem;color:var(--gray-700);display:flex;flex-direction:column;gap:5px">
+                <li>✓ Überrendite möglich</li>
+                <li>✓ Lehrreich</li>
+                <li>✗ Höheres Einzelrisiko</li>
+                <li>✗ Zeitintensiv</li>
+                <li>✗ Emotionale Entscheidungen</li>
+              </ul>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:var(--gray-500)">Empfehlung für Einsteiger: 80–90 % in breit diversifizierte ETFs, maximal 10–20 % in Einzelaktien als „Lernportfolio".</p>
+        </div>
+      </div>
+
+      <div class="article-card full-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">Investieren</span>
+          <h3>Die wichtigsten Anlageregeln nach Warren Buffett</h3>
+          <p class="excerpt">Der erfolgreichste Investor der Geschichte hat klare Prinzipien – die meisten davon sind erstaunlich einfach und für jeden anwendbar.</p>
+        </div>
+        <div class="article-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" class="rules-grid">
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">📏</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Regel #1: Verliere kein Geld</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">Regel #2: Vergiss niemals Regel #1. Kapitalerhalt hat Priorität vor maximaler Rendite.</p>
+            </div>
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">🕐</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kaufen und halten</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">„Our favorite holding period is forever." Zu häufiges Handeln kostet Rendite durch Steuern und Gebühren.</p>
+            </div>
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">🔬</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Verstehe was du kaufst</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">Investiere nur in Unternehmen, deren Geschäftsmodell du in 30 Sekunden erklären kannst.</p>
+            </div>
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">😨</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kaufe bei Angst</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">„Sei gierig wenn andere ängstlich sind, und ängstlich wenn andere gierig sind." Krisen = Kaufgelegenheiten.</p>
+            </div>
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">🌍</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Langfristiger Horizont</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">Wer nicht 10 Jahre halten kann, sollte keine Aktien kaufen. Kurzfristige Schwankungen sind irrelevant.</p>
+            </div>
+            <div style="background:var(--gray-100);border-radius:var(--radius-sm);padding:18px">
+              <div style="font-size:1.5rem;margin-bottom:8px">💸</div>
+              <h4 style="font-size:.875rem;font-weight:700;margin-bottom:6px">Kosten minimieren</h4>
+              <p style="font-size:.8125rem;color:var(--gray-500)">Gebühren, Steuern und Handelskosten reduzieren die Rendite massiv. Einfache, günstige ETFs sind oft die beste Wahl.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPAREN SECTION -->
+<section class="section" id="sparen">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Sparen &amp; Planen</span>
+      <h2 class="section-title">Clever sparen – mehr investieren</h2>
+    </div>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-s">Sparen</span>
+          <h3>Der Notgroschen: Warum er so wichtig ist</h3>
+          <p class="excerpt">Vor dem Investieren kommt das Fundament: ein finanzielles Sicherheitsnetz, das dich vor unvorhergesehenen Ausgaben schützt.</p>
+        </div>
+        <div class="article-body">
+          <ul class="tips-list">
+            <li><span class="tip-n">1</span><span><strong>Größe:</strong> Halte 3–6 Monatsnettoeinkommen als flüssige Reserve. Als Selbstständiger empfehlen sich 6–12 Monate.</span></li>
+            <li><span class="tip-n">2</span><span><strong>Wo aufbewahren:</strong> Tagesgeldkonto – sofort verfügbar, aktuell besser verzinst als Girokonto. Nicht im Depot, da schwankend.</span></li>
+            <li><span class="tip-n">3</span><span><strong>Zweck:</strong> Nur für echte Notfälle (Jobverlust, Autoreparatur, Krankenhaus) – nicht für Urlaub oder Konsumwünsche.</span></li>
+          </ul>
+          <div class="info-box info-blue mt-6">
+            💡 Ohne Notgroschen zwingst du dich bei einer Krise, Investments zu schlechten Kursen aufzulösen.
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-s">Sparen</span>
+          <h3>10 Tricks, um monatlich mehr zu sparen</h3>
+          <p class="excerpt">Kleine Änderungen im Alltag summieren sich über Monate und Jahre zu erheblichen Beträgen – ohne auf alles verzichten zu müssen.</p>
+        </div>
+        <div class="article-body">
+          <ul class="tips-list">
+            <li><span class="tip-c">✓</span>Erstelle ein monatliches Budget und analysiere deine Ausgaben</li>
+            <li><span class="tip-c">✓</span>Kündige nicht genutzte Abos und Mitgliedschaften</li>
+            <li><span class="tip-c">✓</span>Kaufe weniger impulsiv – warte 48h vor größeren Käufen</li>
+            <li><span class="tip-c">✓</span>Nutze Vergleichsportale für Strom, Gas, Versicherungen</li>
+            <li><span class="tip-c">✓</span>Koche öfter selbst statt zu bestellen oder ins Restaurant zu gehen</li>
+            <li><span class="tip-c">✓</span>Nutze öffentliche Bibliotheken statt Bücher zu kaufen</li>
+            <li><span class="tip-c">✓</span>Überprüfe Versicherungen auf Unter- und Überversicherung</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BÖRSE & MÄRKTE -->
+<section class="section section-alt" id="boerse">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Börse &amp; Märkte</span>
+      <h2 class="section-title">Die Börse verstehen</h2>
+    </div>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-b">Börse</span>
+          <h3>Wie funktioniert die Börse?</h3>
+          <p class="excerpt">Die Börse ist ein geregelter Marktplatz, auf dem Käufer und Verkäufer Wertpapiere handeln. Aber wie kommt ein Kurs zustande?</p>
+        </div>
+        <div class="article-body">
+          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:14px">Ein Aktienkurs entsteht durch Angebot und Nachfrage: Gibt es mehr Käufer als Verkäufer, steigt der Kurs. Gibt es mehr Verkäufer, fällt er. Die Börse handelt täglich von 9:00 bis 17:30 Uhr (Xetra).</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+              <span style="font-size:1.2rem">🟢</span>
+              <div><strong style="font-size:.875rem">Kurs steigt</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → Mehr Käufer als Verkäufer (positives Sentiment)</span></div>
+            </div>
+            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+              <span style="font-size:1.2rem">🔴</span>
+              <div><strong style="font-size:.875rem">Kurs fällt</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → Mehr Verkäufer als Käufer (negative Nachrichten, Angst)</span></div>
+            </div>
+            <div style="display:flex;gap:12px;padding:10px;background:var(--gray-100);border-radius:var(--radius-sm);align-items:center">
+              <span style="font-size:1.2rem">📊</span>
+              <div><strong style="font-size:.875rem">Langfristig</strong><span style="font-size:.8125rem;color:var(--gray-500)"> → folgen Kurse der wirtschaftlichen Realität (Gewinne, Wachstum)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-b">Börse</span>
+          <h3>Crashs, Korrekturen &amp; Bärenmärkte meistern</h3>
+          <p class="excerpt">Börsenkorrekturen sind normal und gehören zum Investieren dazu. Die meisten Fehler passieren aus Angst – nicht aus Unwissenheit.</p>
+        </div>
+        <div class="article-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Korrektur (−10 bis −20 %):</strong><span style="color:var(--gray-500)"> Häufig, ca. jedes 1–2 Jahre. Normal im Börsenzyklus.</span>
+            </li>
+            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Bärenmarkt (−20 % +):</strong><span style="color:var(--gray-500)"> Ca. alle 3–5 Jahre. Historisch immer überwunden.</span>
+            </li>
+            <li style="padding:10px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <strong>Crash (sehr schnell, −30 % +):</strong><span style="color:var(--gray-500)"> Selten, aber existent. 2008, 2020, 2022.</span>
+            </li>
+          </ul>
+          <div class="info-box info-green mt-6">
+            ✅ Die Lösung: Investiert bleiben, Sparplan fortführen, nicht aus Panik verkaufen. Jeder Bärenmarkt in der Geschichte endete mit neuen Höchstständen.
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card full-card">
+        <div class="article-head">
+          <span class="article-cat cat-b">Börse</span>
+          <h3>Die wichtigsten Börsenindizes im Überblick</h3>
+          <p class="excerpt">Indizes messen die Entwicklung verschiedener Aktienmärkte. Sie sind die Grundlage für ETF-Investments und die wichtigsten Kennzahlen für die Weltwirtschaft.</p>
+        </div>
+        <div class="article-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px" class="rules-grid">
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">MSCI World</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Global · ~1.500 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">Umfasst Industrieländer weltweit. Für Langzeitanleger die wichtigste Benchmark. Ca. 70 % USA-Gewichtung.</p>
+            </div>
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">S&amp;P 500</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">USA · 500 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">Die 500 größten börsennotierten US-Unternehmen. Ø Rendite ~10 % p.a. seit 1957. Maßstab für die US-Wirtschaft.</p>
+            </div>
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">DAX 40</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Deutschland · 40 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">Die 40 größten deutschen Aktien. Inklusive Dividenden (Performanceindex). Wichtigster Indikator der deutschen Wirtschaft.</p>
+            </div>
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">MSCI EM</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Schwellenländer · ~1.400 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">China, Indien, Brasilien etc. Höheres Wachstumspotenzial, aber auch mehr Risiko und Volatilität.</p>
+            </div>
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">NASDAQ 100</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">USA · Tech-fokussiert</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">Die 100 größten Nicht-Finanz-Unternehmen der NASDAQ. Apple, Microsoft, Nvidia. Starkes Wachstum, aber hohe Volatilität.</p>
+            </div>
+            <div style="border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px">
+              <div style="font-weight:800;font-size:1.1rem;color:var(--primary);margin-bottom:4px">FTSE All-World</div>
+              <div style="font-size:.8rem;color:var(--gray-500);margin-bottom:8px">Global · ~4.000 Unternehmen</div>
+              <p style="font-size:.8125rem;color:var(--gray-700)">Einer der breitesten Indizes: enthält sowohl Industrie- als auch Schwellenländer. Basis für den Vanguard FTSE All-World ETF.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FIRE SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">FIRE-Bewegung</span>
+      <h2 class="section-title">Finanzielle Unabhängigkeit – ist das realistisch?</h2>
+    </div>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">FIRE</span>
+          <h3>Was ist die FIRE-Bewegung?</h3>
+          <p class="excerpt">FIRE steht für Financial Independence, Retire Early. Das Ziel: so früh wie möglich nicht mehr auf Einkommen angewiesen zu sein.</p>
+        </div>
+        <div class="article-body">
+          <p style="font-size:.9rem;color:var(--gray-500);line-height:1.65;margin-bottom:16px">Die Kernidee: Spare einen hohen Anteil deines Einkommens (40–70 %), investiere es breit und erreiche so das 25-fache deiner jährlichen Ausgaben. Dann kannst du jährlich 4 % entnehmen, ohne das Kapital zu verbrauchen (4%-Regel).</p>
+          <div style="background:linear-gradient(135deg,var(--primary-light),var(--accent-light));border-radius:var(--radius);padding:18px;text-align:center">
+            <div style="font-size:.8rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:8px">FIRE-Formel</div>
+            <div style="font-size:1.125rem;font-weight:800;color:var(--dark)">Jahresausgaben × 25 = FIRE-Zahl</div>
+            <div style="font-size:.875rem;color:var(--gray-500);margin-top:6px">Beispiel: 2.500 €/Monat × 12 × 25 = 750.000 €</div>
+          </div>
+          <a href="/rechner.html#fire" class="btn-outline mt-6" style="font-size:.875rem;padding:10px 18px">FIRE-Rechner starten →</a>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">FIRE</span>
+          <h3>Sparrate und FIRE: Der wichtigste Hebel</h3>
+          <p class="excerpt">Die Sparrate ist der entscheidende Faktor, wie schnell du FIRE erreichst – noch mehr als die Rendite.</p>
+        </div>
+        <div class="article-body">
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <span>Sparrate 10 %</span><strong style="color:#ef4444">~40+ Jahre bis FIRE</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <span>Sparrate 25 %</span><strong style="color:#f59e0b">~32 Jahre bis FIRE</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:.875rem">
+              <span>Sparrate 50 %</span><strong style="color:#10b981">~17 Jahre bis FIRE</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--accent-light);border-radius:var(--radius-sm);font-size:.875rem">
+              <span>Sparrate 70 %</span><strong style="color:var(--accent-dark)">~8–9 Jahre bis FIRE</strong>
+            </div>
+          </div>
+          <p style="font-size:.8125rem;color:var(--gray-400)">* Annahme: 7 % Rendite p.a., aktuelles Vermögen = 0. Ohne Steuern.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html">Alle Rechner</a></li>
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html#fire">FIRE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html#grundlagen">Grundlagen</a></li>
+          <li><a href="/wissen.html#investieren">Investieren</a></li>
+          <li><a href="/wissen.html#boerse">Börse</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/index.html">Startseite</a></li>
+          <li><a href="/wissen.html">Wissen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Inhalte ohne Gewähr</span></div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

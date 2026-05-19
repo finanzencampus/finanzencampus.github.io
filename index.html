@@ -1,13 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="FinanzenCampus, dein Portal für Finanzrechner und einen Finanzblog">
-  <meta name="keywords" content="schueler, schüler, schule, finanzen, finanzielle bildung, bildung, boerse, wissen, blog, rechner">
-  <meta name="author" content="Julian">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FinanzenCampus</title>
-  <link rel="icon" type="favicon" href="/images/favicon.ico">
-  <h1 class="font-bold underline text-3xl">FinanzenCampus</h1>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
-  
+  <meta name="description" content="FinanzenCampus – Kostenlose Finanzrechner, Börsenlexikon und Finanzwissen für alle. Zinseszins, Inflation, Sparplan und mehr.">
+  <meta name="keywords" content="finanzrechner, zinseszinsrechner, inflationsrechner, sparplanrechner, finanzbegriffe, finanzbildung">
+  <title>FinanzenCampus – Finanzielle Bildung für alle</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+<body>
 
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <div class="nav-logo-icon">📈</div>
+      FinanzenCampus
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/index.html">Startseite</a></li>
+    <li><a href="/rechner.html">Rechner</a></li>
+    <li><a href="/lexikon.html">Lexikon</a></li>
+    <li><a href="/wissen.html">Wissen</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 Kostenlose Finanzbildung</div>
+      <h1 class="hero-title">
+        Finanzielle Bildung<br>für <span>alle Menschen</span>
+      </h1>
+      <p class="hero-subtitle">
+        Berechne dein Vermögenswachstum, verstehe Börsenbegriffe und lerne die wichtigsten Grundlagen der persönlichen Finanzen – alles kostenlos, ohne Anmeldung.
+      </p>
+      <div class="hero-buttons">
+        <a href="/rechner.html" class="btn-primary">Zu den Rechnern →</a>
+        <a href="/lexikon.html" class="btn-secondary">Börsenlexikon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><h3>6</h3><p>Finanzrechner</p></div>
+      <div class="stat-item"><h3>60+</h3><p>Börsenbegriffe</p></div>
+      <div class="stat-item"><h3>10+</h3><p>Wissensartikel</p></div>
+      <div class="stat-item"><h3>100%</h3><p>Kostenlos</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Was dich erwartet</span>
+      <h2 class="section-title">Alles, was du für deine Finanzen brauchst</h2>
+      <p class="section-desc">Von praktischen Rechnern bis hin zu fundiertem Wissen – FinanzenCampus macht Finanzbildung zugänglich und verständlich.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon icon-blue">🧮</div>
+        <h3>Finanzrechner</h3>
+        <p>Berechne Zinseszins, Inflation, Sparplan, Kredit und mehr – interaktiv und sofort. Visualisiere dein Vermögenswachstum über die Zeit.</p>
+        <a href="/rechner.html" class="card-link">Rechner starten →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-green">📚</div>
+        <h3>Börsenlexikon</h3>
+        <p>Über 60 wichtige Finanz- und Börsenbegriffe einfach erklärt. Von Aktie bis Zinseszins – mit Schwierigkeitsgrad und durchsuchbar.</p>
+        <a href="/lexikon.html" class="card-link">Lexikon öffnen →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-purple">🎓</div>
+        <h3>Finanzwissen</h3>
+        <p>Verständliche Artikel über Investieren, Sparen, ETFs, die Macht des Zinseszinses und die wichtigsten Regeln für finanzielle Freiheit.</p>
+        <a href="/wissen.html" class="card-link">Wissen entdecken →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR PREVIEW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Finanzrechner</span>
+      <h2 class="section-title">Deine Finanzen durchrechnen</h2>
+      <p class="section-desc">Sechs kostenlose Rechner, die dir helfen, finanzielle Entscheidungen besser zu verstehen und zu planen.</p>
+    </div>
+    <div class="calc-grid">
+      <a href="/rechner.html#zinseszins" class="calc-card">
+        <span class="ci">📈</span>
+        <h3>Zinseszinsrechner</h3>
+        <p>Wie wächst dein Kapital durch den Zinseszinseffekt über Zeit?</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#sparplan" class="calc-card">
+        <span class="ci">💰</span>
+        <h3>Sparplanrechner</h3>
+        <p>Monatlich sparen + Zinsen = Wie viel hast du am Ende?</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#inflation" class="calc-card">
+        <span class="ci">🔥</span>
+        <h3>Inflationsrechner</h3>
+        <p>Was ist dein Geld in 10 oder 20 Jahren noch wert?</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#kredit" class="calc-card">
+        <span class="ci">🏦</span>
+        <h3>Kreditrechner</h3>
+        <p>Monatliche Rate, Gesamtzinsen und Tilgungsplan im Überblick.</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#rendite" class="calc-card">
+        <span class="ci">📊</span>
+        <h3>Renditerechner</h3>
+        <p>Berechne die jährliche Rendite (CAGR) deiner Investition.</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+      <a href="/rechner.html#fire" class="calc-card">
+        <span class="ci">🔥</span>
+        <h3>FIRE-Rechner</h3>
+        <p>Wie viel brauchst du für finanzielle Unabhängigkeit?</p>
+        <span class="arrow">Berechnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="text-2col">
+      <div>
+        <span class="section-label">Warum FinanzenCampus?</span>
+        <h2 class="section-title" style="text-align:left">Finanzbildung sollte keine Frage des Geldes sein</h2>
+        <p style="color:var(--gray-500);font-size:1.0625rem;line-height:1.75;margin-bottom:28px">
+          Viele Menschen scheuen sich vor dem Thema Finanzen, weil es kompliziert oder für sie nicht relevant wirkt. Dabei sind einfache Grundkenntnisse der Schlüssel zu mehr finanzieller Sicherheit – egal ob Schüler, Student oder Berufstätiger.
+        </p>
+        <a href="/wissen.html" class="btn-outline">Jetzt Wissen aufbauen</a>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div class="card-icon icon-green" style="margin:0;flex-shrink:0">⚡</div>
+            <div>
+              <h4 style="font-weight:700;margin-bottom:4px">Keine Anmeldung nötig</h4>
+              <p style="margin:0;font-size:.9rem;color:var(--gray-500)">Alle Rechner und Inhalte sind sofort nutzbar – ohne Account oder E-Mail.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div class="card-icon icon-blue" style="margin:0;flex-shrink:0">🔒</div>
+            <div>
+              <h4 style="font-weight:700;margin-bottom:4px">Keine Live-Daten, kein Tracking</h4>
+              <p style="margin:0;font-size:.9rem;color:var(--gray-500)">Alle Berechnungen laufen lokal in deinem Browser. Deine Daten bleiben bei dir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div class="card-icon icon-purple" style="margin:0;flex-shrink:0">🎯</div>
+            <div>
+              <h4 style="font-weight:700;margin-bottom:4px">Auf das Wesentliche fokussiert</h4>
+              <p style="margin:0;font-size:.9rem;color:var(--gray-500)">Keine Werbung, keine Produkte – nur nützliche Inhalte für deine Finanzbildung.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEXIKON PREVIEW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Börsenlexikon</span>
+      <h2 class="section-title">Die wichtigsten Begriffe erklärt</h2>
+      <p class="section-desc">Verstehe die Sprache der Finanzmärkte. Unser Lexikon erklärt über 60 Begriffe verständlich und kompakt.</p>
+    </div>
+    <div class="calc-grid" style="margin-bottom:32px">
+      <div class="calc-card" style="cursor:default">
+        <span class="ci">💹</span>
+        <h3>ETF</h3>
+        <p>Exchange Traded Fund – börsengehandelter Indexfonds, der einen Markt kostengünstig abbildet.</p>
+      </div>
+      <div class="calc-card" style="cursor:default">
+        <span class="ci">📉</span>
+        <h3>Volatilität</h3>
+        <p>Maß für die Schwankungsbreite eines Wertpapiers – je höher, desto risikoreicher die Anlage.</p>
+      </div>
+      <div class="calc-card" style="cursor:default">
+        <span class="ci">🔄</span>
+        <h3>Zinseszins</h3>
+        <p>Zinsen auf Zinsen – das achte Weltwunder laut Einstein. Der stärkste Hebel beim langfristigen Sparen.</p>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/lexikon.html" class="btn-primary">Zum vollständigen Lexikon →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <div class="footer-brand-icon">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html#inflation">Inflation</a></li>
+          <li><a href="/rechner.html#kredit">Kredit</a></li>
+          <li><a href="/rechner.html#rendite">Rendite</a></li>
+          <li><a href="/rechner.html#fire">FIRE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+          <li><a href="/wissen.html#grundlagen">Grundlagen</a></li>
+          <li><a href="/wissen.html#investieren">Investieren</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Themen</h4>
+        <ul class="footer-links">
+          <li><a href="/wissen.html">ETF & Fonds</a></li>
+          <li><a href="/wissen.html">Aktien</a></li>
+          <li><a href="/wissen.html">Sparen</a></li>
+          <li><a href="/wissen.html">FIRE-Bewegung</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+      <span>Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

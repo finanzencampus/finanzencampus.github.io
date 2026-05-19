@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kostenlose Finanzrechner: Zinseszins, Sparplan, Inflation, Kredit, Rendite und FIRE-Rechner – interaktiv und ohne Anmeldung.">
+  <title>Finanzrechner – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <div class="nav-logo-icon">📈</div>
+      FinanzenCampus
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html" class="active">Rechner</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="/index.html">Startseite</a></li>
+    <li><a href="/rechner.html">Rechner</a></li>
+    <li><a href="/lexikon.html">Lexikon</a></li>
+    <li><a href="/wissen.html">Wissen</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>🧮 Finanzrechner</h1>
+    <p>Sechs interaktive Rechner für deine finanzielle Planung – alle Berechnungen laufen lokal in deinem Browser.</p>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="calc-tabs-wrap">
+  <div class="calc-tabs" id="calcTabs">
+    <button class="calc-tab active" data-tab="zinseszins" onclick="showTab('zinseszins')">📈 Zinseszins</button>
+    <button class="calc-tab" data-tab="sparplan" onclick="showTab('sparplan')">💰 Sparplan</button>
+    <button class="calc-tab" data-tab="inflation" onclick="showTab('inflation')">🔥 Inflation</button>
+    <button class="calc-tab" data-tab="kredit" onclick="showTab('kredit')">🏦 Kredit</button>
+    <button class="calc-tab" data-tab="rendite" onclick="showTab('rendite')">📊 Rendite</button>
+    <button class="calc-tab" data-tab="fire" onclick="showTab('fire')">🎯 FIRE</button>
+  </div>
+</div>
+
+<!-- PANELS -->
+<div class="calc-panels">
+  <div class="container">
+
+    <!-- ZINSESZINS -->
+    <div class="calc-panel active" id="zinseszins">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>📈 Zinseszinsrechner</h2>
+          <p class="calc-desc">Der Zinseszinseffekt lässt dein Kapital exponentiell wachsen – Zinsen erwirtschaften selbst wieder Zinsen. Albert Einstein soll ihn als „achtes Weltwunder" bezeichnet haben.</p>
+          <div class="form-group">
+            <label for="zz-kapital">Startkapital (€)</label>
+            <input type="number" id="zz-kapital" value="10000" min="0" step="100" oninput="calcZinseszins()">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="zz-rate">Zinssatz p.a. (%)</label>
+              <input type="number" id="zz-rate" value="7" min="0" max="50" step="0.1" oninput="calcZinseszins()">
+            </div>
+            <div class="form-group">
+              <label for="zz-jahre">Laufzeit (Jahre)</label>
+              <input type="number" id="zz-jahre" value="20" min="1" max="60" step="1" oninput="calcZinseszins()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="zz-intervall">Zinsintervall</label>
+            <select id="zz-intervall" onchange="calcZinseszins()">
+              <option value="1">Jährlich</option>
+              <option value="2">Halbjährlich</option>
+              <option value="4">Vierteljährlich</option>
+              <option value="12" selected>Monatlich</option>
+              <option value="365">Täglich</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcZinseszins()">Berechnen</button>
+          <p class="disclaimer">Keine Anlageberatung. Alle Berechnungen sind Schätzungen ohne Steuern und Gebühren.</p>
+        </div>
+        <div class="calc-result-card" id="zz-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">📊</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPARPLAN -->
+    <div class="calc-panel" id="sparplan">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>💰 Sparplanrechner</h2>
+          <p class="calc-desc">Regelmäßiges Sparen kombiniert mit dem Zinseszinseffekt ist die mächtigste Methode zum langfristigen Vermögensaufbau. Auch kleine monatliche Beträge machen über Zeit einen riesigen Unterschied.</p>
+          <div class="form-group">
+            <label for="sp-start">Startkapital (€)</label>
+            <input type="number" id="sp-start" value="1000" min="0" step="100" oninput="calcSparplan()">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sp-rate">Monatliche Sparrate (€)</label>
+              <input type="number" id="sp-rate" value="200" min="0" step="10" oninput="calcSparplan()">
+            </div>
+            <div class="form-group">
+              <label for="sp-zins">Erwartete Rendite p.a. (%)</label>
+              <input type="number" id="sp-zins" value="7" min="0" max="30" step="0.1" oninput="calcSparplan()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sp-jahre">Anlagehorizont (Jahre)</label>
+            <input type="number" id="sp-jahre" value="25" min="1" max="60" step="1" oninput="calcSparplan()">
+          </div>
+          <button class="calc-btn" onclick="calcSparplan()">Berechnen</button>
+          <p class="disclaimer">Keine Anlageberatung. Rendite nicht garantiert. Ohne Steuern und Kosten.</p>
+        </div>
+        <div class="calc-result-card" id="sp-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">💰</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFLATION -->
+    <div class="calc-panel" id="inflation">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>🔥 Inflationsrechner</h2>
+          <p class="calc-desc">Inflation frisst die Kaufkraft deines Geldes auf. Wer sein Erspartes nur auf dem Girokonto lässt, verliert jedes Jahr real an Wert. Berechne, wie viel dein heutiges Geld in der Zukunft wert ist.</p>
+          <div class="form-group">
+            <label for="inf-betrag">Heutiger Betrag (€)</label>
+            <input type="number" id="inf-betrag" value="10000" min="0" step="100" oninput="calcInflation()">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inf-rate">Inflationsrate p.a. (%)</label>
+              <input type="number" id="inf-rate" value="2.5" min="0" max="30" step="0.1" oninput="calcInflation()">
+              <span class="input-hint">Historischer Durchschnitt Europa: ~2–3%</span>
+            </div>
+            <div class="form-group">
+              <label for="inf-jahre">Zeitraum (Jahre)</label>
+              <input type="number" id="inf-jahre" value="20" min="1" max="60" step="1" oninput="calcInflation()">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcInflation()">Berechnen</button>
+          <p class="disclaimer">Basierend auf konstanter Inflationsrate. Tatsächliche Inflation schwankt jährlich.</p>
+        </div>
+        <div class="calc-result-card" id="inf-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">🔥</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KREDIT -->
+    <div class="calc-panel" id="kredit">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>🏦 Kreditrechner</h2>
+          <p class="calc-desc">Berechne monatliche Rate, Gesamtkosten und Zinslast deines Kredits. Kleine Unterschiede im Zinssatz machen über die Laufzeit oft tausende Euro Unterschied.</p>
+          <div class="form-group">
+            <label for="kr-summe">Kreditsumme (€)</label>
+            <input type="number" id="kr-summe" value="20000" min="0" step="500" oninput="calcKredit()">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="kr-zins">Zinssatz p.a. (%)</label>
+              <input type="number" id="kr-zins" value="4.5" min="0" max="30" step="0.1" oninput="calcKredit()">
+            </div>
+            <div class="form-group">
+              <label for="kr-jahre">Laufzeit (Jahre)</label>
+              <input type="number" id="kr-jahre" value="5" min="1" max="40" step="1" oninput="calcKredit()">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcKredit()">Berechnen</button>
+          <p class="disclaimer">Nur zur Orientierung. Tatsächliche Konditionen variieren je nach Bank und Bonität.</p>
+        </div>
+        <div class="calc-result-card" id="kr-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">🏦</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RENDITE -->
+    <div class="calc-panel" id="rendite">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>📊 Renditerechner</h2>
+          <p class="calc-desc">Berechne die erzielte Rendite (CAGR) einer Investition. Der CAGR (Compound Annual Growth Rate) zeigt die durchschnittliche jährliche Wachstumsrate – ideal zum Vergleich verschiedener Investments.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rd-start">Anfangswert (€)</label>
+              <input type="number" id="rd-start" value="10000" min="0" step="100" oninput="calcRendite()">
+            </div>
+            <div class="form-group">
+              <label for="rd-end">Endwert (€)</label>
+              <input type="number" id="rd-end" value="28000" min="0" step="100" oninput="calcRendite()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rd-jahre">Laufzeit (Jahre)</label>
+              <input type="number" id="rd-jahre" value="15" min="1" max="60" step="1" oninput="calcRendite()">
+            </div>
+            <div class="form-group">
+              <label for="rd-divid">Ausschüttungen gesamt (€)</label>
+              <input type="number" id="rd-divid" value="0" min="0" step="100" oninput="calcRendite()">
+              <span class="input-hint">Dividenden, Zinsen, etc.</span>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcRendite()">Berechnen</button>
+          <p class="disclaimer">Vergangene Renditen sind keine Garantie für zukünftige Ergebnisse.</p>
+        </div>
+        <div class="calc-result-card" id="rd-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">📊</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIRE -->
+    <div class="calc-panel" id="fire">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>🎯 FIRE-Rechner</h2>
+          <p class="calc-desc">FIRE = Financial Independence, Retire Early. Die 4%-Regel besagt: Du kannst jährlich 4% deines Vermögens entnehmen, ohne es zu verbrauchen. Deine FIRE-Zahl = Jahresausgaben × 25.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fi-ausgaben">Monatliche Ausgaben (€)</label>
+              <input type="number" id="fi-ausgaben" value="2500" min="0" step="100" oninput="calcFIRE()">
+            </div>
+            <div class="form-group">
+              <label for="fi-vermoegen">Aktuelles Vermögen (€)</label>
+              <input type="number" id="fi-vermoegen" value="30000" min="0" step="1000" oninput="calcFIRE()">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fi-sparrate">Monatliche Sparrate (€)</label>
+              <input type="number" id="fi-sparrate" value="800" min="0" step="100" oninput="calcFIRE()">
+            </div>
+            <div class="form-group">
+              <label for="fi-rendite">Erwartete Rendite p.a. (%)</label>
+              <input type="number" id="fi-rendite" value="7" min="1" max="20" step="0.5" oninput="calcFIRE()">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcFIRE()">Berechnen</button>
+          <p class="disclaimer">Basierend auf der 4%-Entnahmeregel. Inflation, Steuern und Rendite-Schwankungen nicht berücksichtigt.</p>
+        </div>
+        <div class="calc-result-card" id="fi-result">
+          <h3>Ergebnis</h3>
+          <div class="result-empty">
+            <span class="result-empty-icon">🎯</span>
+            <p>Gib deine Werte links ein und starte die Berechnung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</div><!-- /calc-panels -->
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <div class="footer-brand-icon">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showTab('zinseszins')">Zinseszins</a></li>
+          <li><a href="#" onclick="showTab('sparplan')">Sparplan</a></li>
+          <li><a href="#" onclick="showTab('inflation')">Inflation</a></li>
+          <li><a href="#" onclick="showTab('kredit')">Kredit</a></li>
+          <li><a href="#" onclick="showTab('rendite')">Rendite</a></li>
+          <li><a href="#" onclick="showTab('fire')">FIRE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul class="footer-links">
+          <li><a href="/index.html">Startseite</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script src="/js/rechner.js"></script>
+<script>
+  // Activate tab from URL hash
+  const hash = window.location.hash.replace('#','');
+  if(hash && document.getElementById(hash)) showTab(hash);
+  // Run initial calculations
+  calcZinseszins(); calcSparplan(); calcInflation(); calcKredit(); calcRendite(); calcFIRE();
+</script>
+</body>
+</html>
