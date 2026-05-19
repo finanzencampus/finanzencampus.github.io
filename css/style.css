@@ -513,3 +513,56 @@ footer{background:#060d1a;color:#94a3b8;padding:60px 0 32px}
   .stats-grid{grid-template-columns:1fr 1fr}
   .quiz-card{padding:24px}
 }
+/* ===================================================
+   AKTIENANALYSE PAGE
+   =================================================== */
+.form-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.form-2col{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.analysis-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;margin-bottom:16px}
+.analysis-section-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.asec-icon{font-size:1.375rem;line-height:1;flex-shrink:0;margin-top:1px}
+.asec-title{font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:3px}
+.asec-desc{font-size:.8rem;color:var(--text-faint);line-height:1.5}
+.score-pill{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:100px;white-space:nowrap}
+.sp-good{background:var(--accent-subtle);color:var(--accent-dark)}
+.sp-ok{background:color-mix(in srgb,#fbbf24 15%,var(--bg-card));color:#92400e}
+.sp-bad{background:color-mix(in srgb,#ef4444 12%,var(--bg-card));color:#dc2626}
+.sp-na{background:var(--bg-muted);color:var(--text-faint)}
+[data-theme="dark"] .sp-ok{color:#fbbf24}
+[data-theme="dark"] .sp-bad{color:#f87171}
+.dim-score-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--border)}
+.dim-score-row:last-child{border-bottom:none}
+.dim-label{min-width:130px;font-size:.875rem;font-weight:600;color:var(--text-strong)}
+.dim-bar{flex:1;height:8px;background:var(--bg-muted);border-radius:100px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:100px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.dim-val{min-width:36px;text-align:right;font-size:.875rem;font-weight:700}
+.metric-detail-row{display:grid;grid-template-columns:2fr 1.5fr 1fr;gap:8px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--border);font-size:.85rem}
+.metric-detail-row:last-child{border-bottom:none}
+.metric-detail-row.dim-header td{background:var(--bg-alt)!important}
+.mdr-label{color:var(--text-muted)}
+.mdr-value{color:var(--text-strong);font-weight:600}
+.mdr-score{text-align:right}
+.analysis-total-card{text-align:center;background:var(--result-grad);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius-lg);padding:32px 24px;margin-bottom:20px}
+.atc-num{font-size:4rem;font-weight:800;line-height:1;letter-spacing:-.05em}
+.atc-divider{width:40px;height:3px;border-radius:2px;background:var(--border);margin:12px auto}
+.atc-rating{font-size:1.25rem;font-weight:700;color:var(--text-strong)}
+.dcf-result-card{background:var(--primary-subtle);border:1px solid rgba(59,130,246,.25);border-radius:var(--radius-lg);padding:24px;margin-top:8px}
+.dcf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.dcf-item{text-align:center;padding:16px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
+.dcf-item-val{font-size:1.5rem;font-weight:800;color:var(--text-strong);line-height:1;margin-bottom:5px;letter-spacing:-.02em}
+.dcf-item-label{font-size:.75rem;color:var(--text-faint);font-weight:500;line-height:1.4}
+.sw-item{display:flex;align-items:flex-start;gap:10px;font-size:.875rem;color:var(--text-muted);line-height:1.55;margin-bottom:9px}
+.sw-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.sw-dot.good{background:var(--accent)}
+.sw-dot.bad{background:#ef4444}
+.analysis-disclaimer-box{background:color-mix(in srgb,#f59e0b 8%,var(--bg-card));border:1px solid rgba(245,158,11,.25);border-left:3px solid #f59e0b;border-radius:var(--radius);padding:16px 20px;margin-top:20px}
+.analysis-disclaimer-box p{font-size:.8125rem;color:var(--text-muted);line-height:1.7;margin:0}
+@media(max-width:768px){
+  .form-3col{grid-template-columns:1fr 1fr}
+  .dcf-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .form-3col,.form-2col{grid-template-columns:1fr}
+  .dcf-grid{grid-template-columns:1fr}
+  .dim-label{min-width:90px}
+}

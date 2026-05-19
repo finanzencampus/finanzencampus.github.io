@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aktienanalyse-Tool: Kennzahlen strukturiert auswerten – Bewertung, Rentabilität, Wachstum, Bilanz, Cashflow, DCF-Modell. Kein Anlageberatung.">
+  <title>Aktienanalyse – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/schulden.html">Schulden</a></li>
+      <li><a href="/aktienanalyse.html" class="active">Aktien</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/quiz.html">Quiz</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild wechseln" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li>
+  <li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/schulden.html">Schulden</a></li>
+  <li><a href="/aktienanalyse.html">Aktien</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+  <li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+  <li><a href="/quiz.html">Quiz</a></li>
+</ul></div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>📊 Aktienanalyse</h1>
+    <p>Gib die Kennzahlen eines Unternehmens ein – das Tool bewertet Bewertung, Rentabilität, Wachstum, Bilanzqualität und Cashflow strukturiert und zeigt ein DCF-Modell. Kein Anlageberatung, nur Orientierung.</p>
+  </div>
+</div>
+
+<!-- DISCLAIMER BANNER -->
+<div style="background:color-mix(in srgb,#f59e0b 8%,var(--bg));border-bottom:1px solid rgba(245,158,11,.2);padding:12px 0">
+  <div class="container">
+    <p style="font-size:.8125rem;color:var(--text-muted);margin:0;display:flex;align-items:center;gap:8px">
+      <span style="font-size:1rem">⚠️</span>
+      <strong style="color:var(--text-strong)">Kein Anlageberatung:</strong> Dieses Tool dient ausschließlich der strukturierten Darstellung von Kennzahlen. Alle Scores basieren auf allgemeinen Richtwerten und ersetzen keine individuelle Beratung. Investitionsentscheidungen triffst du auf eigene Verantwortung.
+    </p>
+  </div>
+</div>
+
+<div class="section" style="padding-top:40px">
+  <div class="container">
+
+    <!-- ═══ EINGABEFORMULAR ═══ -->
+    <div style="max-width:900px;margin:0 auto">
+
+      <!-- 1. UNTERNEHMENSPROFIL -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">🏢</span>
+          <div>
+            <div class="asec-title">Unternehmensprofil</div>
+            <div class="asec-desc">Grundlegende Informationen zum Unternehmen</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Unternehmensname</label>
+            <input type="text" id="company_name" class="calc-input" placeholder="z.B. Apple Inc.">
+          </div>
+          <div class="form-group">
+            <label>Ticker-Symbol</label>
+            <input type="text" id="ticker" class="calc-input" placeholder="z.B. AAPL">
+          </div>
+          <div class="form-group">
+            <label>Sektor</label>
+            <select id="sektor" class="calc-input">
+              <option value="">– Wählen –</option>
+              <option>Technologie</option>
+              <option>Finanzen</option>
+              <option>Gesundheit</option>
+              <option>Energie</option>
+              <option>Industrie</option>
+              <option>Konsumgüter</option>
+              <option>Versorger</option>
+              <option>Immobilien</option>
+              <option>Rohstoffe</option>
+              <option>Kommunikation</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Aktueller Kurs (€/$)</label>
+            <input type="number" id="kurs" class="calc-input" placeholder="z.B. 185.50" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>52-Wochen-Hoch</label>
+            <input type="number" id="high52" class="calc-input" placeholder="z.B. 220.00" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>52-Wochen-Tief</label>
+            <input type="number" id="low52" class="calc-input" placeholder="z.B. 140.00" min="0" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Marktkapitalisierung (Mrd.)</label>
+            <input type="number" id="marktcap" class="calc-input" placeholder="z.B. 2800" min="0" step="1">
+          </div>
+          <div class="form-group">
+            <label>Enterprise Value (Mrd.)</label>
+            <input type="number" id="ev" class="calc-input" placeholder="z.B. 2750" min="0" step="1">
+          </div>
+          <div class="form-group">
+            <label>Anzahl Aktien (Mio.)</label>
+            <input type="number" id="shares" class="calc-input" placeholder="z.B. 15500" min="0" step="1">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. BEWERTUNGSKENNZAHLEN -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">📊</span>
+          <div>
+            <div class="asec-title">Bewertungskennzahlen</div>
+            <div class="asec-desc">Wie teuer ist die Aktie relativ zu Gewinn, Buchwert und Umsatz? Niedrigere Werte sind in der Regel günstiger.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>KGV (Kurs-Gewinn-Verhältnis)</label>
+            <input type="number" id="kgv" class="calc-input" placeholder="z.B. 28.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Branchen-KGV (zum Vergleich)</label>
+            <input type="number" id="kgv_branche" class="calc-input" placeholder="z.B. 25.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>KBV (Kurs-Buchwert-Verhältnis)</label>
+            <input type="number" id="kbv" class="calc-input" placeholder="z.B. 8.2" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>KUV (Kurs-Umsatz-Verhältnis)</label>
+            <input type="number" id="kuv" class="calc-input" placeholder="z.B. 7.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>EV/EBITDA</label>
+            <input type="number" id="ev_ebitda" class="calc-input" placeholder="z.B. 22.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>PEG-Ratio (KGV ÷ Wachstum)</label>
+            <input type="number" id="peg" class="calc-input" placeholder="z.B. 1.8" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RENTABILITÄT -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">💹</span>
+          <div>
+            <div class="asec-title">Rentabilität</div>
+            <div class="asec-desc">Wie profitabel ist das Unternehmen? Höhere Margen und Kapitalrenditen stehen für ein starkes Geschäftsmodell.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Bruttomarge (%)</label>
+            <input type="number" id="bruttomarge" class="calc-input" placeholder="z.B. 43.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>EBIT-Marge (%)</label>
+            <input type="number" id="ebit_marge" class="calc-input" placeholder="z.B. 29.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Nettomarge (%)</label>
+            <input type="number" id="nettomarge" class="calc-input" placeholder="z.B. 25.3" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>ROE – Return on Equity (%)</label>
+            <input type="number" id="roe" class="calc-input" placeholder="z.B. 147.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>ROA – Return on Assets (%)</label>
+            <input type="number" id="roa" class="calc-input" placeholder="z.B. 22.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>ROIC – Return on Inv. Capital (%)</label>
+            <input type="number" id="roic" class="calc-input" placeholder="z.B. 55.0" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. WACHSTUM -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">📈</span>
+          <div>
+            <div class="asec-title">Wachstum</div>
+            <div class="asec-desc">Wächst das Unternehmen schnell genug, um hohe Bewertungen zu rechtfertigen? YoY = Jahr-über-Jahr, CAGR = jährliches Wachstum über 5 Jahre.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Umsatzwachstum YoY (%)</label>
+            <input type="number" id="umsatz_yoy" class="calc-input" placeholder="z.B. 8.1" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>EPS-Wachstum YoY (%)</label>
+            <input type="number" id="eps_yoy" class="calc-input" placeholder="z.B. 13.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Umsatz 5J-CAGR (%)</label>
+            <input type="number" id="umsatz_cagr5" class="calc-input" placeholder="z.B. 12.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>EPS 5J-CAGR (%)</label>
+            <input type="number" id="eps_cagr5" class="calc-input" placeholder="z.B. 17.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Analystenschätzung Umsatz 3J (%/J)</label>
+            <input type="number" id="analyst_growth" class="calc-input" placeholder="z.B. 6.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>EPS nächstes Jahr (Konsens)</label>
+            <input type="number" id="eps_next" class="calc-input" placeholder="z.B. 7.20" step="0.01">
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. BILANZ & VERSCHULDUNG -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">🏦</span>
+          <div>
+            <div class="asec-title">Bilanz &amp; Verschuldung</div>
+            <div class="asec-desc">Wie solide ist die finanzielle Basis? Niedrige Verschuldung und hohe Liquidität bedeuten Stabilität und Handlungsspielraum.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Eigenkapitalquote (%)</label>
+            <input type="number" id="ek_quote" class="calc-input" placeholder="z.B. 32.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Verschuldungsgrad D/E</label>
+            <input type="number" id="de_ratio" class="calc-input" placeholder="z.B. 1.8" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Net Debt/EBITDA</label>
+            <input type="number" id="net_debt_ebitda" class="calc-input" placeholder="z.B. 0.5 oder -1.2" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Current Ratio (Liquidität)</label>
+            <input type="number" id="current_ratio" class="calc-input" placeholder="z.B. 2.4" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Quick Ratio</label>
+            <input type="number" id="quick_ratio" class="calc-input" placeholder="z.B. 1.9" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Zinsdeckungsgrad (EBIT/Zinsen)</label>
+            <input type="number" id="zinsdeckung" class="calc-input" placeholder="z.B. 18.5" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CASHFLOW -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">💰</span>
+          <div>
+            <div class="asec-title">Cashflow</div>
+            <div class="asec-desc">Der Free Cashflow zeigt, wie viel Geld das Unternehmen wirklich verdient – unabhängig von Bilanzierungswahlrechten.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Free Cashflow (Mrd.)</label>
+            <input type="number" id="fcf_abs" class="calc-input" placeholder="z.B. 99.6" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>FCF-Marge (%)</label>
+            <input type="number" id="fcf_marge" class="calc-input" placeholder="z.B. 26.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>FCF je Aktie (€/$)</label>
+            <input type="number" id="fcf_per_share" class="calc-input" placeholder="z.B. 6.40" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>FCF / Nettogewinn (Verhältnis)</label>
+            <input type="number" id="fcf_ni" class="calc-input" placeholder="z.B. 1.05" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>CapEx als % vom Umsatz (%)</label>
+            <input type="number" id="capex_pct" class="calc-input" placeholder="z.B. 3.5" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Operativer Cashflow (Mrd.)</label>
+            <input type="number" id="ocf_abs" class="calc-input" placeholder="z.B. 110.0" step="0.1">
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. DIVIDENDEN -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">🪙</span>
+          <div>
+            <div class="asec-title">Dividenden <span style="font-size:.75rem;font-weight:500;color:var(--text-faint)">(optional – für Dividendentitel)</span></div>
+            <div class="asec-desc">Leer lassen, falls keine Dividende gezahlt wird.</div>
+          </div>
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Dividendenrendite (%)</label>
+            <input type="number" id="div_yield" class="calc-input" placeholder="z.B. 0.55" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Ausschüttungsquote (%)</label>
+            <input type="number" id="payout_ratio" class="calc-input" placeholder="z.B. 15.0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Jahre ununterbrochenes Div.-Wachstum</label>
+            <input type="number" id="div_streak" class="calc-input" placeholder="z.B. 12" step="1" min="0">
+          </div>
+          <div class="form-group">
+            <label>Dividende 5J-CAGR (%)</label>
+            <input type="number" id="div_cagr5" class="calc-input" placeholder="z.B. 5.8" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Dividende je Aktie (€/$)</label>
+            <input type="number" id="dps" class="calc-input" placeholder="z.B. 1.00" step="0.01">
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. QUALITATIVE EINSCHÄTZUNG -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">🔍</span>
+          <div>
+            <div class="asec-title">Qualitative Einschätzung</div>
+            <div class="asec-desc">Nicht quantifizierbare Faktoren, die Langfristperspektive und Wettbewerbsposition beeinflussen.</div>
+          </div>
+        </div>
+        <div class="form-3col" style="margin-bottom:16px">
+          <div class="form-group">
+            <label>Burggraben / Wettbewerbsvorteil</label>
+            <select id="moat" class="calc-input">
+              <option value="">– Wählen –</option>
+              <option value="breit">Breit (Wide Moat)</option>
+              <option value="schmal">Schmal (Narrow Moat)</option>
+              <option value="keiner">Kein Moat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Marktposition</label>
+            <select id="marktposition" class="calc-input">
+              <option value="">– Wählen –</option>
+              <option value="fuehrt">Marktführer</option>
+              <option value="top3">Top 3 im Markt</option>
+              <option value="wettbewerb">Wettbewerbsmarkt</option>
+              <option value="nische">Nischenanbieter</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Managementqualität</label>
+            <select id="management" class="calc-input">
+              <option value="">– Wählen –</option>
+              <option value="excellent">Ausgezeichnet</option>
+              <option value="gut">Gut</option>
+              <option value="mittel">Durchschnittlich</option>
+              <option value="schwach">Schwach</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Geschäftsmodell-Stabilität</label>
+            <select id="biz_stability" class="calc-input">
+              <option value="">– Wählen –</option>
+              <option value="sehr_stabil">Sehr stabil / wiederkehrend</option>
+              <option value="stabil">Stabil</option>
+              <option value="zyklisch">Zyklisch</option>
+              <option value="volatil">Volatil / disruptiv</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ESG-Ausrichtung</label>
+            <select id="esg" class="calc-input">
+              <option value="">– Keine Angabe –</option>
+              <option value="stark">Stark</option>
+              <option value="vorhanden">Vorhanden</option>
+              <option value="gering">Gering</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Insider-Käufe (letztes Jahr)</label>
+            <select id="insider" class="calc-input">
+              <option value="">– Keine Angabe –</option>
+              <option value="viel">Viele Käufe</option>
+              <option value="wenig">Geringe Käufe</option>
+              <option value="keine">Keine</option>
+              <option value="verkauf">Überwiegend Verkäufe</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-group">
+            <label>Stärken (Freitext)</label>
+            <textarea id="staerken" class="calc-input" rows="3" placeholder="z.B. starke Marke, hohe Wechselkosten, Netzwerkeffekte..." style="resize:vertical"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Risiken (Freitext)</label>
+            <textarea id="risiken" class="calc-input" rows="3" placeholder="z.B. Regulierung, Wettbewerb, Abhängigkeit von einem Produkt..." style="resize:vertical"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. DCF-BEWERTUNGSMODELL -->
+      <div class="analysis-section">
+        <div class="analysis-section-head">
+          <span class="asec-icon">📐</span>
+          <div>
+            <div class="asec-title">DCF-Bewertungsmodell</div>
+            <div class="asec-desc">Discounted Cashflow: Schätzt den fairen Wert je Aktie basierend auf zukünftigen Cashflows. Alle Annahmen trägst du selbst ein.</div>
+          </div>
+        </div>
+        <div class="info-box info-blue" style="margin-bottom:18px;font-size:.875rem">
+          <strong>So funktioniert das Modell:</strong> Die Basisgröße (EPS oder FCF/Aktie) wird mit der Wachstumsrate über 10 Jahre fortgeschrieben, dann auf heute abgezinst. Das Ergebnis ist ein <em>Schätzwert</em> – DCF-Modelle reagieren sehr empfindlich auf Annahmen. Kleine Änderungen an WACC oder Wachstum ändern das Ergebnis erheblich.
+        </div>
+        <div class="form-3col">
+          <div class="form-group">
+            <label>Basiswert: EPS oder FCF/Aktie (€/$)</label>
+            <input type="number" id="dcf_base" class="calc-input" placeholder="z.B. 6.10" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Wachstumsrate Phase 1, J1–5 (%)</label>
+            <input type="number" id="dcf_g1" class="calc-input" placeholder="z.B. 10.0" step="0.1" value="10">
+          </div>
+          <div class="form-group">
+            <label>Wachstumsrate Phase 2, J6–10 (%)</label>
+            <input type="number" id="dcf_g2" class="calc-input" placeholder="z.B. 7.0" step="0.1" value="7">
+          </div>
+          <div class="form-group">
+            <label>Terminale Wachstumsrate (%)</label>
+            <input type="number" id="dcf_gt" class="calc-input" placeholder="z.B. 3.0" step="0.1" value="3">
+          </div>
+          <div class="form-group">
+            <label>WACC / Diskontierungssatz (%)</label>
+            <input type="number" id="dcf_wacc" class="calc-input" placeholder="z.B. 9.0" step="0.1" value="9">
+          </div>
+          <div class="form-group">
+            <label>Sicherheitsmarge für Kauf (%)</label>
+            <input type="number" id="dcf_mos_target" class="calc-input" placeholder="z.B. 20" step="1" value="20">
+          </div>
+        </div>
+      </div>
+
+      <!-- BUTTON -->
+      <div style="text-align:center;margin:8px 0 32px">
+        <button class="btn-primary" onclick="runAnalysis()" style="font-size:1rem;padding:15px 40px">
+          Analyse starten →
+        </button>
+        <p style="font-size:.8rem;color:var(--text-faint);margin-top:10px">Felder leer lassen, wenn Daten nicht verfügbar sind – werden als „k.A." gewertet.</p>
+      </div>
+
+    </div><!-- /form max-width -->
+
+    <!-- ═══ ERGEBNISSE ═══ -->
+    <div id="analysis_results" style="display:none;max-width:900px;margin:0 auto">
+
+      <!-- GESAMTBEWERTUNG -->
+      <div class="analysis-total-card">
+        <div style="font-size:.8rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px" id="analysis_company_name">Unternehmen</div>
+        <div class="atc-num" id="overall_score_num">–</div>
+        <div style="font-size:.875rem;color:var(--text-faint);margin-top:4px">von 10 möglichen Punkten</div>
+        <div class="atc-divider"></div>
+        <div class="atc-rating" id="overall_rating">–</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px" id="results_main_grid">
+
+        <!-- DIMENSIONEN -->
+        <div class="card" style="padding:24px">
+          <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:18px">Dimensionen</h3>
+          <div id="dim_bewertung" class="dim-score-row">
+            <div class="dim-label">Bewertung</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_bewertung_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_bewertung_val">–</div>
+          </div>
+          <div id="dim_profitabilitaet" class="dim-score-row">
+            <div class="dim-label">Profitabilität</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_profitabilitaet_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_profitabilitaet_val">–</div>
+          </div>
+          <div id="dim_wachstum" class="dim-score-row">
+            <div class="dim-label">Wachstum</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_wachstum_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_wachstum_val">–</div>
+          </div>
+          <div id="dim_finanzlage" class="dim-score-row">
+            <div class="dim-label">Finanzlage</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_finanzlage_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_finanzlage_val">–</div>
+          </div>
+          <div id="dim_cashflow" class="dim-score-row">
+            <div class="dim-label">Cashflow</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_cashflow_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_cashflow_val">–</div>
+          </div>
+          <div id="dim_qualitaet" class="dim-score-row">
+            <div class="dim-label">Qualität</div>
+            <div class="dim-bar"><div class="dim-bar-fill" id="dim_qualitaet_bar" style="width:0%"></div></div>
+            <div class="dim-val" id="dim_qualitaet_val">–</div>
+          </div>
+        </div>
+
+        <!-- RADAR CHART -->
+        <div class="card" style="padding:24px">
+          <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:14px">Profil</h3>
+          <div style="position:relative;height:220px">
+            <canvas id="radarChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KENNZAHLEN DETAIL -->
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px">
+        <div style="padding:20px 24px 16px;border-bottom:1px solid var(--border)">
+          <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin:0">Kennzahlen im Detail</h3>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border)">
+                <th style="text-align:left;padding:10px 14px;font-size:.75rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em">Kennzahl</th>
+                <th style="text-align:right;padding:10px 14px;font-size:.75rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em">Wert</th>
+                <th style="text-align:right;padding:10px 14px;font-size:.75rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em">Score</th>
+              </tr>
+            </thead>
+            <tbody id="metrics_table_body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DCF RESULT -->
+      <div id="dcf_result_section" style="display:none;margin-bottom:20px">
+        <div class="card" style="padding:24px">
+          <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:6px">DCF-Bewertung</h3>
+          <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:0">Geschätzter fairer Wert je Aktie auf Basis deiner Annahmen. Kein Kursziel, keine Empfehlung.</p>
+          <div class="dcf-grid">
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_intrinsic">–</div>
+              <div class="dcf-item-label">Innerer Wert (DCF)<br>je Aktie</div>
+            </div>
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_current">–</div>
+              <div class="dcf-item-label">Aktueller Kurs<br>je Aktie</div>
+            </div>
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_mos">–</div>
+              <div class="dcf-item-label">Abweichung<br>(Kurs vs. DCF)</div>
+            </div>
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_buy_price">–</div>
+              <div class="dcf-item-label">Kaufkurs mit<br>Sicherheitsmarge</div>
+            </div>
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_g1_display">–</div>
+              <div class="dcf-item-label">Wachstum<br>Phase 1 (J1–5)</div>
+            </div>
+            <div class="dcf-item">
+              <div class="dcf-item-val" id="dcf_wacc_display">–</div>
+              <div class="dcf-item-label">WACC /<br>Diskontierungssatz</div>
+            </div>
+          </div>
+          <div class="analysis-disclaimer-box" style="margin-top:16px">
+            <p>DCF-Modelle basieren vollständig auf deinen Annahmen und sind sehr sensitiv gegenüber WACC und Wachstumsraten. Eine Änderung von 1 % beim WACC kann den inneren Wert um 20–40 % verschieben. Das Ergebnis ist keine Kauf- oder Verkaufsempfehlung.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STÄRKEN & SCHWÄCHEN -->
+      <div class="card" style="padding:24px;margin-bottom:20px">
+        <h3 style="font-size:.9375rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">Stärken &amp; Verbesserungspotenzial</h3>
+        <div id="sw_list"></div>
+        <div id="qualitative_notes" style="display:none;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div id="staerken_display"></div>
+            <div id="risiken_display"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <div class="analysis-disclaimer-box" style="margin-bottom:40px">
+        <p><strong>⚠️ Wichtiger Hinweis:</strong> Diese Analyse wurde automatisch anhand der von dir eingegebenen Kennzahlen erstellt. Die Scores basieren auf allgemeinen Richtwerten, die je nach Branche, Geschäftsmodell und Marktumfeld stark variieren können. Ein hoher Score bedeutet nicht automatisch eine gute Anlage, ein niedriger Score nicht zwingend eine schlechte. Vergangenheitsdaten sind kein Indikator für zukünftige Entwicklungen. Dieses Tool ersetzt keine professionelle Anlageberatung. Investiere nur in Unternehmen, deren Geschäftsmodell du selbst verstehst.</p>
+      </div>
+
+    </div><!-- /results -->
+
+  </div>
+</div>
+
+<!-- ERKLÄRUNGSBEREICH -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Hintergrundwissen</span>
+      <h2 class="section-title">Wie werden die Scores berechnet?</h2>
+      <p class="section-desc">Jede Kennzahl wird anhand allgemeiner Benchmarks auf einer Skala von 0–10 bewertet. Die Dimensionen werden gewichtet zusammengefasst.</p>
+    </div>
+    <div class="calc-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="calc-card">
+        <span class="ci">📊</span>
+        <h3>Bewertung (20 %)</h3>
+        <p>KGV, KBV, KUV, EV/EBITDA und PEG-Ratio. Niedrigere Werte = höherer Score. Branchenkontext bleibt deine eigene Einschätzung.</p>
+      </div>
+      <div class="calc-card">
+        <span class="ci">💹</span>
+        <h3>Profitabilität (25 %)</h3>
+        <p>Brutto-, EBIT- und Nettomarge, ROE, ROA, ROIC. Stellt die Qualität und Nachhaltigkeit des Geschäftsmodells dar.</p>
+      </div>
+      <div class="calc-card">
+        <span class="ci">📈</span>
+        <h3>Wachstum (20 %)</h3>
+        <p>Umsatz- und EPS-Wachstum auf Jahresbasis und als 5-Jahres-CAGR. Zeigt die Dynamik des Unternehmens.</p>
+      </div>
+      <div class="calc-card">
+        <span class="ci">🏦</span>
+        <h3>Finanzlage (20 %)</h3>
+        <p>Verschuldungsgrad, Liquiditätskennzahlen, Net Debt/EBITDA und Zinsdeckungsgrad. Misst finanzielle Robustheit.</p>
+      </div>
+      <div class="calc-card">
+        <span class="ci">💰</span>
+        <h3>Cashflow (10 %)</h3>
+        <p>FCF-Marge und FCF/Nettogewinn-Verhältnis. Ein hoher FCF relativ zum Gewinn signalisiert hohe Gewinnqualität.</p>
+      </div>
+      <div class="calc-card">
+        <span class="ci">🔍</span>
+        <h3>Qualität (5 %)</h3>
+        <p>Burggraben, Marktposition und Management. Qualitative Einschätzung fließt mit 5 % in den Gesamtscore ein.</p>
+      </div>
+    </div>
+    <div class="info-box info-blue" style="margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto">
+      <strong>Benchmarks und Branchenunterschiede:</strong> Die Richtwerte gelten als allgemeine Orientierung. Technologieunternehmen haben typischerweise höhere KGVs als Versorger; Banken werden nicht nach Standard-Margen beurteilt. Nutze die Scores als <em>erste Orientierung</em>, nicht als absolutes Urteil. Mehr zu Kennzahlen: <a href="/fundamentalanalyse.html" style="color:var(--primary);font-weight:600">Fundamentalanalyse →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="footer-brand-icon" style="display:none">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon, Fundamentalanalyse und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html#inflation">Inflation</a></li>
+          <li><a href="/rechner.html#dividenden">Dividenden</a></li>
+          <li><a href="/rechner.html#fire">FIRE</a></li>
+          <li><a href="/schulden.html">Schulden tilgen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Analyse</h4>
+        <ul class="footer-links">
+          <li><a href="/aktienanalyse.html">Aktienanalyse</a></li>
+          <li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li>
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+          <li><a href="/quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Themen</h4>
+        <ul class="footer-links">
+          <li><a href="/wissen.html#investieren">ETF &amp; Aktien</a></li>
+          <li><a href="/wissen.html#psychologie">Behavioral Finance</a></li>
+          <li><a href="/wissen.html#sparen">Sparen</a></li>
+          <li><a href="/wissen.html">FIRE-Bewegung</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+      <span>Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script>
+(function () {
+
+  /* ── Metric definitions ─────────────────────────── */
+  const M = {
+    kgv:           { label:'KGV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:10,s:10},{t:15,s:9},{t:20,s:7},{t:25,s:6},{t:35,s:4},{t:50,s:2},{t:1e9,s:1}] },
+    kbv:           { label:'KBV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:.8,s:10},{t:1.5,s:9},{t:2.5,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
+    kuv:           { label:'KUV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:.5,s:10},{t:1,s:9},{t:2,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
+    ev_ebitda:     { label:'EV/EBITDA',             unit:'',  dim:'bewertung',      hi:false, bp:[{t:6,s:10},{t:10,s:8},{t:15,s:6},{t:20,s:4},{t:30,s:2},{t:1e9,s:1}] },
+    peg:           { label:'PEG-Ratio',             unit:'',  dim:'bewertung',      hi:false, bp:[{t:.5,s:10},{t:1,s:8},{t:1.5,s:6},{t:2,s:4},{t:1e9,s:2}] },
+    bruttomarge:   { label:'Bruttomarge',           unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:60,s:10},{t:50,s:9},{t:40,s:8},{t:30,s:6},{t:20,s:4},{t:0,s:2},{t:-1e9,s:0}] },
+    ebit_marge:    { label:'EBIT-Marge',            unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:30,s:10},{t:25,s:9},{t:20,s:8},{t:15,s:7},{t:10,s:6},{t:5,s:4},{t:0,s:2},{t:-1e9,s:0}] },
+    nettomarge:    { label:'Nettomarge',            unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:7,s:6},{t:4,s:4},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    roe:           { label:'ROE',                   unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:6},{t:5,s:4},{t:0,s:2},{t:-1e9,s:0}] },
+    roa:           { label:'ROA',                   unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:15,s:10},{t:10,s:9},{t:7,s:7},{t:4,s:5},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    roic:          { label:'ROIC',                  unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:7},{t:7,s:5},{t:3,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    umsatz_yoy:    { label:'Umsatzwachstum YoY',   unit:'%', dim:'wachstum',       hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-5,s:1},{t:-1e9,s:0}] },
+    eps_yoy:       { label:'EPS-Wachstum YoY',     unit:'%', dim:'wachstum',       hi:true,  bp:[{t:30,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
+    umsatz_cagr5:  { label:'Umsatz 5J-CAGR',       unit:'%', dim:'wachstum',       hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:8},{t:7,s:6},{t:4,s:5},{t:1,s:3},{t:0,s:2},{t:-1e9,s:0}] },
+    eps_cagr5:     { label:'EPS 5J-CAGR',          unit:'%', dim:'wachstum',       hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:7},{t:7,s:6},{t:3,s:4},{t:0,s:2},{t:-1e9,s:1}] },
+    de_ratio:      { label:'Verschuldungsgrad D/E', unit:'',  dim:'finanzlage',     hi:false, bp:[{t:0,s:10},{t:.3,s:9},{t:.7,s:8},{t:1.2,s:6},{t:2,s:4},{t:3,s:2},{t:1e9,s:1}] },
+    net_debt_ebitda:{ label:'Net Debt/EBITDA',     unit:'',  dim:'finanzlage',     hi:false, bp:[{t:-1,s:10},{t:0,s:9},{t:1,s:8},{t:2,s:7},{t:3,s:5},{t:4,s:3},{t:1e9,s:1}] },
+    current_ratio: { label:'Current Ratio',         unit:'',  dim:'finanzlage',     hi:true,  bp:[{t:3,s:10},{t:2,s:9},{t:1.5,s:7},{t:1,s:5},{t:.8,s:3},{t:-1e9,s:1}] },
+    quick_ratio:   { label:'Quick Ratio',           unit:'',  dim:'finanzlage',     hi:true,  bp:[{t:2,s:10},{t:1.5,s:9},{t:1,s:7},{t:.7,s:5},{t:.5,s:3},{t:-1e9,s:1}] },
+    zinsdeckung:   { label:'Zinsdeckungsgrad',      unit:'x', dim:'finanzlage',     hi:true,  bp:[{t:20,s:10},{t:10,s:9},{t:5,s:7},{t:3,s:5},{t:1.5,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    fcf_marge:     { label:'FCF-Marge',             unit:'%', dim:'cashflow',       hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
+    fcf_ni:        { label:'FCF / Nettogewinn',     unit:'',  dim:'cashflow',       hi:true,  bp:[{t:1.5,s:10},{t:1.2,s:9},{t:1,s:8},{t:.8,s:7},{t:.5,s:5},{t:0,s:2},{t:-1e9,s:0}] },
+    div_yield:     { label:'Dividendenrendite',     unit:'%', dim:'dividenden',     hi:null },
+    payout_ratio:  { label:'Ausschüttungsquote',    unit:'%', dim:'dividenden',     hi:false, bp:[{t:25,s:9},{t:40,s:10},{t:55,s:8},{t:70,s:6},{t:85,s:4},{t:1e9,s:2}] },
+  };
+
+  function calcScore(key, val) {
+    const m = M[key];
+    if (!m || val === null || val === undefined || val === '' || isNaN(+val)) return null;
+    val = +val;
+    if (key === 'div_yield') {
+      if (val >= 3 && val <= 5) return 10;
+      if (val >= 2 && val < 3) return 8;
+      if (val > 5 && val <= 7) return 6;
+      if (val >= 1 && val < 2) return 5;
+      if (val > 7) return 3;
+      return 0;
+    }
+    if (m.hi) {
+      for (const bp of m.bp) { if (val >= bp.t) return bp.s; }
+      return m.bp[m.bp.length - 1].s;
+    } else {
+      for (const bp of m.bp) { if (val <= bp.t) return bp.s; }
+      return m.bp[m.bp.length - 1].s;
+    }
+  }
+
+  function avg(arr) {
+    const v = arr.filter(x => x !== null && !isNaN(x));
+    return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+  }
+
+  function scoreColor(s) {
+    if (s === null) return 'var(--text-faint)';
+    if (s >= 7)   return 'var(--accent)';
+    if (s >= 5)   return '#f59e0b';
+    return '#ef4444';
+  }
+
+  function scorePillClass(s) {
+    if (s === null) return 'sp-na';
+    if (s >= 7)   return 'sp-good';
+    if (s >= 5)   return 'sp-ok';
+    return 'sp-bad';
+  }
+
+  function ratingLabel(s) {
+    if (s === null) return '–';
+    if (s >= 8.5) return 'Herausragend';
+    if (s >= 7)   return 'Stark';
+    if (s >= 5.5) return 'Solide';
+    if (s >= 4)   return 'Schwach';
+    return 'Kritisch';
+  }
+
+  function gv(id) {
+    const el = document.getElementById(id);
+    if (!el) return null;
+    const v = (el.value || '').trim();
+    return v === '' ? null : +v;
+  }
+
+  function gs(id) {
+    const el = document.getElementById(id);
+    return el ? el.value : '';
+  }
+
+  function gt(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  window.runAnalysis = function () {
+    const name = gt('company_name') || 'Unternehmen';
+
+    /* score all quantitative metrics */
+    const R = {};
+    Object.keys(M).forEach(k => {
+      const val = gv(k);
+      R[k] = { val, score: calcScore(k, val) };
+    });
+
+    /* qualitative scores */
+    const moatMap    = { breit: 10, schmal: 6, keiner: 2 };
+    const marktMap   = { fuehrt: 10, top3: 7, wettbewerb: 4, nische: 5 };
+    const mgmtMap    = { excellent: 10, gut: 7, mittel: 4, schwach: 1 };
+    const bizMap     = { sehr_stabil: 10, stabil: 7, zyklisch: 5, volatil: 3 };
+    const qualScores = [
+      moatMap[gs('moat')],
+      marktMap[gs('marktposition')],
+      mgmtMap[gs('management')],
+      bizMap[gs('biz_stability')],
+    ].filter(x => x !== undefined);
+
+    /* dimension averages */
+    const dims = {
+      bewertung:      avg(['kgv','kbv','kuv','ev_ebitda','peg'].map(k => R[k].score)),
+      profitabilitaet:avg(['bruttomarge','ebit_marge','nettomarge','roe','roa','roic'].map(k => R[k].score)),
+      wachstum:       avg(['umsatz_yoy','eps_yoy','umsatz_cagr5','eps_cagr5'].map(k => R[k].score)),
+      finanzlage:     avg(['de_ratio','net_debt_ebitda','current_ratio','quick_ratio','zinsdeckung'].map(k => R[k].score)),
+      cashflow:       avg(['fcf_marge','fcf_ni'].map(k => R[k].score)),
+      qualitaet:      qualScores.length ? avg(qualScores) : null,
+    };
+
+    /* weighted overall (skip null dimensions) */
+    const weights = { bewertung:.20, profitabilitaet:.25, wachstum:.20, finanzlage:.20, cashflow:.10, qualitaet:.05 };
+    let tScore = 0, tW = 0;
+    Object.entries(weights).forEach(([d, w]) => {
+      if (dims[d] !== null) { tScore += dims[d] * w; tW += w; }
+    });
+    const overall = tW > 0 ? tScore / tW : null;
+
+    /* DCF */
+    const base   = gv('dcf_base');
+    const g1pct  = gv('dcf_g1');
+    const g2pct  = gv('dcf_g2');
+    const gtpct  = gv('dcf_gt');
+    const waccpct= gv('dcf_wacc');
+    const price  = gv('kurs');
+    const mosTarget = gv('dcf_mos_target') || 20;
+    let dcf = null;
+    if (base && g1pct !== null && g2pct !== null && gtpct !== null && waccpct && waccpct > gtpct) {
+      const g1 = g1pct / 100, g2 = g2pct / 100, gt = gtpct / 100, wacc = waccpct / 100;
+      let cf = base, pv = 0;
+      for (let t = 1; t <= 5; t++)  { cf *= (1 + g1); pv += cf / Math.pow(1 + wacc, t); }
+      for (let t = 6; t <= 10; t++) { cf *= (1 + g2); pv += cf / Math.pow(1 + wacc, t); }
+      const tv = cf * (1 + gt) / (wacc - gt);
+      pv += tv / Math.pow(1 + wacc, 10);
+      const mos = price ? (pv - price) / pv * 100 : null;
+      const buyPrice = pv * (1 - mosTarget / 100);
+      dcf = { pv, mos, buyPrice };
+    }
+
+    render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct });
+  };
+
+  function render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct }) {
+    /* overall */
+    const numEl = document.getElementById('overall_score_num');
+    numEl.textContent = overall !== null ? overall.toFixed(1) : '–';
+    numEl.style.color = scoreColor(overall);
+    document.getElementById('overall_rating').textContent = ratingLabel(overall);
+    document.getElementById('analysis_company_name').textContent = name;
+
+    /* dimension bars */
+    const dimKeys = ['bewertung','profitabilitaet','wachstum','finanzlage','cashflow','qualitaet'];
+    dimKeys.forEach(d => {
+      const s = dims[d];
+      const bar = document.getElementById('dim_' + d + '_bar');
+      const val = document.getElementById('dim_' + d + '_val');
+      if (!bar || !val) return;
+      bar.style.width  = s !== null ? (s * 10) + '%' : '0%';
+      bar.style.background = scoreColor(s);
+      val.textContent  = s !== null ? s.toFixed(1) : '–';
+      val.style.color  = scoreColor(s);
+    });
+
+    /* radar chart */
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const gridC = isDark ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.08)';
+    const txtC  = isDark ? '#94a3b8' : '#64748b';
+    if (window._radar) window._radar.destroy();
+    window._radar = new Chart(document.getElementById('radarChart').getContext('2d'), {
+      type: 'radar',
+      data: {
+        labels: ['Bewertung','Profitabilität','Wachstum','Finanzlage','Cashflow','Qualität'],
+        datasets: [{
+          data: dimKeys.map(d => dims[d] ?? 0),
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59,130,246,.15)',
+          borderWidth: 2,
+          pointBackgroundColor: '#3b82f6',
+          pointRadius: 3,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: { r: {
+          min: 0, max: 10, ticks: { stepSize: 2, color: txtC, font: { size: 10 }, backdropColor: 'transparent' },
+          grid: { color: gridC }, angleLines: { color: gridC },
+          pointLabels: { color: txtC, font: { size: 11, weight: '600' } }
+        }},
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    /* metrics table */
+    const tbody = document.getElementById('metrics_table_body');
+    tbody.innerHTML = '';
+    const groups = [
+      { label: 'Bewertung',      keys: ['kgv','kbv','kuv','ev_ebitda','peg'] },
+      { label: 'Profitabilität', keys: ['bruttomarge','ebit_marge','nettomarge','roe','roa','roic'] },
+      { label: 'Wachstum',       keys: ['umsatz_yoy','eps_yoy','umsatz_cagr5','eps_cagr5'] },
+      { label: 'Finanzlage',     keys: ['de_ratio','net_debt_ebitda','current_ratio','quick_ratio','zinsdeckung'] },
+      { label: 'Cashflow',       keys: ['fcf_marge','fcf_ni'] },
+      { label: 'Dividenden',     keys: ['div_yield','payout_ratio'] },
+    ];
+    groups.forEach(g => {
+      const htr = document.createElement('tr');
+      htr.innerHTML = `<td colspan="3" style="padding:10px 14px 6px;font-size:.72rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;background:var(--bg-alt)">${g.label}</td>`;
+      tbody.appendChild(htr);
+      g.keys.forEach(k => {
+        const m = M[k]; const r = R[k];
+        if (!m) return;
+        const valStr = r.val !== null ? (r.val + (m.unit || '')) : 'k.A.';
+        const tr = document.createElement('tr');
+        tr.className = 'metric-detail-row';
+        tr.innerHTML = `
+          <td class="mdr-label">${m.label}</td>
+          <td class="mdr-value" style="text-align:right">${valStr}</td>
+          <td class="mdr-score"><span class="score-pill ${scorePillClass(r.score)}">${r.score !== null ? r.score.toFixed(1) : 'k.A.'}</span></td>`;
+        tbody.appendChild(tr);
+      });
+    });
+
+    /* DCF */
+    const dcfSec = document.getElementById('dcf_result_section');
+    if (dcf) {
+      const fmt = v => v.toFixed(2);
+      document.getElementById('dcf_intrinsic').textContent    = fmt(dcf.pv);
+      document.getElementById('dcf_current').textContent      = price ? fmt(price) : '–';
+      document.getElementById('dcf_buy_price').textContent    = fmt(dcf.buyPrice);
+      document.getElementById('dcf_g1_display').textContent   = (g1pct ?? '–') + '%';
+      document.getElementById('dcf_wacc_display').textContent = (waccpct ?? '–') + '%';
+      const mosEl = document.getElementById('dcf_mos');
+      if (dcf.mos !== null) {
+        mosEl.textContent = (dcf.mos >= 0 ? '+' : '') + dcf.mos.toFixed(1) + '%';
+        mosEl.style.color = dcf.mos >= mosTarget ? 'var(--accent)' : dcf.mos >= 0 ? '#f59e0b' : '#ef4444';
+      } else {
+        mosEl.textContent = '–';
+        mosEl.style.color = '';
+      }
+      dcfSec.style.display = 'block';
+    } else {
+      dcfSec.style.display = 'none';
+    }
+
+    /* strengths & weaknesses */
+    const scored = Object.entries(R)
+      .filter(([, r]) => r.score !== null)
+      .map(([k, r]) => ({ k, s: r.score, label: M[k]?.label }))
+      .filter(x => x.label)
+      .sort((a, b) => b.s - a.s);
+    const top3 = scored.slice(0, 3);
+    const bot3 = scored.slice(-3).reverse().filter(x => x.s < 7);
+
+    const swEl = document.getElementById('sw_list');
+    swEl.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Stärken</div>
+          ${top3.length ? top3.map(x => `
+            <div class="sw-item">
+              <span class="sw-dot good"></span>
+              <span><strong>${x.label}</strong> &ndash; ${x.s.toFixed(1)}/10</span>
+            </div>`).join('') : '<p style="font-size:.875rem;color:var(--text-faint)">Keine Daten</p>'}
+        </div>
+        <div>
+          <div style="font-size:.75rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Verbesserungspotenzial</div>
+          ${bot3.length ? bot3.map(x => `
+            <div class="sw-item">
+              <span class="sw-dot bad"></span>
+              <span><strong>${x.label}</strong> &ndash; ${x.s.toFixed(1)}/10</span>
+            </div>`).join('') : '<p style="font-size:.875rem;color:var(--text-faint)">Keine schwachen Kennzahlen</p>'}
+        </div>
+      </div>`;
+
+    /* qualitative free text */
+    const staerken = gt('staerken');
+    const risiken  = gt('risiken');
+    const qnEl = document.getElementById('qualitative_notes');
+    if (staerken || risiken) {
+      document.getElementById('staerken_display').innerHTML = staerken
+        ? `<div style="font-size:.75rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Notierte Stärken</div><p style="font-size:.875rem;color:var(--text-muted);line-height:1.65">${staerken.replace(/\n/g,'<br>')}</p>` : '';
+      document.getElementById('risiken_display').innerHTML = risiken
+        ? `<div style="font-size:.75rem;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Notierte Risiken</div><p style="font-size:.875rem;color:var(--text-muted);line-height:1.65">${risiken.replace(/\n/g,'<br>')}</p>` : '';
+      qnEl.style.display = 'block';
+    } else {
+      qnEl.style.display = 'none';
+    }
+
+    document.getElementById('analysis_results').style.display = 'block';
+    document.getElementById('analysis_results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+})();
+</script>
+</body>
+</html>
