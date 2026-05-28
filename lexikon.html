@@ -57,7 +57,7 @@
       <span class="search-icon">🔍</span>
       <input type="text" id="searchInput" placeholder="Begriff suchen, z.B. ETF, Dividende, Inflation …" oninput="filterTerms()" autocomplete="off">
     </div>
-    <p class="search-count" id="searchCount">120+ Begriffe verfügbar</p>
+    <p class="search-count" id="searchCount">130+ Begriffe verfügbar</p>
   </div>
 </div>
 
@@ -70,7 +70,7 @@
       <a href="#C" class="alpha-btn active">C</a><a href="#D" class="alpha-btn active">D</a>
       <a href="#E" class="alpha-btn active">E</a><a href="#F" class="alpha-btn active">F</a>
       <a href="#G" class="alpha-btn active">G</a><a href="#H" class="alpha-btn active">H</a>
-      <a href="#I" class="alpha-btn active">I</a><a href="#J" class="alpha-btn" style="opacity:.4;cursor:default">J</a>
+      <a href="#I" class="alpha-btn active">I</a><a href="#J" class="alpha-btn active">J</a>
       <a href="#K" class="alpha-btn active">K</a><a href="#L" class="alpha-btn active">L</a>
       <a href="#M" class="alpha-btn active">M</a><a href="#N" class="alpha-btn active">N</a>
       <a href="#O" class="alpha-btn active">O</a><a href="#P" class="alpha-btn active">P</a>
@@ -214,6 +214,10 @@
           <h3>Duration</h3>
           <p>Maß für die Zinssensitivität einer Anleihe. Je höher die Duration, desto stärker reagiert der Kurs auf Zinsänderungen. Eine Duration von 5 bedeutet: steigen die Zinsen um 1 %, fällt der Kurs um ca. 5 %.</p>
         </div>
+        <div class="term-card" data-term="dcf discounted cashflow barwert bewertung unternehmenswert">
+          <h3>DCF (Discounted Cash Flow)</h3>
+          <p>Bewertungsmethode, bei der zukünftige freie Cashflows mit einem Diskontierungssatz (WACC) auf den heutigen Wert abgezinst werden. Formel: DCF = Σ (FCFt / (1+WACC)^t) + Terminalwert. Der DCF gilt als theoretisch korrekteste Bewertungsmethode, ist aber stark abhängig von Wachstums- und WACC-Annahmen. Quelle: Damodaran, „Investment Valuation" (2012), Kapitel 12.</p>
+        </div>
       </div>
     </div>
 
@@ -278,6 +282,10 @@
         <div class="term-card" data-term="futures terminkontrakt lieferung basiswert rohstoff index">
           <h3>Futures</h3>
           <p>Standardisierte Terminkontrakte, die die Lieferung eines Basiswerts (Rohstoff, Index, Währung) zu einem vereinbarten Preis zu einem zukünftigen Zeitpunkt festlegen. Werden an Terminbörsen gehandelt und vorwiegend zur Absicherung oder Spekulation genutzt.</p>
+        </div>
+        <div class="term-card" data-term="fcf free cash flow freier cashflow unternehmen investitionen">
+          <h3>FCF (Free Cash Flow)</h3>
+          <p>Der freie Cashflow nach Abzug der Investitionsausgaben (CapEx): FCF = Operativer Cashflow − CapEx. Zeigt, wie viel Geld ein Unternehmen nach allen notwendigen Investitionen tatsächlich erwirtschaftet. Positiver FCF ermöglicht Dividenden, Aktienrückkäufe oder Schuldenabbau. Als Bewertungsgrundlage im DCF-Modell gilt der FCF als manipulationsresistenter als der Buchgewinn. Quelle: Sloan, „Do Stock Prices Fully Reflect Information in Accruals?", Accounting Review (1996).</p>
         </div>
         <div class="term-card" data-term="free float streubesitz aktien umlauf öffentlich handel">
           <h3>Free Float (Streubesitz)</h3>
@@ -366,6 +374,21 @@
       </div>
     </div>
 
+    <!-- J -->
+    <div class="lex-section" id="sec-J">
+      <div class="alpha-heading" id="J">J</div>
+      <div class="term-grid">
+        <div class="term-card" data-term="jahresabschluss bilanz guv kapitalflussrechnung geschäftsbericht">
+          <h3>Jahresabschluss</h3>
+          <p>Der gesetzlich vorgeschriebene Rechenschaftsbericht eines Unternehmens am Ende des Geschäftsjahres. Er besteht aus drei Kerndokumenten: der <strong>Bilanz</strong> (Vermögen und Schulden zu einem Stichtag), der <strong>Gewinn- und Verlustrechnung</strong> (GuV – Erträge und Aufwendungen im Zeitraum) und dem <strong>Kapitalflussrechnung</strong> (Cash In- und Outflows). Börsennotierende Unternehmen veröffentlichen den Jahresabschluss im Geschäftsbericht. Quelle: HGB §242 ff., IFRS IAS 1.</p>
+        </div>
+        <div class="term-card" data-term="junk bond hochzinsanleihe spekulation ausfallrisiko rating">
+          <h3>Junk Bond (Schrottanleihe)</h3>
+          <p>Eine Anleihe unterhalb des Investment-Grade-Ratings (unter BBB− bei S&amp;P bzw. Baa3 bei Moody's). Junk Bonds bieten höhere Zinsen als sichere Staatsanleihen, weil das Ausfallrisiko des Emittenten erhöht ist. Der Begriff wird synonym mit „High-Yield-Anleihe" verwendet, hat aber negativere Konnotation. Risikoaufschlag (Spread) zu Staatsanleihen beträgt typisch 3–8 Prozentpunkte.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- K -->
     <div class="lex-section" id="sec-K">
       <div class="alpha-heading" id="K">K</div>
@@ -377,6 +400,14 @@
         <div class="term-card" data-term="kgv kurs-gewinn-verhältnis bewertung aktie preis earnings">
           <h3>KGV (Kurs-Gewinn-Verhältnis)</h3>
           <p>Verhältnis des Aktienkurses zum Gewinn je Aktie (KGV = Kurs ÷ EPS). Zeigt, wie viele Jahre ein Unternehmen bei aktuellem Gewinn braucht, um seinen Börsenwert zu verdienen. Ein KGV von 20 gilt als fair, über 30 als teuer.</p>
+        </div>
+        <div class="term-card" data-term="kbv kurs-buchwert-verhältnis eigenkapital bilanzwert substanz">
+          <h3>KBV (Kurs-Buchwert-Verhältnis)</h3>
+          <p>KBV = Aktienkurs ÷ Buchwert je Aktie. Setzt den Marktwert einer Aktie ins Verhältnis zum bilanziellen Eigenkapital je Aktie. KBV &lt; 1 bedeutet, der Markt bewertet das Unternehmen unter seinem Buchwert – für Benjamin Graham ein mögliches Kaufsignal. KBV &gt; 3 gilt als teuer. Finanzunternehmen (Banken, Versicherungen) werden traditionell stärker am KBV gemessen. Quelle: Graham &amp; Dodd, „Security Analysis" (1934).</p>
+        </div>
+        <div class="term-card" data-term="kuv kurs-umsatz-verhältnis umsatz bewertung wachstumsaktie">
+          <h3>KUV (Kurs-Umsatz-Verhältnis)</h3>
+          <p>KUV = Marktkapitalisierung ÷ Jahresumsatz. Nützlich für Unternehmen ohne Gewinn (Start-ups, Wachstumsunternehmen). Ein KUV unter 1 gilt als günstig, über 5 als teuer. Im Gegensatz zum KGV ist es nicht durch Gewinnmanipulationen beeinflussbar. Quelle: Damodaran, „Damodaran on Valuation" (2006), Kapitel 7.</p>
         </div>
         <div class="term-card" data-term="kapitalerhöhung neue aktien verwässerung bezugsrecht emission">
           <h3>Kapitalerhöhung</h3>
@@ -492,6 +523,10 @@
           <h3>Portfolio</h3>
           <p>Die Gesamtheit aller Vermögenswerte einer Person oder Institution. Ein gut diversifiziertes Portfolio enthält verschiedene Anlageklassen (Aktien, Anleihen, Immobilien), Regionen und Branchen, um das Risiko zu streuen.</p>
         </div>
+        <div class="term-card" data-term="peg ratio kurs-gewinn-wachstum bewertung wachstumsaktie peter lynch">
+          <h3>PEG-Ratio (Kurs-Gewinn-Wachstums-Verhältnis)</h3>
+          <p>PEG = KGV ÷ jährliches Gewinnwachstum (%). Verbindet Bewertung und Wachstum in einer Kennzahl. PEG &lt; 1 gilt als günstig, PEG &gt; 2 als teuer. Populär gemacht durch Peter Lynch in „One Up On Wall Street" (1989). Wichtig: Das PEG berücksichtigt kein Risiko und ist bei niedrigen oder negativen Wachstumsraten unbrauchbar.</p>
+        </div>
         <div class="term-card" data-term="passives investieren index etf buy and hold kosten günstig">
           <h3>Passives Investieren</h3>
           <p>Anlagestrategie, die auf das aktive Auswählen von Einzelwerten verzichtet und stattdessen einen breiten Marktindex durch ETFs abbildet. Studien zeigen, dass passives Investieren auf lange Sicht die meisten aktiv verwalteten Fonds schlägt.</p>
@@ -579,6 +614,14 @@
         <div class="term-card" data-term="short squeeze leerverkäufer zwangskauf kurssteigerung gamestop">
           <h3>Short Squeeze</h3>
           <p>Ein Short Squeeze entsteht, wenn stark leerverkaufte Aktien unerwartet steigen und Leerverkäufer gezwungen sind, ihre Positionen durch Rückkäufe zu schließen – was den Kurs noch weiter treibt. Bekanntes Beispiel: GameStop 2021. Short Squeezes können extreme Kursbewegungen in kurzer Zeit verursachen und enden oft so abrupt, wie sie begonnen haben.</p>
+        </div>
+        <div class="term-card" data-term="sharpe ratio risikoadjustierte rendite volatilität william sharpe">
+          <h3>Sharpe Ratio</h3>
+          <p>Maß für die risikoadjustierte Rendite: Sharpe Ratio = (Portfoliorendite − risikofreier Zinssatz) ÷ Standardabweichung. Eine Sharpe Ratio über 1 gilt als gut, über 2 als sehr gut. Ermöglicht den Vergleich von Portfolios mit unterschiedlichem Risiko. Entwickelt von William F. Sharpe, Nobelpreisträger 1990. Quelle: Sharpe, „Mutual Fund Performance", Journal of Business (1966).</p>
+        </div>
+        <div class="term-card" data-term="standardabweichung volatilität risiko streuung rendite statistik">
+          <h3>Standardabweichung</h3>
+          <p>Statistisches Maß für die Streuung von Renditen um den Mittelwert. Hohe Standardabweichung = hohe Volatilität = hohes Risiko. Der S&amp;P 500 hat eine historische annualisierte Standardabweichung von ca. 15–20 %. Für ein gut diversifiziertes Portfolio ist die Standardabweichung niedriger als die gewichtete Summe der Einzelrisiken (Diversifikationseffekt nach Markowitz, 1952). Quelle: Markowitz, „Portfolio Selection", Journal of Finance (1952).</p>
         </div>
         <div class="term-card" data-term="smart beta faktor etf regelbasiert strategie value momentum quality">
           <h3>Smart Beta</h3>
@@ -668,6 +711,10 @@
           <h3>Währungsrisiko</h3>
           <p>Das Risiko, dass Wechselkursschwankungen die Rendite einer Auslandsinvestition beeinflussen. Wer in US-Dollar investiert und der Dollar gegenüber dem Euro schwächelt, erzielt in Euro weniger Rendite. Währungsgesicherte (hedged) ETFs sichern dieses Risiko ab, haben aber höhere Kosten.</p>
         </div>
+        <div class="term-card" data-term="wacc kapitalkosten eigenkapital fremdkapital gewichteter durchschnitt dcf">
+          <h3>WACC (Gewichtete Kapitalkosten)</h3>
+          <p>Weighted Average Cost of Capital – der gewichtete Durchschnitt aus Eigen- und Fremdkapitalkosten eines Unternehmens. WACC = (EK/GK) × rEK + (FK/GK) × rFK × (1 − Steuersatz). Dient als Diskontierungssatz im DCF-Modell. Ein niedrigerer WACC erhöht den theoretischen Unternehmenswert. Typischer WACC für S&amp;P-500-Unternehmen: 7–10 %. Quelle: Modigliani &amp; Miller, „The Cost of Capital, Corporation Finance", American Economic Review (1958).</p>
+        </div>
       </div>
     </div>
 
@@ -700,9 +747,12 @@
       <div class="footer-col"><h4>Rechner</h4><ul class="footer-links"><li><a href="/rechner.html">Alle Rechner</a></li></ul></div>
       <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li>
       <li><a href="/blog.html">Blog</a></li><li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li></ul></div>
-      <div class="footer-col"><h4>Navigation</h4><ul class="footer-links"><li><a href="/index.html">Startseite</a></li></ul></div>
+      <div class="footer-col"><h4>Rechtliches</h4><ul class="footer-links"><li><a href="/impressum.html">Impressum</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung</span></div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Inhalte ohne Gewähr</span>
+      <span><a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
   </div>
 </footer>
 
