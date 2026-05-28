@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muster-Aktienanalyse – So ist eine Aktienanalyse auf FinanzenCampus aufgebaut. Template für zukünftige Blog-Beiträge.">
+  <title>Muster-Aktienanalyse – FinanzenCampus Blog</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/aktienanalyse.html">Aktien</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/blog.html" class="active">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild wechseln" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li>
+  <li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/aktienanalyse.html">Aktien</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+  <li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+  <li><a href="/blog.html">Blog</a></li>
+</ul></div>
+
+<!-- POST HEADER -->
+<section class="page-hero">
+  <div class="container">
+    <div style="max-width:760px">
+      <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:1rem;flex-wrap:wrap">
+        <a href="/blog.html" style="color:var(--primary);font-size:.85rem;font-weight:500;text-decoration:none">← Blog</a>
+        <span style="color:var(--border)">·</span>
+        <span class="blog-tag">Aktienanalyse</span>
+        <span style="color:var(--text-muted);font-size:.85rem">Template</span>
+      </div>
+      <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.25;margin-bottom:1rem">
+        Muster-Aktienanalyse:<br>So strukturiere ich eine Analyse
+      </h1>
+      <p style="color:var(--text-muted);font-size:1rem;line-height:1.6;max-width:620px">
+        Dieser Beitrag dient als Template. Jede Aktienanalyse auf diesem Blog folgt dieser Struktur – von Geschäftsmodell über Kennzahlen bis zur persönlichen Einschätzung.
+      </p>
+      <div style="display:flex;gap:1.5rem;margin-top:1.25rem;font-size:.85rem;color:var(--text-muted)">
+        <span>📅 [DATUM]</span>
+        <span>📖 ca. [X] Min. Lesezeit</span>
+        <span>✍️ [AUTOR]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER BOX -->
+<div class="container" style="max-width:800px;margin-top:2rem">
+  <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start">
+    <span style="font-size:1.1rem;flex-shrink:0">⚠️</span>
+    <p style="margin:0;font-size:.875rem;color:var(--text-muted);line-height:1.5">
+      <strong>Keine Anlageberatung.</strong> Dieser Beitrag ist eine persönliche Meinungsäußerung und dient ausschließlich zu Informationszwecken. Er stellt keine Kauf- oder Verkaufsempfehlung dar. Jede Investitionsentscheidung liegt in der eigenen Verantwortung.
+    </p>
+  </div>
+</div>
+
+<!-- POST CONTENT -->
+<div class="container" style="max-width:800px;padding-bottom:4rem">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="card" style="margin:2rem 0">
+    <h3 style="font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:.75rem">Inhalt</h3>
+    <ol style="margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.375rem">
+      <li><a href="#geschaeftsmodell" class="blog-toc-link">Geschäftsmodell &amp; Überblick</a></li>
+      <li><a href="#markt" class="blog-toc-link">Markt &amp; Wettbewerb</a></li>
+      <li><a href="#kennzahlen" class="blog-toc-link">Finanzkennzahlen</a></li>
+      <li><a href="#bewertung" class="blog-toc-link">Bewertung</a></li>
+      <li><a href="#risiken" class="blog-toc-link">Risiken &amp; Chancen</a></li>
+      <li><a href="#fazit" class="blog-toc-link">Fazit &amp; Einschätzung</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1: GESCHÄFTSMODELL -->
+  <h2 id="geschaeftsmodell" class="blog-heading">1. Geschäftsmodell &amp; Überblick</h2>
+
+  <div class="blog-kpi-row">
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Unternehmen</span>
+      <span class="blog-kpi-value">[Name]</span>
+    </div>
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Ticker</span>
+      <span class="blog-kpi-value">[TICKER]</span>
+    </div>
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Sektor</span>
+      <span class="blog-kpi-value">[Sektor]</span>
+    </div>
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Land</span>
+      <span class="blog-kpi-value">[Land]</span>
+    </div>
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Marktkapitalisierung</span>
+      <span class="blog-kpi-value">[X Mrd. €]</span>
+    </div>
+    <div class="blog-kpi">
+      <span class="blog-kpi-label">Börsenkurs</span>
+      <span class="blog-kpi-value">[€ / $] (Stand: [DATUM])</span>
+    </div>
+  </div>
+
+  <p class="blog-text">
+    [Kurzbeschreibung des Unternehmens: Was macht das Unternehmen? Wie verdient es Geld? Seit wann ist es börsennotiert? Welche Produkte/Dienstleistungen sind zentral?]
+  </p>
+
+  <p class="blog-text">
+    [Erläuterung des Geschäftsmodells: Wie skaliert es? Gibt es wiederkehrende Umsätze (Subscription, SaaS, Lizenz)? Wie hoch sind die Margen typischerweise in diesem Geschäftsmodell?]
+  </p>
+
+  <!-- SECTION 2: MARKT -->
+  <h2 id="markt" class="blog-heading">2. Markt &amp; Wettbewerb</h2>
+
+  <p class="blog-text">
+    [Marktgröße: Wie groß ist der adressierbare Markt (TAM)? Wächst er? Mit welcher Rate? Quellen nennen, z. B. Branchenberichte.]
+  </p>
+
+  <p class="blog-text">
+    [Wettbewerb: Wer sind die Hauptkonkurrenten? Welche Marktposition nimmt das Unternehmen ein? Hat es einen wirtschaftlichen Burggraben (Moat)?]
+  </p>
+
+  <div class="card" style="margin:1.5rem 0">
+    <h4 style="margin-bottom:.75rem;font-size:.95rem">Wirtschaftlicher Burggraben (Moat)</h4>
+    <ul style="margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.375rem;color:var(--text-muted);font-size:.9rem">
+      <li>☑ <strong>Netzwerkeffekte:</strong> [Ja/Nein – Begründung]</li>
+      <li>☑ <strong>Wechselkosten:</strong> [Ja/Nein – Begründung]</li>
+      <li>☑ <strong>Kostenvorteile:</strong> [Ja/Nein – Begründung]</li>
+      <li>☑ <strong>Intangible Assets (Marke, Patent):</strong> [Ja/Nein – Begründung]</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 3: KENNZAHLEN -->
+  <h2 id="kennzahlen" class="blog-heading">3. Finanzkennzahlen</h2>
+
+  <p class="blog-text">Alle Zahlen aus dem letzten verfügbaren Geschäftsbericht (GJ [JAHR]).</p>
+
+  <div class="table-wrap" style="overflow-x:auto;margin:1.5rem 0">
+    <table style="width:100%;border-collapse:collapse;font-size:.9rem">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border)">
+          <th style="text-align:left;padding:.6rem .75rem;color:var(--text-muted);font-weight:600">Kennzahl</th>
+          <th style="text-align:right;padding:.6rem .75rem;color:var(--text-muted);font-weight:600">[GJ YYYY]</th>
+          <th style="text-align:right;padding:.6rem .75rem;color:var(--text-muted);font-weight:600">[GJ YYYY-1]</th>
+          <th style="text-align:right;padding:.6rem .75rem;color:var(--text-muted);font-weight:600">Einschätzung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">Umsatz</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X Mrd. €]</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X Mrd. €]</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-good">+[X]% Wachstum</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">EBIT-Marge</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]%</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]%</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-ok">Solide</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">KGV (trailing)</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]</td>
+          <td style="text-align:right;padding:.6rem .75rem">–</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-bad">Hoch</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">KBV</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]</td>
+          <td style="text-align:right;padding:.6rem .75rem">–</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-ok">Fair</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">Eigenkapitalrendite (ROE)</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]%</td>
+          <td style="text-align:right;padding:.6rem .75rem">–</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-good">Stark</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:.6rem .75rem">Nettoverschuldung / EBITDA</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]x</td>
+          <td style="text-align:right;padding:.6rem .75rem">–</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-good">Niedrig</span></td>
+        </tr>
+        <tr>
+          <td style="padding:.6rem .75rem">Free Cashflow-Marge</td>
+          <td style="text-align:right;padding:.6rem .75rem">[X]%</td>
+          <td style="text-align:right;padding:.6rem .75rem">–</td>
+          <td style="text-align:right;padding:.6rem .75rem"><span class="score-pill sp-ok">Gut</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="blog-text">
+    [Kommentar zu den Kennzahlen: Was fällt besonders auf? Was ist gut, was besorgniserregend? Wie schneidet das Unternehmen im Branchenvergleich ab?]
+  </p>
+
+  <!-- SECTION 4: BEWERTUNG -->
+  <h2 id="bewertung" class="blog-heading">4. Bewertung</h2>
+
+  <p class="blog-text">
+    [DCF-Überlegung oder Multiplikator-Bewertung: Welche Methode wird angewandt? Welche Annahmen werden zugrunde gelegt (Wachstumsrate, WACC)? Wie weit liegt der faire Wert vom Börsenkurs entfernt?]
+  </p>
+
+  <div class="card" style="margin:1.5rem 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem">
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--primary)">[€/$ X]</div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Aktueller Kurs</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--success)">[€/$ X]</div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Fairer Wert (DCF, Basis)</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--warning)">[+/- X]%</div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Über-/Unterbewertung</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="blog-text">
+    [Bewertungskommentar: Unter welchen Bedingungen wäre das Unternehmen fair bewertet? Was ist der Margin of Safety? Welche Szenarien (bull/base/bear) werden betrachtet?]
+  </p>
+
+  <!-- SECTION 5: RISIKEN -->
+  <h2 id="risiken" class="blog-heading">5. Risiken &amp; Chancen</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0">
+    <div class="card">
+      <h4 style="color:var(--success);margin-bottom:.75rem;font-size:.95rem">✅ Chancen</h4>
+      <ul style="margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;color:var(--text-muted)">
+        <li>[Chance 1 – kurze Beschreibung]</li>
+        <li>[Chance 2 – kurze Beschreibung]</li>
+        <li>[Chance 3 – kurze Beschreibung]</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--danger);margin-bottom:.75rem;font-size:.95rem">⚠️ Risiken</h4>
+      <ul style="margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;color:var(--text-muted)">
+        <li>[Risiko 1 – kurze Beschreibung]</li>
+        <li>[Risiko 2 – kurze Beschreibung]</li>
+        <li>[Risiko 3 – kurze Beschreibung]</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 6: FAZIT -->
+  <h2 id="fazit" class="blog-heading">6. Fazit &amp; Einschätzung</h2>
+
+  <p class="blog-text">
+    [Zusammenfassung: Was sind die wichtigsten Erkenntnisse? Ist das Unternehmen interessant? Für welchen Anlegertyp könnte es passen (wachstumsorientiert, dividendenorientiert, Value-Investor)?]
+  </p>
+
+  <div class="card" style="margin:1.5rem 0;border-left:3px solid var(--primary)">
+    <h4 style="margin-bottom:.5rem;font-size:.95rem">Meine persönliche Einschätzung</h4>
+    <p style="margin:0;font-size:.9rem;color:var(--text-muted);line-height:1.6">
+      [Freie persönliche Einschätzung – explizit als Meinung und nicht als Empfehlung kennzeichnen. Auf welche Kurse/Trigger würde ich warten? Was müsste sich fundamental verändern, damit ich die These aufgebe?]
+    </p>
+  </div>
+
+  <!-- BOTTOM DISCLAIMER -->
+  <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-top:2.5rem">
+    <h4 style="margin-bottom:.5rem;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted)">Disclaimer</h4>
+    <p style="margin:0;font-size:.85rem;color:var(--text-muted);line-height:1.6">
+      Dieser Artikel ist eine persönliche Analyse und Meinungsäußerung des Autors. Er stellt keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung und kein Angebot zum Kauf oder Verkauf von Wertpapieren dar. Der Autor hält möglicherweise Positionen in den genannten Wertpapieren. Jede Investitionsentscheidung trifft der Leser in eigener Verantwortung nach eigener Prüfung. Die hier verwendeten Daten stammen aus öffentlich zugänglichen Quellen und wurden nach bestem Wissen und Gewissen zusammengestellt – eine Gewähr für Vollständigkeit und Richtigkeit wird nicht übernommen.
+    </p>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    <a href="/blog.html" style="color:var(--primary);text-decoration:none;font-weight:500">← Alle Beiträge</a>
+    <a href="/aktienanalyse.html" class="btn btn-primary" style="font-size:.875rem">Eigene Analyse starten</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="footer-brand-icon" style="display:none">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon, Fundamentalanalyse und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html">Alle Rechner</a></li>
+          <li><a href="/schulden.html">Schulden tilgen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li>
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Themen</h4>
+        <ul class="footer-links">
+          <li><a href="/wissen.html#investieren">ETF &amp; Aktien</a></li>
+          <li><a href="/wissen.html#psychologie">Behavioral Finance</a></li>
+          <li><a href="/wissen.html#sparen">Sparen</a></li>
+          <li><a href="/wissen.html">FIRE-Bewegung</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+      <span><a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

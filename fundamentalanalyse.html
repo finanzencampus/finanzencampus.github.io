@@ -20,12 +20,11 @@
     <ul class="nav-links">
       <li><a href="/index.html">Startseite</a></li>
       <li><a href="/rechner.html">Rechner</a></li>
-      <li><a href="/schulden.html">Schulden</a></li>
       <li><a href="/aktienanalyse.html">Aktien</a></li>
       <li><a href="/fundamentalanalyse.html" class="active">Analyse</a></li>
       <li><a href="/lexikon.html">Lexikon</a></li>
       <li><a href="/wissen.html">Wissen</a></li>
-      <li><a href="/quiz.html">Quiz</a></li>
+      <li><a href="/blog.html">Blog</a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild" aria-label="Dark Mode">
@@ -38,10 +37,10 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu"><ul>
   <li><a href="/index.html">Startseite</a></li><li><a href="/rechner.html">Rechner</a></li>
-  <li><a href="/schulden.html">Schulden</a></li>
   <li><a href="/aktienanalyse.html">Aktien</a></li>
   <li><a href="/fundamentalanalyse.html">Analyse</a></li><li><a href="/lexikon.html">Lexikon</a></li>
-  <li><a href="/wissen.html">Wissen</a></li><li><a href="/quiz.html">Quiz</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/blog.html">Blog</a></li>
 </ul></div>
 
 <div class="page-hero">
@@ -446,6 +445,133 @@
   </div>
 </section>
 
+<!-- CASHFLOW-ANALYSE -->
+<section class="section section-alt" id="cashflow">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Cashflow</span>
+      <h2 class="section-title">Cashflow-Analyse</h2>
+      <p class="section-desc">Der freie Cashflow ist oft aussagekräftiger als der Buchgewinn – er zeigt, wie viel echtes Geld ein Unternehmen tatsächlich generiert.</p>
+    </div>
+    <div class="text-2col">
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">💵 Free Cashflow (FCF)</h3>
+        <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:18px">
+          Der freie Cashflow ist das Geld, das nach allen betrieblichen Ausgaben und Investitionen übrig bleibt – frei verwendbar für Dividenden, Aktienrückkäufe oder Schuldenabbau.
+        </p>
+        <div style="background:var(--primary-subtle);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius);padding:20px;margin-bottom:18px;text-align:center">
+          <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px">Formel</div>
+          <div style="font-size:1.125rem;font-weight:800;color:var(--primary)">FCF = Operating Cashflow − CapEx</div>
+          <div style="font-size:.8125rem;color:var(--text-muted);margin-top:8px">CapEx = Kapitalaufwendungen (Investitionen in Anlagevermögen)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--text-muted)">FCF-Marge</span>
+            <strong style="color:var(--text-strong)">FCF ÷ Umsatz × 100</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--accent-subtle);border:1px solid rgba(52,211,153,.3);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--accent-dark);font-weight:600">FCF &gt; Nettogewinn</span>
+            <strong style="color:var(--accent-dark)">= hohe Gewinnqualität</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.875rem">
+            <span style="color:var(--text-muted)">CapEx/Umsatz unter 5 %</span>
+            <strong style="color:var(--text-strong)">= kapitalleichtes Geschäft</strong>
+          </div>
+        </div>
+        <div class="info-box info-blue mt-6">
+          💡 Ist der FCF dauerhaft höher als der Nettogewinn, deutet das auf hohe Qualität der Gewinne hin – das Unternehmen verdient echtes Geld, nicht nur Buchgewinne.
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;color:var(--text-strong);margin-bottom:16px">📋 Cashflow-Checkliste</h3>
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="cl-num">✓</div>
+            <div class="cl-text"><h4>FCF-Marge prüfen</h4><p>Eine FCF-Marge über 10–15 % ist ein Zeichen eines profitablen, kapitaleffizienten Geschäftsmodells.</p></div>
+          </div>
+          <div class="checklist-item">
+            <div class="cl-num">✓</div>
+            <div class="cl-text"><h4>CapEx/Umsatz-Verhältnis</h4><p>Unter 5 % CapEx/Umsatz gilt als kapitalleichtes Geschäftsmodell – typisch für Software, Markenunternehmen und Asset-Light-Firmen.</p></div>
+          </div>
+          <div class="checklist-item">
+            <div class="cl-num">✓</div>
+            <div class="cl-text"><h4>Wachstum des FCF</h4><p>Wächst der FCF Jahr für Jahr? Ein konstant wachsender FCF zeigt, dass das Unternehmen skalierfähig ist.</p></div>
+          </div>
+          <div class="checklist-item">
+            <div class="cl-num">✓</div>
+            <div class="cl-text"><h4>FCF vs. Nettogewinn</h4><p>Liegt der FCF dauerhaft deutlich unter dem Nettogewinn, könnte das auf aggressive Bilanzierung oder hohen Kapitalbedarf hinweisen.</p></div>
+          </div>
+        </div>
+        <div class="info-box info-yellow mt-6">
+          ⚠️ Unternehmen können durch Bilanzierungstricks kurzfristig hohe Gewinne ausweisen – aber der Cashflow lässt sich schwerer manipulieren.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITATIVE FAKTOREN -->
+<section class="section" id="qualitative-faktoren">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Über die Zahlen hinaus</span>
+      <h2 class="section-title">Qualitative Faktoren</h2>
+      <p class="section-desc">Die besten Unternehmen erkennt man nicht nur an Zahlen. Qualitative Faktoren entscheiden darüber, ob ein Wettbewerbsvorteil langfristig bestand hat.</p>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-icon icon-blue">🏰</div>
+        <h3>Burggraben (Moat)</h3>
+        <p>Ein dauerhafter Wettbewerbsvorteil schützt das Unternehmen vor Konkurrenz. Vier klassische Burggräben:</p>
+        <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:6px;margin-top:10px">
+          <li><strong style="color:var(--text-strong)">Netzwerkeffekte:</strong> Der Wert steigt mit jedem neuen Nutzer (z.B. Zahlungsnetzwerke, soziale Plattformen)</li>
+          <li><strong style="color:var(--text-strong)">Wechselkosten:</strong> Ein Kundenwechsel ist teuer oder aufwändig (z.B. ERP-Software, Cloud-Dienste)</li>
+          <li><strong style="color:var(--text-strong)">Kostenvorteile:</strong> Günstigere Produktion durch Größe oder Prozesse (z.B. Logistik, Rohstoffe)</li>
+          <li><strong style="color:var(--text-strong)">Immaterielle Werte:</strong> Starke Marken, Patente oder Lizenzen als Schutzwall</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon icon-green">👔</div>
+        <h3>Managementqualität</h3>
+        <p>Exzellentes Management ist ein unterschätzter Werttreiber – schlechte Entscheidungen können selbst das beste Geschäftsmodell zerstören.</p>
+        <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:6px;margin-top:10px">
+          <li><strong style="color:var(--text-strong)">Insider Ownership:</strong> Kaufen Manager eigene Aktien? Hautnahes Interesse an der Wertentwicklung.</li>
+          <li><strong style="color:var(--text-strong)">Capital Allocation History:</strong> Wie wird freier Cashflow eingesetzt? Dividenden, Rückkäufe oder sinnvolle Akquisitionen?</li>
+          <li><strong style="color:var(--text-strong)">Vergütungsstruktur:</strong> Werden langfristige oder kurzfristige Ziele belohnt?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon icon-purple">📈</div>
+        <h3>Marktposition</h3>
+        <p>Die Stärke der Marktstellung bestimmt, wie viel Preissetzungsmacht ein Unternehmen hat.</p>
+        <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:6px;margin-top:10px">
+          <li><strong style="color:var(--text-strong)">Pricing Power:</strong> Kann das Unternehmen Preise erhöhen, ohne Kunden zu verlieren? Der stärkste Indikator für einen Burggraben.</li>
+          <li><strong style="color:var(--text-strong)">Marktanteil:</strong> Wächst oder schrumpft der Anteil am Gesamtmarkt? Marktanteilsgewinne sind ein starkes Signal.</li>
+          <li><strong style="color:var(--text-strong)">Marktgröße (TAM):</strong> Wie groß ist der adressierbare Markt – und wie viel davon ist noch erschließbar?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon icon-green">🌱</div>
+        <h3>ESG als Risikofilter</h3>
+        <p>ESG-Kriterien (Environmental, Social, Governance) sind kein reines Wertethema – sie helfen, Risiken frühzeitig zu erkennen.</p>
+        <ul style="list-style:none;font-size:.8125rem;color:var(--text-muted);display:flex;flex-direction:column;gap:6px;margin-top:10px">
+          <li><strong style="color:var(--text-strong)">Environmental:</strong> Regulierungsrisiken durch CO₂-Emissionen, Ressourcenverbrauch oder Umwelthaftung</li>
+          <li><strong style="color:var(--text-strong)">Social:</strong> Arbeitsbedingungen, Lieferkettentransparenz, Produkthaftung</li>
+          <li><strong style="color:var(--text-strong)">Governance:</strong> Unabhängigkeit des Vorstands, Transparenz, Minderheitenschutz</li>
+        </ul>
+        <div class="info-box info-blue" style="margin-top:14px">
+          💡 Schlechte Governance ist oft der erste Indikator für spätere Bilanzskandale oder Kursverluste.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- WEITERFÜHREND -->
 <section class="section">
   <div class="container">
@@ -456,9 +582,9 @@
     <div class="card-grid">
       <div class="card">
         <div class="card-icon icon-green">🧠</div>
-        <h3>Wissen testen</h3>
-        <p>Du hast die Grundlagen gelesen? Teste dein Finanzwissen jetzt mit 15 Fragen in unserem interaktiven Quiz.</p>
-        <a href="/quiz.html" class="card-link">Zum Quiz →</a>
+        <h3>Wissen vertiefen</h3>
+        <p>Verstehe die Theorie hinter den Kennzahlen – von Bilanzanalyse bis Cashflow. Im Wissensteil findest du kompakte Erklärungen.</p>
+        <a href="/wissen.html" class="card-link">Zum Wissen →</a>
       </div>
       <div class="card">
         <div class="card-icon icon-blue">🧮</div>
@@ -490,7 +616,6 @@
       <div class="footer-col"><h4>Lernen</h4><ul class="footer-links">
         <li><a href="/lexikon.html">Börsenlexikon</a></li>
         <li><a href="/wissen.html">Finanzwissen</a></li>
-        <li><a href="/quiz.html">Quiz</a></li>
       </ul></div>
       <div class="footer-col"><h4>Tools</h4><ul class="footer-links">
         <li><a href="/rechner.html">Alle Rechner</a></li>
