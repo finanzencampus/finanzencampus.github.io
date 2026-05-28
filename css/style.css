@@ -45,6 +45,8 @@
   --success:#059669;
   --danger:#dc2626;
   --warning:#d97706;
+  --purple-subtle:#fdf4ff;
+  --purple-text:#6b21a8;
 }
 
 [data-theme="dark"]{
@@ -73,6 +75,8 @@
   --shadow-hover:none;
   --hero-bg:var(--bg);
   --page-hero-bg:var(--bg);
+  --purple-subtle:#2e1065;
+  --purple-text:#c084fc;
 }
 
 /* Color transition – smooth theme switch */
