@@ -717,31 +717,39 @@
 (function () {
 
   /* ── Metric definitions ─────────────────────────── */
+  /* Thresholds based on: Graham (1949), Damodaran annual data (NYU), Fama/French (1992), Greenblatt (2006) */
+  /* bench = S&P 500 / MSCI World historical median for context display */
   const M = {
-    kgv:           { label:'KGV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:10,s:10},{t:15,s:9},{t:20,s:7},{t:25,s:6},{t:35,s:4},{t:50,s:2},{t:1e9,s:1}] },
-    kbv:           { label:'KBV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:.8,s:10},{t:1.5,s:9},{t:2.5,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
-    kuv:           { label:'KUV',                   unit:'',  dim:'bewertung',      hi:false, bp:[{t:.5,s:10},{t:1,s:9},{t:2,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
-    ev_ebitda:     { label:'EV/EBITDA',             unit:'',  dim:'bewertung',      hi:false, bp:[{t:6,s:10},{t:10,s:8},{t:15,s:6},{t:20,s:4},{t:30,s:2},{t:1e9,s:1}] },
-    peg:           { label:'PEG-Ratio',             unit:'',  dim:'bewertung',      hi:false, bp:[{t:.5,s:10},{t:1,s:8},{t:1.5,s:6},{t:2,s:4},{t:1e9,s:2}] },
-    bruttomarge:   { label:'Bruttomarge',           unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:60,s:10},{t:50,s:9},{t:40,s:8},{t:30,s:6},{t:20,s:4},{t:0,s:2},{t:-1e9,s:0}] },
-    ebit_marge:    { label:'EBIT-Marge',            unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:30,s:10},{t:25,s:9},{t:20,s:8},{t:15,s:7},{t:10,s:6},{t:5,s:4},{t:0,s:2},{t:-1e9,s:0}] },
-    nettomarge:    { label:'Nettomarge',            unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:7,s:6},{t:4,s:4},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
-    roe:           { label:'ROE',                   unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:6},{t:5,s:4},{t:0,s:2},{t:-1e9,s:0}] },
-    roa:           { label:'ROA',                   unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:15,s:10},{t:10,s:9},{t:7,s:7},{t:4,s:5},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
-    roic:          { label:'ROIC',                  unit:'%', dim:'profitabilitaet',hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:7},{t:7,s:5},{t:3,s:3},{t:0,s:1},{t:-1e9,s:0}] },
-    umsatz_yoy:    { label:'Umsatzwachstum YoY',   unit:'%', dim:'wachstum',       hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-5,s:1},{t:-1e9,s:0}] },
-    eps_yoy:       { label:'EPS-Wachstum YoY',     unit:'%', dim:'wachstum',       hi:true,  bp:[{t:30,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
-    umsatz_cagr5:  { label:'Umsatz 5J-CAGR',       unit:'%', dim:'wachstum',       hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:8},{t:7,s:6},{t:4,s:5},{t:1,s:3},{t:0,s:2},{t:-1e9,s:0}] },
-    eps_cagr5:     { label:'EPS 5J-CAGR',          unit:'%', dim:'wachstum',       hi:true,  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:7},{t:7,s:6},{t:3,s:4},{t:0,s:2},{t:-1e9,s:1}] },
-    de_ratio:      { label:'Verschuldungsgrad D/E', unit:'',  dim:'finanzlage',     hi:false, bp:[{t:0,s:10},{t:.3,s:9},{t:.7,s:8},{t:1.2,s:6},{t:2,s:4},{t:3,s:2},{t:1e9,s:1}] },
-    net_debt_ebitda:{ label:'Net Debt/EBITDA',     unit:'',  dim:'finanzlage',     hi:false, bp:[{t:-1,s:10},{t:0,s:9},{t:1,s:8},{t:2,s:7},{t:3,s:5},{t:4,s:3},{t:1e9,s:1}] },
-    current_ratio: { label:'Current Ratio',         unit:'',  dim:'finanzlage',     hi:true,  bp:[{t:3,s:10},{t:2,s:9},{t:1.5,s:7},{t:1,s:5},{t:.8,s:3},{t:-1e9,s:1}] },
-    quick_ratio:   { label:'Quick Ratio',           unit:'',  dim:'finanzlage',     hi:true,  bp:[{t:2,s:10},{t:1.5,s:9},{t:1,s:7},{t:.7,s:5},{t:.5,s:3},{t:-1e9,s:1}] },
-    zinsdeckung:   { label:'Zinsdeckungsgrad',      unit:'x', dim:'finanzlage',     hi:true,  bp:[{t:20,s:10},{t:10,s:9},{t:5,s:7},{t:3,s:5},{t:1.5,s:3},{t:0,s:1},{t:-1e9,s:0}] },
-    fcf_marge:     { label:'FCF-Marge',             unit:'%', dim:'cashflow',       hi:true,  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
-    fcf_ni:        { label:'FCF / Nettogewinn',     unit:'',  dim:'cashflow',       hi:true,  bp:[{t:1.5,s:10},{t:1.2,s:9},{t:1,s:8},{t:.8,s:7},{t:.5,s:5},{t:0,s:2},{t:-1e9,s:0}] },
-    div_yield:     { label:'Dividendenrendite',     unit:'%', dim:'dividenden',     hi:null },
-    payout_ratio:  { label:'Ausschüttungsquote',    unit:'%', dim:'dividenden',     hi:false, bp:[{t:25,s:9},{t:40,s:10},{t:55,s:8},{t:70,s:6},{t:85,s:4},{t:1e9,s:2}] },
+    /* Bewertung – Quellen: Graham "Intelligent Investor": KGV<15 für defensive Anleger; historischer S&P 500 Median ~17; Damodaran Daten */
+    kgv:           { label:'KGV',                   unit:'',  dim:'bewertung',      hi:false, bench:'S&P 500 Ø ~17',   bp:[{t:10,s:10},{t:15,s:9},{t:20,s:7},{t:25,s:6},{t:35,s:4},{t:50,s:2},{t:1e9,s:1}] },
+    kbv:           { label:'KBV',                   unit:'',  dim:'bewertung',      hi:false, bench:'S&P 500 Ø ~3,5',  bp:[{t:.8,s:10},{t:1.5,s:9},{t:2.5,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
+    kuv:           { label:'KUV',                   unit:'',  dim:'bewertung',      hi:false, bench:'S&P 500 Ø ~2,3',  bp:[{t:.5,s:10},{t:1,s:9},{t:2,s:7},{t:4,s:5},{t:7,s:3},{t:1e9,s:1}] },
+    ev_ebitda:     { label:'EV/EBITDA',             unit:'',  dim:'bewertung',      hi:false, bench:'S&P 500 Ø ~13',   bp:[{t:6,s:10},{t:10,s:8},{t:13,s:7},{t:18,s:5},{t:25,s:3},{t:1e9,s:1}] },
+    peg:           { label:'PEG-Ratio',             unit:'',  dim:'bewertung',      hi:false, bench:'Fair Value: 1,0',  bp:[{t:.5,s:10},{t:1,s:8},{t:1.5,s:6},{t:2,s:4},{t:1e9,s:2}] },
+    /* Profitabilität – Buffett-Schwelle ROE>15%; Damodaran S&P 500 Median: ROE ~14%, Nettomarge ~9% */
+    bruttomarge:   { label:'Bruttomarge',           unit:'%', dim:'profitabilitaet',hi:true,  bench:'S&P 500 Ø ~45 %', bp:[{t:60,s:10},{t:50,s:9},{t:40,s:8},{t:30,s:6},{t:20,s:4},{t:0,s:2},{t:-1e9,s:0}] },
+    ebit_marge:    { label:'EBIT-Marge',            unit:'%', dim:'profitabilitaet',hi:true,  bench:'S&P 500 Ø ~11 %', bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:6},{t:6,s:4},{t:2,s:2},{t:0,s:1},{t:-1e9,s:0}] },
+    nettomarge:    { label:'Nettomarge',            unit:'%', dim:'profitabilitaet',hi:true,  bench:'S&P 500 Ø ~9 %',  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:8},{t:7,s:6},{t:4,s:4},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    roe:           { label:'ROE',                   unit:'%', dim:'profitabilitaet',hi:true,  bench:'Buffett-Schwelle 15 %', bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:6},{t:5,s:4},{t:0,s:2},{t:-1e9,s:0}] },
+    roa:           { label:'ROA',                   unit:'%', dim:'profitabilitaet',hi:true,  bench:'S&P 500 Ø ~6 %',  bp:[{t:15,s:10},{t:10,s:9},{t:7,s:7},{t:4,s:5},{t:1,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    roic:          { label:'ROIC',                  unit:'%', dim:'profitabilitaet',hi:true,  bench:'Greenblatt: >12 %',bp:[{t:20,s:10},{t:15,s:9},{t:12,s:8},{t:8,s:5},{t:3,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    /* Wachstum – S&P 500 EPS-Wachstum historisch ~7 % nominal */
+    umsatz_yoy:    { label:'Umsatzwachstum YoY',   unit:'%', dim:'wachstum',       hi:true,  bench:'S&P 500 Ø ~5 %',  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-5,s:1},{t:-1e9,s:0}] },
+    eps_yoy:       { label:'EPS-Wachstum YoY',     unit:'%', dim:'wachstum',       hi:true,  bench:'S&P 500 Ø ~7 %',  bp:[{t:30,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
+    umsatz_cagr5:  { label:'Umsatz 5J-CAGR',       unit:'%', dim:'wachstum',       hi:true,  bench:'S&P 500 Ø ~5 %',  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:8},{t:7,s:6},{t:4,s:5},{t:1,s:3},{t:0,s:2},{t:-1e9,s:0}] },
+    eps_cagr5:     { label:'EPS 5J-CAGR',          unit:'%', dim:'wachstum',       hi:true,  bench:'S&P 500 Ø ~7 %',  bp:[{t:20,s:10},{t:15,s:9},{t:10,s:7},{t:7,s:6},{t:3,s:4},{t:0,s:2},{t:-1e9,s:1}] },
+    /* Finanzlage – Moody's Investment Grade: Net Debt/EBITDA <3x; Graham: Current Ratio ≥2; Zinsdeckung >3x sicher */
+    de_ratio:      { label:'Verschuldungsgrad D/E', unit:'',  dim:'finanzlage',     hi:false, bench:'Graham: <1,0',    bp:[{t:0,s:10},{t:.3,s:9},{t:.7,s:8},{t:1.2,s:6},{t:2,s:4},{t:3,s:2},{t:1e9,s:1}] },
+    net_debt_ebitda:{ label:'Net Debt/EBITDA',     unit:'',  dim:'finanzlage',     hi:false, bench:'Inv.Grade: <3x',  bp:[{t:-1,s:10},{t:0,s:9},{t:1,s:8},{t:2,s:7},{t:3,s:5},{t:4,s:3},{t:1e9,s:1}] },
+    current_ratio: { label:'Current Ratio',         unit:'',  dim:'finanzlage',     hi:true,  bench:'Graham: ≥2,0',    bp:[{t:3,s:10},{t:2,s:9},{t:1.5,s:7},{t:1,s:5},{t:.8,s:3},{t:-1e9,s:1}] },
+    quick_ratio:   { label:'Quick Ratio',           unit:'',  dim:'finanzlage',     hi:true,  bench:'Solide: ≥1,0',    bp:[{t:2,s:10},{t:1.5,s:9},{t:1,s:7},{t:.7,s:5},{t:.5,s:3},{t:-1e9,s:1}] },
+    zinsdeckung:   { label:'Zinsdeckungsgrad',      unit:'x', dim:'finanzlage',     hi:true,  bench:'Sicher: >5x',     bp:[{t:20,s:10},{t:10,s:9},{t:5,s:7},{t:3,s:5},{t:1.5,s:3},{t:0,s:1},{t:-1e9,s:0}] },
+    /* Cashflow – FCF>Nettogewinn zeigt Gewinnqualität (Sloan 1996: "Do Stock Prices Fully Reflect Information in Accruals?") */
+    fcf_marge:     { label:'FCF-Marge',             unit:'%', dim:'cashflow',       hi:true,  bench:'S&P 500 Ø ~8 %',  bp:[{t:25,s:10},{t:20,s:9},{t:15,s:8},{t:10,s:7},{t:5,s:5},{t:0,s:3},{t:-1e9,s:1}] },
+    fcf_ni:        { label:'FCF / Nettogewinn',     unit:'',  dim:'cashflow',       hi:true,  bench:'Gewinnqualität >1',bp:[{t:1.5,s:10},{t:1.2,s:9},{t:1,s:8},{t:.8,s:7},{t:.5,s:5},{t:0,s:2},{t:-1e9,s:0}] },
+    div_yield:     { label:'Dividendenrendite',     unit:'%', dim:'dividenden',     hi:null,  bench:'MSCI World Ø ~1,8 %' },
+    /* Ausschüttungsquote 40-60% gilt als nachhaltig (Lintner 1956, empirisch bestätigt) */
+    payout_ratio:  { label:'Ausschüttungsquote',    unit:'%', dim:'dividenden',     hi:false, bench:'Nachhaltig: 40–60 %', bp:[{t:25,s:9},{t:40,s:10},{t:60,s:8},{t:75,s:6},{t:90,s:3},{t:1e9,s:1}] },
   };
 
   function calcScore(key, val) {
@@ -788,9 +796,45 @@
     if (s === null) return '–';
     if (s >= 8.5) return 'Herausragend';
     if (s >= 7)   return 'Stark';
-    if (s >= 5.5) return 'Solide';
+    if (s >= 5.5) return 'Durchschnittlich';
     if (s >= 4)   return 'Schwach';
     return 'Kritisch';
+  }
+
+  /* Investor profile: which investment style fits this stock best */
+  function investorProfile(dims, R) {
+    const b = dims.bewertung, p = dims.profitabilitaet, w = dims.wachstum,
+          f = dims.finanzlage, c = dims.cashflow, q = dims.qualitaet;
+    const dy  = R.div_yield?.val;
+    const pay = R.payout_ratio?.val;
+    const profiles = [];
+    // Quality: high profitability + strong balance sheet + good moat
+    if ((p||0) >= 7 && (f||0) >= 7 && (q||0) >= 7) profiles.push({ type:'Quality-Investor', icon:'🏆', desc:'Hohe Profitabilität, starke Bilanz, wirtschaftlicher Burggraben' });
+    // Growth: strong revenue/EPS growth
+    if ((w||0) >= 7.5 && (p||0) >= 5.5) profiles.push({ type:'Wachstums-Investor', icon:'📈', desc:'Überdurchschnittliches Umsatz- und Gewinnwachstum' });
+    // Value: cheap valuation + positive cashflow
+    if ((b||0) >= 7 && (c||0) >= 5) profiles.push({ type:'Value-Investor', icon:'💎', desc:'Niedrige Bewertungsmultiplikatoren, solider Cashflow' });
+    // Dividend: reasonable yield + sustainable payout + stable business
+    if (dy != null && dy >= 2 && (pay == null || pay <= 75) && (f||0) >= 5.5)
+      profiles.push({ type:'Dividenden-Investor', icon:'💰', desc:'Stabile Ausschüttung mit nachhaltiger Ausschüttungsquote' });
+    // Avoid signal
+    if ((f||0) <= 3 || (p||0) <= 3) profiles.push({ type:'Kritische Prüfung nötig', icon:'⚠️', desc:'Schwache Bilanz oder geringe Profitabilität – erhöhtes Risiko' });
+    return profiles.length ? profiles : [{ type:'Gemischt', icon:'📊', desc:'Keine dominante Kategorie – Einzelfallbewertung empfohlen' }];
+  }
+
+  /* Graham's 7 defensive criteria (from "The Intelligent Investor", 1949) */
+  function grahamCheck(R) {
+    const kgv = R.kgv?.val, kbv = R.kbv?.val, cr = R.current_ratio?.val,
+          de  = R.de_ratio?.val, epsg5 = R.eps_cagr5?.val, dy = R.div_yield?.val,
+          pr  = R.payout_ratio?.val;
+    return [
+      { label:'KGV < 15',                  pass: kgv  != null ? kgv  < 15  : null, note:'Graham-Schwelle für defensive Anleger' },
+      { label:'KBV < 1,5 (oder KGV×KBV<22,5)', pass: kbv != null ? kbv < 1.5 || (kgv!=null && kgv*kbv < 22.5) : null, note:'Graham: KGV×KBV sollte 22,5 nicht überschreiten' },
+      { label:'Current Ratio ≥ 2,0',       pass: cr   != null ? cr   >= 2   : null, note:'Mindestliquiditätspuffer' },
+      { label:'Verschuldungsgrad D/E ≤ 1', pass: de   != null ? de   <= 1   : null, note:'Graham: Eigenkapital ≥ Fremdkapital' },
+      { label:'EPS 5J-CAGR ≥ 3 %',        pass: epsg5!= null ? epsg5 >= 3  : null, note:'Mindest-Gewinnwachstum für Kaufkrafterhalt' },
+      { label:'Dividende vorhanden',       pass: dy   != null ? dy   > 0   : null, note:'Graham bevorzugte dividendenzahlende Unternehmen' },
+    ];
   }
 
   function gv(id) {
@@ -860,21 +904,31 @@
     const mosTarget = gv('dcf_mos_target') || 20;
     let dcf = null;
     if (base && g1pct !== null && g2pct !== null && gtpct !== null && waccpct && waccpct > gtpct) {
+      function calcDCF(b, g1r, g2r, gtr, waccr) {
+        let cf = b, pv = 0;
+        for (let t = 1; t <= 5; t++)  { cf *= (1 + g1r); pv += cf / Math.pow(1 + waccr, t); }
+        for (let t = 6; t <= 10; t++) { cf *= (1 + g2r); pv += cf / Math.pow(1 + waccr, t); }
+        const tv = cf * (1 + gtr) / (waccr - gtr);
+        return pv + tv / Math.pow(1 + waccr, 10);
+      }
       const g1 = g1pct / 100, g2 = g2pct / 100, gt = gtpct / 100, wacc = waccpct / 100;
-      let cf = base, pv = 0;
-      for (let t = 1; t <= 5; t++)  { cf *= (1 + g1); pv += cf / Math.pow(1 + wacc, t); }
-      for (let t = 6; t <= 10; t++) { cf *= (1 + g2); pv += cf / Math.pow(1 + wacc, t); }
-      const tv = cf * (1 + gt) / (wacc - gt);
-      pv += tv / Math.pow(1 + wacc, 10);
-      const mos = price ? (pv - price) / pv * 100 : null;
-      const buyPrice = pv * (1 - mosTarget / 100);
-      dcf = { pv, mos, buyPrice };
+      const pvBase = calcDCF(base, g1, g2, gt, wacc);
+      // Bull: +30% growth, -0.5% WACC (optimistic but WACC must stay > gt)
+      const waccBull = Math.max(wacc - 0.005, gt + 0.02);
+      const pvBull = calcDCF(base, g1 * 1.3, g2 * 1.3, gt, waccBull);
+      // Bear: -35% growth, +1% WACC
+      const pvBear = calcDCF(base, Math.max(g1 * 0.65, 0), Math.max(g2 * 0.65, 0), gt * 0.5, wacc + 0.01);
+      const mos = price ? (pvBase - price) / pvBase * 100 : null;
+      const buyPrice = pvBase * (1 - mosTarget / 100);
+      dcf = { pv: pvBase, pvBull, pvBear, mos, buyPrice };
     }
 
-    render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct });
+    const profiles = investorProfile(dims, R);
+    const graham   = grahamCheck(R);
+    render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct, profiles, graham });
   };
 
-  function render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct }) {
+  function render({ name, R, dims, overall, dcf, price, mosTarget, g1pct, waccpct, profiles, graham }) {
     /* overall */
     const numEl = document.getElementById('overall_score_num');
     numEl.textContent = overall !== null ? overall.toFixed(1) : '–';
@@ -946,7 +1000,7 @@
         const tr = document.createElement('tr');
         tr.className = 'metric-detail-row';
         tr.innerHTML = `
-          <td class="mdr-label">${m.label}</td>
+          <td class="mdr-label">${m.label}${m.bench ? `<br><span style="font-size:.72rem;color:var(--text-faint);font-weight:400">${m.bench}</span>` : ''}</td>
           <td class="mdr-value" style="text-align:right">${valStr}</td>
           <td class="mdr-score"><span class="score-pill ${scorePillClass(r.score)}">${r.score !== null ? r.score.toFixed(1) : 'k.A.'}</span></td>`;
         tbody.appendChild(tr);
@@ -966,13 +1020,60 @@
       if (dcf.mos !== null) {
         mosEl.textContent = (dcf.mos >= 0 ? '+' : '') + dcf.mos.toFixed(1) + '%';
         mosEl.style.color = dcf.mos >= mosTarget ? 'var(--accent)' : dcf.mos >= 0 ? '#f59e0b' : '#ef4444';
-      } else {
-        mosEl.textContent = '–';
-        mosEl.style.color = '';
-      }
+      } else { mosEl.textContent = '–'; mosEl.style.color = ''; }
+      // Sensitivity range
+      const sensEl = document.getElementById('dcf_sensitivity');
+      if (sensEl) sensEl.innerHTML = `<div style="font-size:.78rem;color:var(--text-faint);margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <strong style="color:var(--text-muted)">Szenario-Analyse (DCF)</strong><br>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px">
+          <div style="text-align:center;padding:8px;background:color-mix(in srgb,#ef4444 10%,var(--bg-card));border-radius:6px">
+            <div style="font-weight:700;color:#dc2626">${fmt(dcf.pvBear)}</div><div>Bear (−35 % Wachstum)</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:var(--primary-subtle);border-radius:6px">
+            <div style="font-weight:700;color:var(--primary)">${fmt(dcf.pv)}</div><div>Base</div>
+          </div>
+          <div style="text-align:center;padding:8px;background:color-mix(in srgb,#10b981 10%,var(--bg-card));border-radius:6px">
+            <div style="font-weight:700;color:#059669">${fmt(dcf.pvBull)}</div><div>Bull (+30 % Wachstum)</div>
+          </div>
+        </div>
+        <p style="margin:8px 0 0;font-size:.72rem;color:var(--text-faint);line-height:1.5">DCF-Werte in gleicher Währung wie Eingabe. Basis: Zwei-Phasen-Modell (J1–5: g₁, J6–10: g₂), Terminalwert nach Gordon-Growth. Jede DCF-Bewertung ist eine Schätzung – die tatsächliche Entwicklung kann erheblich abweichen.</p>
+      </div>`;
       dcfSec.style.display = 'block';
     } else {
       dcfSec.style.display = 'none';
+    }
+
+    /* Investor profiles */
+    const profEl = document.getElementById('investor_profile_section');
+    if (profEl) {
+      profEl.innerHTML = profiles.map(p => `
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--bg-alt);border-radius:6px;border:1px solid var(--border);margin-bottom:8px">
+          <span style="font-size:1.1rem;flex-shrink:0">${p.icon}</span>
+          <div><div style="font-weight:700;font-size:.875rem;color:var(--text-strong)">${p.type}</div>
+          <div style="font-size:.8rem;color:var(--text-muted)">${p.desc}</div></div>
+        </div>`).join('');
+    }
+
+    /* Graham criteria */
+    const grahamEl = document.getElementById('graham_check_section');
+    if (grahamEl) {
+      const met = graham.filter(c => c.pass === true).length;
+      const total = graham.filter(c => c.pass !== null).length;
+      grahamEl.innerHTML = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <span style="font-size:1.5rem;font-weight:800;color:var(--text-strong)">${met}/${total}</span>
+          <div><div style="font-weight:600;font-size:.875rem;color:var(--text-strong)">Graham-Kriterien erfüllt</div>
+          <div style="font-size:.78rem;color:var(--text-faint)">Nach Benjamin Graham, „The Intelligent Investor" (1949)</div></div>
+        </div>` +
+        graham.map(c => `
+        <div style="display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.84rem">
+          <span style="flex-shrink:0;font-size:.9rem">${c.pass === true ? '✅' : c.pass === false ? '❌' : '❓'}</span>
+          <div>
+            <span style="font-weight:600;color:var(--text-strong)">${c.label}</span>
+            <span style="color:var(--text-faint);margin-left:6px">${c.note}</span>
+          </div>
+        </div>`).join('') +
+        `<p style="font-size:.72rem;color:var(--text-faint);margin-top:10px;line-height:1.5">Graham-Kriterien gelten als Mindeststandard für konservative Anleger. Wachstums- und Qualitätsaktien erfüllen oft nicht alle Kriterien, können aber trotzdem attraktiv sein.</p>`;
     }
 
     /* strengths & weaknesses */

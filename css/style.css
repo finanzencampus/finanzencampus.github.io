@@ -201,7 +201,7 @@ nav{position:sticky;top:0;z-index:100;height:var(--nav);background:var(--nav-bg)
 .calc-tabs-wrap{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:var(--nav);z-index:50}
 .calc-tabs{display:flex;gap:4px;padding:10px 24px;overflow-x:auto;scrollbar-width:none;max-width:1200px;margin:0 auto}
 .calc-tabs::-webkit-scrollbar{display:none}
-.calc-tab{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:500;color:var(--text-muted);background:transparent;border:none;cursor:pointer;white-space:nowrap;transition:var(--t);font-family:inherit}
+.calc-tab{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:500;color:var(--text-muted);background:transparent;border:none;cursor:pointer;white-space:nowrap;transition:var(--t);font-family:inherit;text-decoration:none}
 .calc-tab:hover{background:var(--bg-card);color:var(--text)}
 .calc-tab.active{background:var(--bg-card);color:var(--primary);font-weight:600;box-shadow:var(--shadow)}
 .calc-panels{padding:48px 0 80px}
