@@ -57,7 +57,7 @@
       <span class="search-icon">🔍</span>
       <input type="text" id="searchInput" placeholder="Begriff suchen, z.B. ETF, Dividende, Inflation …" oninput="filterTerms()" autocomplete="off">
     </div>
-    <p class="search-count" id="searchCount">120+ Begriffe verfügbar</p>
+    <p class="search-count" id="searchCount">130+ Begriffe verfügbar</p>
   </div>
 </div>
 
@@ -283,6 +283,10 @@
           <h3>Futures</h3>
           <p>Standardisierte Terminkontrakte, die die Lieferung eines Basiswerts (Rohstoff, Index, Währung) zu einem vereinbarten Preis zu einem zukünftigen Zeitpunkt festlegen. Werden an Terminbörsen gehandelt und vorwiegend zur Absicherung oder Spekulation genutzt.</p>
         </div>
+        <div class="term-card" data-term="fcf free cash flow freier cashflow unternehmen investitionen">
+          <h3>FCF (Free Cash Flow)</h3>
+          <p>Der freie Cashflow nach Abzug der Investitionsausgaben (CapEx): FCF = Operativer Cashflow − CapEx. Zeigt, wie viel Geld ein Unternehmen nach allen notwendigen Investitionen tatsächlich erwirtschaftet. Positiver FCF ermöglicht Dividenden, Aktienrückkäufe oder Schuldenabbau. Als Bewertungsgrundlage im DCF-Modell gilt der FCF als manipulationsresistenter als der Buchgewinn. Quelle: Sloan, „Do Stock Prices Fully Reflect Information in Accruals?", Accounting Review (1996).</p>
+        </div>
         <div class="term-card" data-term="free float streubesitz aktien umlauf öffentlich handel">
           <h3>Free Float (Streubesitz)</h3>
           <p>Der Anteil der Aktien eines Unternehmens, der sich im freien Umlauf befindet und frei handelbar ist – also nicht von Großaktionären, Gründern oder dem Staat langfristig gehalten wird. Relevant für die Gewichtung in Indizes.</p>
@@ -396,6 +400,14 @@
         <div class="term-card" data-term="kgv kurs-gewinn-verhältnis bewertung aktie preis earnings">
           <h3>KGV (Kurs-Gewinn-Verhältnis)</h3>
           <p>Verhältnis des Aktienkurses zum Gewinn je Aktie (KGV = Kurs ÷ EPS). Zeigt, wie viele Jahre ein Unternehmen bei aktuellem Gewinn braucht, um seinen Börsenwert zu verdienen. Ein KGV von 20 gilt als fair, über 30 als teuer.</p>
+        </div>
+        <div class="term-card" data-term="kbv kurs-buchwert-verhältnis eigenkapital bilanzwert substanz">
+          <h3>KBV (Kurs-Buchwert-Verhältnis)</h3>
+          <p>KBV = Aktienkurs ÷ Buchwert je Aktie. Setzt den Marktwert einer Aktie ins Verhältnis zum bilanziellen Eigenkapital je Aktie. KBV &lt; 1 bedeutet, der Markt bewertet das Unternehmen unter seinem Buchwert – für Benjamin Graham ein mögliches Kaufsignal. KBV &gt; 3 gilt als teuer. Finanzunternehmen (Banken, Versicherungen) werden traditionell stärker am KBV gemessen. Quelle: Graham &amp; Dodd, „Security Analysis" (1934).</p>
+        </div>
+        <div class="term-card" data-term="kuv kurs-umsatz-verhältnis umsatz bewertung wachstumsaktie">
+          <h3>KUV (Kurs-Umsatz-Verhältnis)</h3>
+          <p>KUV = Marktkapitalisierung ÷ Jahresumsatz. Nützlich für Unternehmen ohne Gewinn (Start-ups, Wachstumsunternehmen). Ein KUV unter 1 gilt als günstig, über 5 als teuer. Im Gegensatz zum KGV ist es nicht durch Gewinnmanipulationen beeinflussbar. Quelle: Damodaran, „Damodaran on Valuation" (2006), Kapitel 7.</p>
         </div>
         <div class="term-card" data-term="kapitalerhöhung neue aktien verwässerung bezugsrecht emission">
           <h3>Kapitalerhöhung</h3>
@@ -511,6 +523,10 @@
           <h3>Portfolio</h3>
           <p>Die Gesamtheit aller Vermögenswerte einer Person oder Institution. Ein gut diversifiziertes Portfolio enthält verschiedene Anlageklassen (Aktien, Anleihen, Immobilien), Regionen und Branchen, um das Risiko zu streuen.</p>
         </div>
+        <div class="term-card" data-term="peg ratio kurs-gewinn-wachstum bewertung wachstumsaktie peter lynch">
+          <h3>PEG-Ratio (Kurs-Gewinn-Wachstums-Verhältnis)</h3>
+          <p>PEG = KGV ÷ jährliches Gewinnwachstum (%). Verbindet Bewertung und Wachstum in einer Kennzahl. PEG &lt; 1 gilt als günstig, PEG &gt; 2 als teuer. Populär gemacht durch Peter Lynch in „One Up On Wall Street" (1989). Wichtig: Das PEG berücksichtigt kein Risiko und ist bei niedrigen oder negativen Wachstumsraten unbrauchbar.</p>
+        </div>
         <div class="term-card" data-term="passives investieren index etf buy and hold kosten günstig">
           <h3>Passives Investieren</h3>
           <p>Anlagestrategie, die auf das aktive Auswählen von Einzelwerten verzichtet und stattdessen einen breiten Marktindex durch ETFs abbildet. Studien zeigen, dass passives Investieren auf lange Sicht die meisten aktiv verwalteten Fonds schlägt.</p>
@@ -599,6 +615,14 @@
           <h3>Short Squeeze</h3>
           <p>Ein Short Squeeze entsteht, wenn stark leerverkaufte Aktien unerwartet steigen und Leerverkäufer gezwungen sind, ihre Positionen durch Rückkäufe zu schließen – was den Kurs noch weiter treibt. Bekanntes Beispiel: GameStop 2021. Short Squeezes können extreme Kursbewegungen in kurzer Zeit verursachen und enden oft so abrupt, wie sie begonnen haben.</p>
         </div>
+        <div class="term-card" data-term="sharpe ratio risikoadjustierte rendite volatilität william sharpe">
+          <h3>Sharpe Ratio</h3>
+          <p>Maß für die risikoadjustierte Rendite: Sharpe Ratio = (Portfoliorendite − risikofreier Zinssatz) ÷ Standardabweichung. Eine Sharpe Ratio über 1 gilt als gut, über 2 als sehr gut. Ermöglicht den Vergleich von Portfolios mit unterschiedlichem Risiko. Entwickelt von William F. Sharpe, Nobelpreisträger 1990. Quelle: Sharpe, „Mutual Fund Performance", Journal of Business (1966).</p>
+        </div>
+        <div class="term-card" data-term="standardabweichung volatilität risiko streuung rendite statistik">
+          <h3>Standardabweichung</h3>
+          <p>Statistisches Maß für die Streuung von Renditen um den Mittelwert. Hohe Standardabweichung = hohe Volatilität = hohes Risiko. Der S&amp;P 500 hat eine historische annualisierte Standardabweichung von ca. 15–20 %. Für ein gut diversifiziertes Portfolio ist die Standardabweichung niedriger als die gewichtete Summe der Einzelrisiken (Diversifikationseffekt nach Markowitz, 1952). Quelle: Markowitz, „Portfolio Selection", Journal of Finance (1952).</p>
+        </div>
         <div class="term-card" data-term="smart beta faktor etf regelbasiert strategie value momentum quality">
           <h3>Smart Beta</h3>
           <p>Eine ETF-Strategie, die nicht einfach nach Marktkapitalisierung gewichtet, sondern regelbasiert Faktoren wie Value, Momentum, Quality oder Low Volatility berücksichtigt. Liegt zwischen passivem Index-Investieren und aktivem Fondsmanagement. Die wissenschaftliche Grundlage liefert die Faktorforschung (Fama/French). Kosten sind meist höher als bei klassischen Indexfonds.</p>
@@ -686,6 +710,10 @@
         <div class="term-card" data-term="währungsrisiko wechselkurs dollar euro ausland rendite absicherung hedged">
           <h3>Währungsrisiko</h3>
           <p>Das Risiko, dass Wechselkursschwankungen die Rendite einer Auslandsinvestition beeinflussen. Wer in US-Dollar investiert und der Dollar gegenüber dem Euro schwächelt, erzielt in Euro weniger Rendite. Währungsgesicherte (hedged) ETFs sichern dieses Risiko ab, haben aber höhere Kosten.</p>
+        </div>
+        <div class="term-card" data-term="wacc kapitalkosten eigenkapital fremdkapital gewichteter durchschnitt dcf">
+          <h3>WACC (Gewichtete Kapitalkosten)</h3>
+          <p>Weighted Average Cost of Capital – der gewichtete Durchschnitt aus Eigen- und Fremdkapitalkosten eines Unternehmens. WACC = (EK/GK) × rEK + (FK/GK) × rFK × (1 − Steuersatz). Dient als Diskontierungssatz im DCF-Modell. Ein niedrigerer WACC erhöht den theoretischen Unternehmenswert. Typischer WACC für S&amp;P-500-Unternehmen: 7–10 %. Quelle: Modigliani &amp; Miller, „The Cost of Capital, Corporation Finance", American Economic Review (1958).</p>
         </div>
       </div>
     </div>
