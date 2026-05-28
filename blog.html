@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FinanzenCampus Blog – Aktienanalysen, Marktkommentare und Einblicke aus der Praxis. Evidenzbasiert und unabhängig.">
+  <title>Blog – FinanzenCampus</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="/index.html" class="nav-logo">
+      <img src="/images/logo.png" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="nav-logo-fallback" style="display:none">📈</div>
+      <span>FinanzenCampus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/rechner.html">Rechner</a></li>
+      <li><a href="/aktienanalyse.html">Aktien</a></li>
+      <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+      <li><a href="/lexikon.html">Lexikon</a></li>
+      <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/blog.html" class="active">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild wechseln" aria-label="Dark Mode">
+        <svg class="th-icon moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="th-icon sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><ul>
+  <li><a href="/index.html">Startseite</a></li>
+  <li><a href="/rechner.html">Rechner</a></li>
+  <li><a href="/aktienanalyse.html">Aktien</a></li>
+  <li><a href="/fundamentalanalyse.html">Analyse</a></li>
+  <li><a href="/lexikon.html">Lexikon</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+  <li><a href="/blog.html">Blog</a></li>
+</ul></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="ph-inner">
+      <div>
+        <p class="hero-eyebrow">Einblicke · Analysen · Meinungen</p>
+        <h1>Blog</h1>
+        <p class="ph-desc">Aktienanalysen, Marktkommentare und persönliche Einschätzungen. Keine Anlageberatung – immer klar als Meinung gekennzeichnet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div style="background:var(--bg-card);border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:10">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div style="display:flex;gap:.5rem;padding:.75rem 0;overflow-x:auto;scrollbar-width:none">
+      <button class="blog-filter active" onclick="filterPosts('all')">Alle</button>
+      <button class="blog-filter" onclick="filterPosts('aktienanalyse')">Aktienanalysen</button>
+      <button class="blog-filter" onclick="filterPosts('markt')">Markt</button>
+      <button class="blog-filter" onclick="filterPosts('strategie')">Strategie</button>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- POSTS GRID -->
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- Sample post card – Muster -->
+      <article class="article-card" data-category="aktienanalyse">
+        <a href="/blog/muster-aktienanalyse.html" class="article-card-link">
+          <div class="article-card-top">
+            <span class="blog-tag">Aktienanalyse</span>
+            <span class="article-date">Muster · Template</span>
+          </div>
+          <h2 class="article-title">Muster-Aktienanalyse: So strukturiere ich eine Analyse</h2>
+          <p class="article-excerpt">Dieser Blogpost zeigt die Vorlage, nach der Aktienanalysen auf FinanzenCampus aufgebaut sind – von Geschäftsmodell bis Bewertung.</p>
+          <div class="article-footer">
+            <span class="article-read-time">📖 ca. 5 Min.</span>
+            <span class="article-card-arrow">→</span>
+          </div>
+        </a>
+      </article>
+
+    </div>
+
+    <!-- EMPTY STATE (hidden when posts exist) -->
+    <div id="emptyState" style="display:none;text-align:center;padding:4rem 0;color:var(--text-muted)">
+      <p style="font-size:2rem">✍️</p>
+      <p>Keine Beiträge in dieser Kategorie.</p>
+    </div>
+
+    <!-- NEWSLETTER / CTA -->
+    <div class="card" style="max-width:540px;margin:3rem auto 0;text-align:center">
+      <div style="font-size:1.5rem;margin-bottom:.75rem">📬</div>
+      <h3>Neue Beiträge nicht verpassen</h3>
+      <p style="color:var(--text-muted);margin:.5rem 0 1.25rem">Der Blog wird unregelmäßig mit neuen Analysen und Kommentaren befüllt. Schau einfach hin und wieder vorbei.</p>
+      <a href="/wissen.html" class="btn btn-primary">Zum Finanzwissen</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <img src="/images/logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="footer-brand-icon" style="display:none">📈</div>
+          FinanzenCampus
+        </div>
+        <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon, Fundamentalanalyse und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Rechner</h4>
+        <ul class="footer-links">
+          <li><a href="/rechner.html#zinseszins">Zinseszins</a></li>
+          <li><a href="/rechner.html#sparplan">Sparplan</a></li>
+          <li><a href="/rechner.html#inflation">Inflation</a></li>
+          <li><a href="/rechner.html#dividenden">Dividenden</a></li>
+          <li><a href="/rechner.html#fire">FIRE</a></li>
+          <li><a href="/schulden.html">Schulden tilgen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Lernen</h4>
+        <ul class="footer-links">
+          <li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li>
+          <li><a href="/lexikon.html">Börsenlexikon</a></li>
+          <li><a href="/wissen.html">Finanzwissen</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Themen</h4>
+        <ul class="footer-links">
+          <li><a href="/wissen.html#investieren">ETF &amp; Aktien</a></li>
+          <li><a href="/wissen.html#psychologie">Behavioral Finance</a></li>
+          <li><a href="/wissen.html#sparen">Sparen</a></li>
+          <li><a href="/wissen.html">FIRE-Bewegung</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FinanzenCampus · Keine Anlageberatung · Alle Berechnungen ohne Gewähr</span>
+      <span><a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · Bildung · Transparenz · Unabhängigkeit</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+<script>
+(function(){
+  function filterPosts(cat) {
+    document.querySelectorAll('.blog-filter').forEach(function(b){ b.classList.remove('active'); });
+    event.currentTarget.classList.add('active');
+    var cards = document.querySelectorAll('#blogGrid .article-card');
+    var visible = 0;
+    cards.forEach(function(c){
+      var show = cat === 'all' || c.dataset.category === cat;
+      c.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    document.getElementById('emptyState').style.display = visible === 0 ? '' : 'none';
+  }
+  window.filterPosts = filterPosts;
+})();
+</script>
+</body>
+</html>

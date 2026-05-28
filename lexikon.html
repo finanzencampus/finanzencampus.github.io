@@ -21,12 +21,11 @@
     <ul class="nav-links">
       <li><a href="/index.html">Startseite</a></li>
       <li><a href="/rechner.html">Rechner</a></li>
-      <li><a href="/schulden.html">Schulden</a></li>
       <li><a href="/aktienanalyse.html">Aktien</a></li>
       <li><a href="/fundamentalanalyse.html">Analyse</a></li>
       <li><a href="/lexikon.html" class="active">Lexikon</a></li>
       <li><a href="/wissen.html">Wissen</a></li>
-      <li><a href="/quiz.html">Quiz</a></li>
+      <li><a href="/blog.html">Blog</a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-btn" onclick="toggleTheme()" title="Erscheinungsbild" aria-label="Dark Mode">
@@ -39,10 +38,10 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu"><ul>
   <li><a href="/index.html">Startseite</a></li><li><a href="/rechner.html">Rechner</a></li>
-  <li><a href="/schulden.html">Schulden</a></li>
   <li><a href="/aktienanalyse.html">Aktien</a></li>
   <li><a href="/fundamentalanalyse.html">Analyse</a></li><li><a href="/lexikon.html">Lexikon</a></li>
-  <li><a href="/wissen.html">Wissen</a></li><li><a href="/quiz.html">Quiz</a></li>
+  <li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/blog.html">Blog</a></li>
 </ul></div>
 
 <div class="page-hero">
@@ -58,7 +57,7 @@
       <span class="search-icon">🔍</span>
       <input type="text" id="searchInput" placeholder="Begriff suchen, z.B. ETF, Dividende, Inflation …" oninput="filterTerms()" autocomplete="off">
     </div>
-    <p class="search-count" id="searchCount">88 Begriffe verfügbar</p>
+    <p class="search-count" id="searchCount">106+ Begriffe verfügbar</p>
   </div>
 </div>
 
@@ -130,8 +129,8 @@
           <p>Eine Marktphase mit anhaltend fallenden Kursen – definiert als Rückgang von mindestens 20 % vom letzten Hochpunkt. Bärenmärkte entstehen oft in wirtschaftlichen Abschwungphasen, Krisen oder bei übertriebener Überbewertung der Märkte.</p>
         </div>
         <div class="term-card" data-term="benchmark index vergleich performance messlatte">
-          <h3>Benchmark <span class="term-badge b-mid">Fortgeschritten</span></h3>
-          <p>Ein Vergleichsmaßstab, an dem die Performance einer Anlage gemessen wird. Typische Benchmarks sind der MSCI World für globale Aktien, der DAX für deutsche Aktien oder der S&P 500 für US-Aktien.</p>
+          <h3>Benchmark <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Ein Vergleichsmaßstab, an dem die Performance einer Anlage gemessen wird. Typische Benchmarks sind der MSCI World für globale Aktien, der DAX für deutsche Aktien oder der S&P 500 für US-Aktien. Aktiv verwaltete Fonds müssen sich daran messen lassen, ob sie ihren Benchmark schlagen.</p>
         </div>
         <div class="term-card" data-term="blue chip großunternehmen stabil qualitätsaktie dax dow jones">
           <h3>Blue Chip <span class="term-badge b-basic">Grundlagen</span></h3>
@@ -168,6 +167,10 @@
           <h3>CAGR <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Compound Annual Growth Rate – die durchschnittliche jährliche Wachstumsrate einer Investition über einen bestimmten Zeitraum. CAGR = (Endwert / Startwert)^(1/Jahre) − 1. Ideal zum Vergleich verschiedener Investitionen.</p>
         </div>
+        <div class="term-card" data-term="carry trade zinsdifferenz währung leihen anlegen strategie">
+          <h3>Carry Trade <span class="term-badge b-adv">Experte</span></h3>
+          <p>Eine Strategie, bei der Kapital in einer Niedrigzinswährung geliehen und in einer Hochzinswährung angelegt wird, um die Zinsdifferenz als Gewinn zu vereinnahmen. Verbreitet am Devisenmarkt, etwa durch Kreditaufnahme in Yen und Anlage in australischen Dollar. Das Risiko liegt in abrupten Wechselkursbewegungen, die den Gewinn schnell zunichtemachen können.</p>
+        </div>
       </div>
     </div>
 
@@ -178,6 +181,10 @@
         <div class="term-card" data-term="depot wertpapierdepot konto bank broker verwaltung">
           <h3>Depot <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Ein Konto zur Verwahrung und Verwaltung von Wertpapieren wie Aktien, ETFs oder Anleihen. Wird von Banken oder Online-Brokern geführt. Neben dem Depot benötigt man ein Verrechnungskonto für Käufe und Verkäufe.</p>
+        </div>
+        <div class="term-card" data-term="delisting rückzug börse notierung aktie ausschluss">
+          <h3>Delisting <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die Rücknahme der Börsenzulassung einer Aktie, sodass sie nicht mehr an einer regulierten Börse gehandelt wird. Gründe sind unter anderem Übernahmen, mangelnde Erfüllung von Börsenstandards oder eine freiwillige Entscheidung des Unternehmens. Anleger können ihre Aktien danach meist nur noch außerbörslich verkaufen, was Liquidität und Preistransparenz stark einschränkt.</p>
         </div>
         <div class="term-card" data-term="derivat option future hebel basiswert finanzinstrument">
           <h3>Derivat <span class="term-badge b-adv">Experten</span></h3>
@@ -213,6 +220,10 @@
         <div class="term-card" data-term="einlagensicherung bank schutz guthaben insolvenz">
           <h3>Einlagensicherung <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Staatliche Absicherung von Bankguthaben im Insolvenzfall. In der EU sind Einlagen bis 100.000 € pro Kunde und Bank gesetzlich geschützt. Wertpapierdepots sind davon unabhängig – sie gelten als Sondervermögen.</p>
+        </div>
+        <div class="term-card" data-term="emerging markets schwellenländer aktien brasilien indien china msci">
+          <h3>Emerging Markets <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Schwellenländer-Aktienmärkte in Ländern wie China, Indien, Brasilien oder Südkorea, die sich in einer wirtschaftlichen Wachstumsphase befinden. Der MSCI Emerging Markets Index umfasst über 1.400 Unternehmen aus 24 Schwellenländern. Emerging Markets bieten höheres Renditepotenzial, aber auch größere politische und wirtschaftliche Risiken als Industrieländer.</p>
         </div>
         <div class="term-card" data-term="eigenkapitalrendite roe gewinn unternehmen profitabilität">
           <h3>Eigenkapitalrendite (ROE) <span class="term-badge b-adv">Experten</span></h3>
@@ -287,13 +298,21 @@
     <div class="lex-section" id="sec-H">
       <div class="alpha-heading" id="H">H</div>
       <div class="term-grid">
+        <div class="term-card" data-term="hauptversammlung hv aktionäre abstimmung dividende vorstand">
+          <h3>Hauptversammlung (HV) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Das jährliche Treffen der Aktionäre einer Aktiengesellschaft, bei dem über Dividendenausschüttung, Vorstandsentlastung, Kapitalmaßnahmen und andere wichtige Beschlüsse abgestimmt wird. Aktionäre haben dabei Stimmrecht.</p>
+        </div>
+        <div class="term-card" data-term="hebel leverage fremdkapital verstärkung gewinn verlust">
+          <h3>Hebel (Leverage) <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der Einsatz von Fremdkapital zur Verstärkung von Gewinnen und Verlusten einer Investition. Ein Hebel von 2 bedeutet: Steigt der Basiswert um 10 %, steigt das Ergebnis um 20 % – aber auch Verluste verdoppeln sich. Hebel erhöhen das Risiko erheblich und sind für unerfahrene Anleger gefährlich.</p>
+        </div>
         <div class="term-card" data-term="hedge absicherung risiko gegenposition währung">
           <h3>Hedge / Absicherung <span class="term-badge b-adv">Experten</span></h3>
           <p>Eine Gegenposition zu einer bestehenden Investition, die potenzielle Verluste absichern soll. Beispiel: Ein Aktienanleger kauft Put-Optionen auf seine Aktien, um sich gegen Kursverluste zu schützen. Hedging reduziert Risiko, aber auch Rendite.</p>
         </div>
-        <div class="term-card" data-term="hauptversammlung hv aktionäre abstimmung dividende vorstand">
-          <h3>Hauptversammlung (HV) <span class="term-badge b-basic">Grundlagen</span></h3>
-          <p>Das jährliche Treffen der Aktionäre einer Aktiengesellschaft, bei dem über Dividendenausschüttung, Vorstandsentlastung, Kapitalmaßnahmen und andere wichtige Beschlüsse abgestimmt wird. Aktionäre haben dabei Stimmrecht.</p>
+        <div class="term-card" data-term="high yield anleihe hochzins junk bond ausfallrisiko kredit rating">
+          <h3>High-Yield-Anleihe <span class="term-badge b-adv">Experte</span></h3>
+          <p>Hochverzinsliche Unternehmensanleihe (auch „Junk Bond") mit einem Kreditrating unterhalb von Investment Grade (d. h. unter BBB− bei S&amp;P). Die höheren Zinsen entschädigen Anleger für das erhöhte Ausfallrisiko des Emittenten. High-Yield-Anleihen reagieren stärker auf wirtschaftliche Abschwächungen als erstklassige Staatsanleihen.</p>
         </div>
       </div>
     </div>
@@ -310,13 +329,17 @@
           <h3>Inflation <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Allgemeiner Anstieg des Preisniveaus, der die Kaufkraft des Geldes mindert. Bei 3 % Inflation verliert Geld in 24 Jahren die Hälfte seines Wertes. Deshalb ist das Investieren wichtig: Nur durch Renditen über der Inflationsrate wird realer Vermögensaufbau möglich.</p>
         </div>
-        <div class="term-card" data-term="ipo börsengang erstausgabe aktien erstnotiz emission">
-          <h3>IPO (Börsengang) <span class="term-badge b-mid">Fortgeschritten</span></h3>
-          <p>Initial Public Offering – die erstmalige Ausgabe von Aktien eines Unternehmens an der Börse. Beim IPO wird ein Ausgabepreis festgelegt, zu dem Anleger erstmals Aktien kaufen können. Danach wird die Aktie frei an der Börse gehandelt.</p>
+        <div class="term-card" data-term="insiderhandel insider information nicht-öffentlich illegal börsenrecht">
+          <h3>Insiderhandel <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Der Kauf oder Verkauf von Wertpapieren auf Basis nicht-öffentlicher, kursrelevanter Informationen (Insiderwissen). Insiderhandel ist in Deutschland und der EU gemäß Marktmissbrauchsverordnung (MAR) strafbar und kann mit Freiheitsstrafen und hohen Geldstrafen geahndet werden. Börsennotierte Unternehmen müssen Insiderlisten führen und Transaktionen von Führungspersonen melden.</p>
         </div>
         <div class="term-card" data-term="insolvenz pleite bankrott zahlungsunfähigkeit unternehmen">
           <h3>Insolvenz <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Zahlungsunfähigkeit oder Überschuldung eines Unternehmens oder Privatpersons. Im Insolvenzfall werden Aktionäre zuletzt bedient – nach allen Gläubigern. Im schlimmsten Fall verlieren Aktionäre ihr gesamtes investiertes Kapital.</p>
+        </div>
+        <div class="term-card" data-term="ipo börsengang erstausgabe aktien erstnotiz emission">
+          <h3>IPO (Börsengang) <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Initial Public Offering – die erstmalige Notierung eines Unternehmens an einer Börse. Beim IPO werden erstmals Aktien an die Öffentlichkeit ausgegeben, um Kapital zu beschaffen. Der Ausgabepreis wird im Vorfeld in einem Bookbuilding-Verfahren ermittelt; danach wird die Aktie frei an der Börse gehandelt.</p>
         </div>
       </div>
     </div>
@@ -387,9 +410,17 @@
           <h3>Margin of Safety (Sicherheitsmarge) <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Konzept des Value Investing nach Benjamin Graham: Man kauft eine Aktie nur, wenn der aktuelle Kurs deutlich unter dem selbst berechneten inneren Wert liegt – typischerweise 20–30 % darunter. Dieser Puffer schützt vor Bewertungsfehlern und unvorhergesehenen negativen Entwicklungen.</p>
         </div>
+        <div class="term-card" data-term="market maker börsenhändler liquidität geld-brief-spanne handel">
+          <h3>Market Maker <span class="term-badge b-adv">Experte</span></h3>
+          <p>Ein Börsenhändler oder Institut, das kontinuierlich verbindliche Kauf- und Verkaufskurse für ein Wertpapier stellt und damit Liquidität am Markt sicherstellt. Market Maker verdienen an der Geld-Brief-Spanne (Spread) zwischen An- und Verkaufskurs. Ohne Market Maker wären viele Wertpapiere schwerer handelbar, insbesondere außerhalb der Kernhandelszeiten.</p>
+        </div>
         <div class="term-card" data-term="msci world globaler index aktien industrie länder etf">
           <h3>MSCI World <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Ein globaler Aktienindex mit rund 1.500 Unternehmen aus 23 Industrieländern. Enthält ca. 70 % US-Aktien. Gilt als Basis-Investment für passivinvestierende Anleger. Schwellenländer sind im MSCI World nicht enthalten (dafür: MSCI Emerging Markets).</p>
+        </div>
+        <div class="term-card" data-term="momentum tendenz trend kurs fortsetzung markt aktie">
+          <h3>Momentum <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die Tendenz von Wertpapieren oder Märkten, eine bestehende Kursbewegung in dieselbe Richtung fortzusetzen. Positives Momentum bedeutet: Aktien, die in der Vergangenheit gut abschnitten, tendieren kurzfristig weiter zu steigen. Das Momentum-Phänomen ist wissenschaftlich dokumentiert und wird als eigenständiger Renditefaktor anerkannt.</p>
         </div>
         <div class="term-card" data-term="momentum trend strategie performance aktie kurs stärke">
           <h3>Momentum-Strategie <span class="term-badge b-adv">Experten</span></h3>
@@ -474,6 +505,10 @@
           <h3>Rezession <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Wirtschaftliche Abschwächung, definiert als mindestens zwei aufeinanderfolgende Quartale mit negativem BIP-Wachstum. Rezessionen sind normal im Konjunkturzyklus und enden langfristig immer. Für langfristige Anleger sind sie oft Einstiegsgelegenheiten.</p>
         </div>
+        <div class="term-card" data-term="risikoprämie mehrrendite risiko zinsen risikolos aktien">
+          <h3>Risikoprämie <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Die zusätzliche Rendite, die Anleger für das Eingehen eines höheren Risikos gegenüber einer risikofreien Anlage (z. B. Staatsanleihen) verlangen. Die Aktienrisikoprämie (Equity Risk Premium) bezeichnet die historische Mehrrendite von Aktien gegenüber sicheren Staatsanleihen und beträgt langfristig ca. 4–6 % p.a. Sie ist die zentrale Begründung dafür, warum Aktien langfristig besser abschneiden als Anleihen.</p>
+        </div>
         <div class="term-card" data-term="rohstoff gold öl silber weizen kupfer ressourcen">
           <h3>Rohstoffe <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Physische Grundmaterialien wie Gold, Silber, Öl, Gas, Weizen oder Kupfer. Als Anlageklasse bieten sie Inflationsschutz und niedrige Korrelation zu Aktien. Investierbar über ETCs (Exchange Traded Commodities) oder Rohstoff-Futures.</p>
@@ -532,6 +567,10 @@
           <h3>Thesaurierend <span class="term-badge b-basic">Grundlagen</span></h3>
           <p>Ein thesaurierender Fonds oder ETF reinvestiert erwirtschaftete Erträge (Dividenden, Zinsen) automatisch statt sie auszuschütten. Das steigert durch den Zinseszinseffekt langfristig den Wert des Investments. Besonders steuergünstig in bestimmten Konstellationen.</p>
         </div>
+        <div class="term-card" data-term="total return gesamtrendite kursgewinn dividenden zinsen performance">
+          <h3>Total Return <span class="term-badge b-basic">Grundlagen</span></h3>
+          <p>Die Gesamtrendite einer Kapitalanlage, die sowohl Kursgewinne als auch Ertragskomponenten wie Dividenden und Zinsen umfasst. Im Unterschied zur reinen Kursentwicklung zeigt der Total Return die tatsächliche Vermögensmehrung des Anlegers. Thesaurierende ETFs bilden automatisch den Total Return ab, da Ausschüttungen reinvestiert werden.</p>
+        </div>
         <div class="term-card" data-term="tracking error abweichung etf index performance replikation kosten">
           <h3>Tracking Error <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Maß für die Abweichung der Rendite eines ETFs von der Rendite seines Vergleichsindex. Ein niedriger Tracking Error (unter 0,5 % p.a.) zeigt, dass der ETF seinen Index genau abbildet. Ursachen für Abweichungen: Transaktionskosten, Quellensteuer auf Dividenden, Replizierungsmethode.</p>
@@ -558,13 +597,17 @@
           <h3>Value Investing <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Anlagestrategie, bei der nach unterbewerteten Aktien gesucht wird – deren Marktpreis unter dem geschätzten inneren Wert liegt. Berühmteste Vertreter: Benjamin Graham und Warren Buffett. Erfordert Geduld und fundierte Unternehmensanalyse.</p>
         </div>
-        <div class="term-card" data-term="volatilität schwankung risiko standardabweichung kursschwankungen">
-          <h3>Volatilität <span class="term-badge b-mid">Fortgeschritten</span></h3>
-          <p>Maß für die Schwankungsbreite des Kurses eines Wertpapiers, ausgedrückt als Standardabweichung der Renditen. Hohe Volatilität = hohes Risiko, aber auch Chance. Für langfristige Anleger ist kurzfristige Volatilität weniger relevant.</p>
-        </div>
         <div class="term-card" data-term="verwässerung aktionär kapitalerhöhung anteil reduzierung ausgabe">
           <h3>Verwässerung <span class="term-badge b-mid">Fortgeschritten</span></h3>
           <p>Reduzierung des prozentualen Anteils bestehender Aktionäre durch die Ausgabe neuer Aktien (Kapitalerhöhung) oder durch Ausübung von Mitarbeiteroptionen. Gibt ein Unternehmen 10 % mehr Aktien aus, hält jeder bisherige Aktionär entsprechend weniger Prozent am Unternehmen.</p>
+        </div>
+        <div class="term-card" data-term="vix volatilitätsindex cboe angst-index optionen erwartung markt">
+          <h3>Volatilitätsindex (VIX) <span class="term-badge b-adv">Experte</span></h3>
+          <p>Der VIX (CBOE Volatility Index) misst die vom Markt erwartete Schwankungsbreite des S&amp;P 500 für die nächsten 30 Tage, abgeleitet aus den Preisen von Optionskontrakten. Ein hoher VIX (über 30) signalisiert große Unsicherheit und Angst am Markt, ein niedriger VIX (unter 15) deutet auf Ruhe hin. Er wird daher auch als „Angst-Index" bezeichnet.</p>
+        </div>
+        <div class="term-card" data-term="volatilität schwankung risiko standardabweichung kursschwankungen">
+          <h3>Volatilität <span class="term-badge b-mid">Fortgeschritten</span></h3>
+          <p>Maß für die Schwankungsbreite des Kurses eines Wertpapiers, ausgedrückt als Standardabweichung der Renditen. Hohe Volatilität = hohes Risiko, aber auch Chance. Für langfristige Anleger ist kurzfristige Volatilität weniger relevant.</p>
         </div>
       </div>
     </div>
@@ -611,7 +654,8 @@
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
       </div>
       <div class="footer-col"><h4>Rechner</h4><ul class="footer-links"><li><a href="/rechner.html">Alle Rechner</a></li></ul></div>
-      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li><li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li><li><a href="/quiz.html">Quiz</a></li></ul></div>
+      <div class="footer-col"><h4>Lernen</h4><ul class="footer-links"><li><a href="/lexikon.html">Lexikon</a></li><li><a href="/wissen.html">Wissen</a></li>
+      <li><a href="/blog.html">Blog</a></li><li><a href="/fundamentalanalyse.html">Fundamentalanalyse</a></li></ul></div>
       <div class="footer-col"><h4>Navigation</h4><ul class="footer-links"><li><a href="/index.html">Startseite</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 FinanzenCampus · Keine Anlageberatung</span></div>
