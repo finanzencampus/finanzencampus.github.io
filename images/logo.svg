@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Yellow circle background -->
+  <circle cx="95" cy="105" r="88" fill="#F5C842"/>
+
+  <!-- Body / hoodie (blue) -->
+  <ellipse cx="95" cy="162" rx="42" ry="30" fill="#4A7FA5"/>
+  <!-- Torso -->
+  <rect x="68" y="128" width="54" height="40" rx="8" fill="#4A7FA5"/>
+
+  <!-- Backpack straps -->
+  <rect x="66" y="125" width="8" height="42" rx="4" fill="#8B6B4A"/>
+  <rect x="126" y="125" width="8" height="42" rx="4" fill="#8B6B4A"/>
+  <!-- Backpack body -->
+  <rect x="118" y="118" width="20" height="32" rx="5" fill="#A0784E"/>
+
+  <!-- Head -->
+  <ellipse cx="95" cy="98" rx="24" ry="26" fill="#F5B88A"/>
+
+  <!-- Hair -->
+  <path d="M71 92 Q71 70 95 68 Q119 70 119 92 Q116 78 95 76 Q74 78 71 92Z" fill="#5C3317"/>
+
+  <!-- Eyes -->
+  <ellipse cx="87" cy="97" rx="3" ry="3.5" fill="#2C1A0E"/>
+  <ellipse cx="103" cy="97" rx="3" ry="3.5" fill="#2C1A0E"/>
+
+  <!-- Smile -->
+  <path d="M86 107 Q95 114 104 107" stroke="#2C1A0E" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Green book -->
+  <rect x="72" y="130" width="34" height="26" rx="3" fill="#3A8A57"/>
+  <rect x="74" y="133" width="30" height="8" rx="2" fill="#E8DEB0" opacity="0.7"/>
+  <!-- Book spine -->
+  <rect x="72" y="130" width="4" height="26" rx="2" fill="#2D6B42"/>
+
+  <!-- Chart line (top right, dark blue) -->
+  <polyline points="128,95 141,78 153,88 168,62" stroke="#1D3557" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrow head -->
+  <polygon points="168,62 158,61 165,70" fill="#1D3557"/>
+
+  <!-- Euro sign -->
+  <text x="158" y="100" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="#1D3557">€</text>
+</svg>
