@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Börsenlexikon mit über 60 wichtigen Finanz- und Börsenbegriffen einfach erklärt – durchsuchbar und kostenlos.">
+  <meta name="description" content="Börsenlexikon mit über 140 wichtigen Finanz- und Börsenbegriffen einfach erklärt – durchsuchbar und kostenlos.">
   <title>Börsenlexikon – FinanzenCampus</title>
-  <link rel="icon" type="image/svg+xml" href="/images/logo.svg"><link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -14,8 +14,8 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <img src="/images/logo.svg" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="nav-logo-fallback" style="display:none">📈</div>
+      
+      <div class="nav-logo-fallback">📈</div>
       <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
@@ -47,7 +47,7 @@
 <div class="page-hero">
   <div class="container">
     <h1>📚 Börsenlexikon</h1>
-    <p>Über 60 wichtige Finanz- und Börsenbegriffe einfach und verständlich erklärt – von Aktie bis Zinseszins.</p>
+    <p>Über 140 wichtige Finanz- und Börsenbegriffe einfach und verständlich erklärt – von Aktie bis Zinseszins.</p>
   </div>
 </div>
 
@@ -57,7 +57,7 @@
       <span class="search-icon">🔍</span>
       <input type="text" id="searchInput" placeholder="Begriff suchen, z.B. ETF, Dividende, Inflation …" oninput="filterTerms()" autocomplete="off">
     </div>
-    <p class="search-count" id="searchCount">130+ Begriffe verfügbar</p>
+    <p class="search-count" id="searchCount">140+ Begriffe verfügbar</p>
   </div>
 </div>
 
@@ -120,6 +120,10 @@
         <div class="term-card" data-term="ausschüttung dividende ertrag fonds auszahlung">
           <h3>Ausschüttung</h3>
           <p>Die Auszahlung von Erträgen (Dividenden, Zinsen, Gewinne) an die Anteilsinhaber eines Fonds oder Unternehmens. Ausschüttende ETFs zahlen Erträge regelmäßig aus, thesaurierende ETFs reinvestieren diese automatisch.</p>
+        </div>
+        <div class="term-card" data-term="altersvorsorge rente gesetzlich privat betrieblich drei säulen">
+          <h3>Altersvorsorge</h3>
+          <p>Das deutsche Altersvorsorgesystem besteht aus drei Säulen: (1) <strong>Gesetzliche Rentenversicherung</strong> (Pflichtbeitrag ~18,6 % des Bruttogehalts, geteilt zwischen Arbeitnehmer und Arbeitgeber), (2) <strong>Betriebliche Altersvorsorge</strong> (bAV, steuer- und sozialabgabenfrei bis 4 % der Beitragsbemessungsgrenze), (3) <strong>Private Vorsorge</strong> (Riester, Rürup, ETF-Sparplan). Da die gesetzliche Rente allein oft nicht ausreicht, ist private Vorsorge für den Erhalt des Lebensstandards im Alter notwendig. Quelle: Deutsche Rentenversicherung, BMAS.</p>
         </div>
       </div>
     </div>
@@ -497,6 +501,10 @@
           <h3>Nennwert (Nominal)</h3>
           <p>Der aufgedruckte oder buchhalterische Ursprungswert eines Wertpapiers – oft ungleich dem aktuellen Marktwert. Bei Anleihen ist der Nennwert der Betrag, den der Emittent bei Fälligkeit zurückzahlt.</p>
         </div>
+        <div class="term-card" data-term="nettolohn bruttolohn steuer sozialabgaben gehalt arbeitnehmer">
+          <h3>Nettolohn / Bruttolohn</h3>
+          <p>Der <strong>Bruttolohn</strong> ist das vereinbarte Gehalt vor Abzügen. Der <strong>Nettolohn</strong> ist das tatsächlich ausgezahlte Gehalt nach Abzug von Einkommensteuer, Solidaritätszuschlag (ggf.), Kirchensteuer (ggf.) sowie Sozialversicherungsbeiträgen (Rente ~9,3 %, Krankenversicherung ~7,3 %, Arbeitslosenversicherung ~1,3 %, Pflegeversicherung ~1,7 %). Bei einem Bruttogehalt von 3.000 € sind Nettolöhne von ~1.800–2.100 € typisch (je nach Steuerklasse). Quelle: Bundesministerium für Arbeit und Soziales.</p>
+        </div>
       </div>
     </div>
 
@@ -531,6 +539,10 @@
           <h3>Passives Investieren</h3>
           <p>Anlagestrategie, die auf das aktive Auswählen von Einzelwerten verzichtet und stattdessen einen breiten Marktindex durch ETFs abbildet. Studien zeigen, dass passives Investieren auf lange Sicht die meisten aktiv verwalteten Fonds schlägt.</p>
         </div>
+        <div class="term-card" data-term="passives einkommen dividenden mieteinnahmen zinsen cashflow finanzielle freiheit">
+          <h3>Passives Einkommen</h3>
+          <p>Einnahmen, die ohne aktive Arbeitsleistung fließen: Dividenden, Mieteinnahmen, Zinsen, Lizenzgebühren. Wichtig: Passives Einkommen erfordert meist erhebliches aktives Kapital oder Arbeit im Vorfeld (Aufbau eines Portfolios, Kauf einer Immobilie). Ein ETF-Portfolio von 500.000 € bei 3 % Dividendenrendite generiert 15.000 € passives Einkommen p.a. – vor Steuern. Grundlage der FIRE-Bewegung (Financial Independence, Retire Early).</p>
+        </div>
       </div>
     </div>
 
@@ -552,6 +564,10 @@
         <div class="term-card" data-term="rebalancing portfolio gewichtung wiederherstellen risikosteuerung">
           <h3>Rebalancing</h3>
           <p>Wiederherstellung der ursprünglich gewählten Gewichtung im Portfolio. Wenn Aktien stark gestiegen sind, erhöhen sie ihren Anteil – Rebalancing verkauft Gewinner und kauft Verlierer nach. Empfohlene </div>
+        <div class="term-card" data-term="riester rente förderung zulagen staatlich beiträge">
+          <h3>Riester-Rente</h3>
+          <p>Staatlich gefördertes privates Altersvorsorgeprodukt. Voraussetzung: Pflichtmitglied in der gesetzlichen Rentenversicherung. Förderung: Grundzulage 175 € p.a., Kinderzulage 300 € p.a. (für ab 2008 geborene Kinder). Eigenbeitrag: mindestens 4 % des Vorjahresbruttoeinkommens (minus Zulagen). Kritik: Hohe Kosten vieler Produkte können die staatliche Förderung aufzehren. Günstige Variante: Riestersparplan bei Direktbanken. Quelle: §10a EStG, BMAS.</p>
+        </div>
         <div class="term-card" data-term="renditedreieck dax historisch langfrist kalender haltedauer performance">
           <h3>Renditedreieck</h3>
           <p>Eine Matrix, die die jährliche Durchschnittsrendite einer Anlage (z. B. DAX) für jede mögliche Kombination aus Kauf- und Verkaufsjahr zeigt. Das DAI-Renditedreieck des Deutschen Aktieninstituts zeigt: Je länger die Haltedauer, desto seltener ergibt sich ein Verlust. Ab ca. 15 Jahren war die DAX-Rendite historisch stets positiv.</p>
@@ -654,6 +670,14 @@
           <h3>Tracking Error</h3>
           <p>Maß für die Abweichung der Rendite eines ETFs von der Rendite seines Vergleichsindex. Ein niedriger Tracking Error (unter 0,5 % p.a.) zeigt, dass der ETF seinen Index genau abbildet. Ursachen für Abweichungen: Transaktionskosten, Quellensteuer auf Dividenden, Replizierungsmethode.</p>
         </div>
+        <div class="term-card" data-term="tagesgeld zinsen bank kurzfristig liquide einlagensicherung">
+          <h3>Tagesgeld</h3>
+          <p>Ein verzinstes Bankkonto mit täglicher Verfügbarkeit. Zinsen sind variabel und ändern sich mit dem Leitzins der EZB. Tagesgeld ist bis 100.000 € pro Bank durch die gesetzliche Einlagensicherung geschützt. Ideal für den Notgroschen, da das Geld jederzeit zugänglich bleibt. Historische Rendite liegt deutlich unter der Aktienmarktrendite – nicht zur langfristigen Vermögensbildung geeignet. Quelle: EU-Einlagensicherungsrichtlinie 2014/49/EU.</p>
+        </div>
+        <div class="term-card" data-term="festgeld laufzeit zinsen bank sparen sicherheit">
+          <h3>Festgeld</h3>
+          <p>Anlage bei einer Bank für eine festgelegte Laufzeit (z.B. 1, 2 oder 5 Jahre) zu einem festen Zinssatz. Im Gegensatz zu Tagesgeld nicht vorzeitig verfügbar. Höhere Zinsen als Tagesgeld als Gegenleistung für die Illiquidität. Ebenfalls bis 100.000 € gesetzlich geschützt. Für mittelfristige Parkvehikel geeignet, aber kein Ersatz für Aktieninvestments. Quelle: Bundesbank, Bankenstatistik.</p>
+        </div>
       </div>
     </div>
 
@@ -741,7 +765,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-name"><img src="/images/logo.svg" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
       </div>
       <div class="footer-col"><h4>Rechner</h4><ul class="footer-links"><li><a href="/rechner.html">Alle Rechner</a></li></ul></div>

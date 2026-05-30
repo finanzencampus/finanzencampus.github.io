@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Finanzwissen für Einsteiger und Fortgeschrittene: ETF, Zinseszins, Sparstrategien, FIRE-Bewegung und die wichtigsten Regeln des Investierens.">
   <title>Finanzwissen – FinanzenCampus</title>
-  <link rel="icon" type="image/svg+xml" href="/images/logo.svg"><link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -14,8 +14,8 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <img src="/images/logo.svg" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="nav-logo-fallback" style="display:none">📈</div>
+      
+      <div class="nav-logo-fallback">📈</div>
       <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
@@ -673,11 +673,71 @@
   </div>
 </section>
 
+<section class="section" id="altersvorsorge">
+  <div class="container">
+    <h2 class="section-title">Altersvorsorge &amp; Rente</h2>
+    <div class="wissen-grid">
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-g">Grundlagen</span>
+          <h3>Wie funktioniert die gesetzliche Rente?</h3>
+          <p class="excerpt">Das Umlageverfahren, die Rentenlücke und warum private Vorsorge für die meisten unverzichtbar ist.</p>
+        </div>
+        <div class="article-body">
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px">Die gesetzliche Rentenversicherung (GRV) funktioniert nach dem <strong>Umlageverfahren</strong>: Die Beiträge heutiger Arbeitnehmer finanzieren direkt die Renten heutiger Rentner. Es wird kein Kapitalstock aufgebaut. Der Beitragssatz liegt 2024 bei 18,6 % des Bruttogehalts (Arbeitnehmer + Arbeitgeber je 9,3 %).</p>
+          <h4 style="font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:8px">Die Rentenlücke</h4>
+          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px">Das Deutsche Institut für Wirtschaftsforschung (DIW) schätzt, dass das gesetzliche Rentenniveau bis 2035 auf ca. 44 % des Durchschnittslohns sinken wird (2024: ~48 %). Bei einem Nettoeinkommen von 2.500 € würde die Rente ca. 1.100–1.200 € betragen – für viele deutlich zu wenig.</p>
+          <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:14px;margin-bottom:14px">
+            <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">Drei Säulen der Altersvorsorge</div>
+            <ul style="list-style:none;font-size:.85rem;color:var(--text-strong);display:flex;flex-direction:column;gap:7px">
+              <li><strong style="color:var(--primary)">1. Säule:</strong> Gesetzliche Rentenversicherung (Pflicht)</li>
+              <li><strong style="color:var(--primary)">2. Säule:</strong> Betriebliche Altersvorsorge (bAV) – steuerlich gefördert</li>
+              <li><strong style="color:var(--primary)">3. Säule:</strong> Private Vorsorge – Riester, Rürup, ETF-Sparplan</li>
+            </ul>
+          </div>
+          <div class="info-box info-blue">
+            📌 Quelle: Deutsche Rentenversicherung, DIW Berlin, BMAS 2024
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-head">
+          <span class="article-cat cat-i">Investieren</span>
+          <h3>Tagesgeld vs. Festgeld vs. ETF – Was passt wann?</h3>
+          <p class="excerpt">Nicht jedes Geld soll gleich investiert werden. Die richtige Wahl hängt vom Zeithorizont und Verwendungszweck ab.</p>
+        </div>
+        <div class="article-body">
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:12px">
+              <div style="font-weight:700;color:var(--text);font-size:.875rem;margin-bottom:4px">🏦 Tagesgeld – für den Notgroschen</div>
+              <p style="font-size:.8125rem;color:var(--text-muted);margin:0">Jederzeit verfügbar, bis 100.000 € gesetzlich gesichert. Aktuell 2–4 % Zinsen (variabel, abhängig vom EZB-Leitzins). Ideal für: Notgroschen (3–6 Monatseinkommen), kurzfristige Rücklagen.</p>
+            </div>
+            <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:12px">
+              <div style="font-weight:700;color:var(--text);font-size:.875rem;margin-bottom:4px">🔒 Festgeld – für planbare Ausgaben</div>
+              <p style="font-size:.8125rem;color:var(--text-muted);margin:0">Feste Laufzeit (1–5 Jahre), fester Zinssatz. Nicht vorzeitig abrufbar. Leicht höhere Zinsen als Tagesgeld. Ideal für: Geld das in 1–3 Jahren gebraucht wird (z.B. Eigenkapital für Immobilie).</p>
+            </div>
+            <div style="background:var(--accent-subtle);border-radius:var(--radius-sm);padding:12px">
+              <div style="font-weight:700;color:var(--accent-dark);font-size:.875rem;margin-bottom:4px">📈 ETF-Sparplan – für langfristigen Vermögensaufbau</div>
+              <p style="font-size:.8125rem;color:var(--text-muted);margin:0">Schwankend, kein Kapitalschutz, kein fester Zins. Historische Rendite MSCI World: ~7–10 % p.a. (nach Inflation real ~5–7 %). Ideal für: Geld das 10+ Jahre nicht gebraucht wird.</p>
+            </div>
+          </div>
+          <div class="info-box info-green">
+            ✅ Faustformel: Notgroschen → Tagesgeld · Mittelfristig → Festgeld · Langfristig → ETF
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-name"><img src="/images/logo.svg" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen, Börse und Wirtschaft.</p>
       </div>
       <div class="footer-col">
