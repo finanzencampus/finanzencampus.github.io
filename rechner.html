@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Kostenlose Finanzrechner: Zinseszins, Sparplan, Inflation, Dividenden, Kredit, Rendite und FIRE – interaktiv, ohne Anmeldung.">
   <title>Finanzrechner – FinanzenCampus</title>
-  <link rel="icon" type="image/svg+xml" href="/images/logo.svg"><link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('fc-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -14,8 +14,8 @@
 <nav>
   <div class="nav-container">
     <a href="/index.html" class="nav-logo">
-      <img src="/images/logo.svg" alt="FinanzenCampus" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="nav-logo-fallback" style="display:none">📈</div>
+      
+      <div class="nav-logo-fallback">📈</div>
       <span>FinanzenCampus</span>
     </a>
     <ul class="nav-links">
@@ -47,7 +47,7 @@
 <div class="page-hero">
   <div class="container">
     <h1>🧮 Finanzrechner</h1>
-    <p>Sieben interaktive Rechner für deine finanzielle Planung – alle Berechnungen laufen lokal in deinem Browser, mit Diagrammen.</p>
+    <p>Neun interaktive Rechner für deine finanzielle Planung – alle Berechnungen laufen lokal in deinem Browser, mit Diagrammen.</p>
   </div>
 </div>
 
@@ -60,6 +60,8 @@
     <button class="calc-tab" data-tab="kredit" onclick="showTab('kredit')">🏦 Kredit</button>
     <button class="calc-tab" data-tab="rendite" onclick="showTab('rendite')">📊 Rendite</button>
     <button class="calc-tab" data-tab="fire" onclick="showTab('fire')">🎯 FIRE</button>
+    <button class="calc-tab" data-tab="etfkosten" onclick="showTab('etfkosten')">💰 ETF-Kosten</button>
+    <button class="calc-tab" data-tab="notgroschen" onclick="showTab('notgroschen')">🛡️ Notgroschen</button>
     <a href="/schulden.html" class="calc-tab">💳 Schulden tilgen</a>
   </div>
 </div>
@@ -209,6 +211,44 @@
       </div>
     </div>
 
+    <!-- ETF-KOSTEN -->
+    <div class="calc-panel" id="etfkosten">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>💰 ETF-Kostenrechner</h2>
+          <p class="calc-desc">Wie stark fressen Fondskosten (TER) deine Rendite über die Zeit? Vergleiche einen günstigen ETF mit einem teuren aktiv verwalteten Fonds.</p>
+          <div class="form-group"><label>Anlagebetrag (€)</label><input type="number" id="etf-betrag" value="10000" min="0" step="500" oninput="calcETFKosten()"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Laufzeit (Jahre)</label><input type="number" id="etf-jahre" value="30" min="1" max="60" oninput="calcETFKosten()"></div>
+            <div class="form-group"><label>Erwartete Rendite p.a. (%)</label><input type="number" id="etf-rendite" value="7" min="0" max="30" step="0.1" oninput="calcETFKosten()"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>TER Niedrig (% p.a.)</label><input type="number" id="etf-ter-low" value="0.20" min="0" max="5" step="0.01" oninput="calcETFKosten()"><span class="input-hint">Günstiger ETF</span></div>
+            <div class="form-group"><label>TER Hoch (% p.a.)</label><input type="number" id="etf-ter-high" value="1.50" min="0" max="5" step="0.01" oninput="calcETFKosten()"><span class="input-hint">Teurer Fonds</span></div>
+          </div>
+          <button class="calc-btn" onclick="calcETFKosten()">Berechnen</button>
+          <p class="disclaimer">Kein Einmaleffekt durch Steuern. Rendite nicht garantiert.</p>
+        </div>
+        <div class="calc-result-card" id="etf-result"><h3>Ergebnis</h3><div class="result-empty"><span class="result-empty-icon">💰</span><p>Gib deine Werte ein.</p></div></div>
+      </div>
+    </div>
+
+    <!-- NOTGROSCHEN -->
+    <div class="calc-panel" id="notgroschen">
+      <div class="calc-layout">
+        <div class="calc-form-card">
+          <h2>🛡️ Notgroschen-Rechner</h2>
+          <p class="calc-desc">Wie hoch sollte dein finanzielles Sicherheitsnetz sein? Berechne den empfohlenen Notgroschen und prüfe, ob du bereits gut abgesichert bist.</p>
+          <div class="form-group"><label>Monatliche Fixkosten (€)</label><input type="number" id="ng-fix" value="1200" min="0" step="50" oninput="calcNotgroschen()"><span class="input-hint">Miete, Versicherungen, Abos …</span></div>
+          <div class="form-group"><label>Monatliche Lebenshaltungskosten (€)</label><input type="number" id="ng-leben" value="800" min="0" step="50" oninput="calcNotgroschen()"><span class="input-hint">Lebensmittel, Transport, Freizeit …</span></div>
+          <div class="form-group"><label>Aktuelles Erspartes (€)</label><input type="number" id="ng-erspartes" value="5000" min="0" step="100" oninput="calcNotgroschen()"></div>
+          <button class="calc-btn" onclick="calcNotgroschen()">Berechnen</button>
+          <p class="disclaimer">Richtwerte. Individuelle Situation (Selbstständigkeit, Kinder) kann höhere Reserve erfordern.</p>
+        </div>
+        <div class="calc-result-card" id="ng-result"><h3>Ergebnis</h3><div class="result-empty"><span class="result-empty-icon">🛡️</span><p>Gib deine Werte ein.</p></div></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -216,7 +256,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-name"><img src="/images/logo.svg" alt="" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="footer-brand-icon" style="display:none">📈</div>FinanzenCampus</div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">📈</div>FinanzenCampus</div>
         <p>Kostenlose Finanzbildung für alle. Rechner, Lexikon und Wissen rund um Finanzen und Börse.</p>
       </div>
       <div class="footer-col"><h4>Rechner</h4><ul class="footer-links">
@@ -244,7 +284,7 @@
 <script>
   const hash = window.location.hash.replace('#','');
   if(hash && document.getElementById(hash)) showTab(hash);
-  calcZinseszins(); calcSparplan(); calcInflation(); calcDividenden(); calcKredit(); calcRendite(); calcFIRE();
+  calcZinseszins(); calcSparplan(); calcInflation(); calcDividenden(); calcKredit(); calcRendite(); calcFIRE(); calcETFKosten(); calcNotgroschen();
 </script>
 </body>
 </html>

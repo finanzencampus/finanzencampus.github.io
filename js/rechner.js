@@ -111,6 +111,9 @@ function calcSparplan(){
   const totalPmt = P + pmt * months;
   const zinsen = FV - totalPmt;
 
+  const totalEinzahlung = totalPmt;
+  const gesamtZinsen = zinsen;
+
   const el = document.getElementById('sp-result');
   el.innerHTML = `<h3>Ergebnis</h3>` + resultHTML(
     'Endkapital nach ' + t + ' Jahren',
@@ -123,7 +126,7 @@ function calcSparplan(){
       {label:'Effektiver Monatsbeitrag', val: fmtK(pmt)},
     ],
     'sp-chart'
-  );
+  ) + `<div class="chart-wrap"><canvas id="sparplanDonut"></canvas></div>`;
 
   // yearly data
   const labels = [], dataE = [], dataZ = [];
@@ -150,6 +153,26 @@ function calcSparplan(){
       responsive:true, maintainAspectRatio:false,
       plugins:{legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}}, tooltip:{callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}},
       scales:{x:{stacked:true, ticks:{font:{size:10}}}, y:{stacked:true, ticks:{callback: v => fmtK(v), font:{size:10}}}}
+    }
+  });
+
+  makeChart('sparplanDonut', {
+    type: 'doughnut',
+    data: {
+      labels: ['Eingezahltes Kapital', 'Zinsertrag'],
+      datasets: [{
+        data: [+totalEinzahlung.toFixed(2), +gesamtZinsen.toFixed(2)],
+        backgroundColor: ['#2563eb', '#10b981'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '65%',
+      plugins: {
+        legend: {position:'bottom', labels:{boxWidth:12, font:{size:11}}},
+        tooltip: {callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}
+      }
     }
   });
 }
@@ -239,7 +262,7 @@ function calcKredit(){
       {label:'Zinsanteil am Gesamtbetrag', val: ((zinsen/gesamt)*100).toFixed(1).replace('.',',') + ' %', cls:'neg'},
     ],
     'kr-chart'
-  );
+  ) + `<div class="chart-wrap"><canvas id="kreditVerlaufChart"></canvas></div>`;
 
   makeChart('kr-chart', {
     type: 'doughnut',
@@ -254,6 +277,37 @@ function calcKredit(){
         legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}},
         tooltip:{callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}
       }
+    }
+  });
+
+  // Restschuld-Verlauf
+  const krLabels = [], krData = [];
+  const rMon = rAnn / 12;
+  for(let y = 0; y <= t; y++){
+    const mGone = y * 12;
+    const restschuld = P * Math.pow(1 + rMon, mGone) - M * (Math.pow(1 + rMon, mGone) - 1) / rMon;
+    krLabels.push(y + ' J.');
+    krData.push(+Math.max(0, restschuld).toFixed(2));
+  }
+
+  makeChart('kreditVerlaufChart', {
+    type: 'line',
+    data: {
+      labels: krLabels,
+      datasets: [{
+        label: 'Restschuld (€)',
+        data: krData,
+        borderColor: '#ef4444',
+        backgroundColor: 'rgba(239,68,68,0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}},
+      scales:{x:{ticks:{font:{size:10}}}, y:{ticks:{callback: v => fmtK(v), font:{size:10}}}}
     }
   });
 }
@@ -438,10 +492,164 @@ function calcDividenden(){
   });
 }
 
+// ============================================================
+// ETF-KOSTEN
+// ============================================================
+function calcETFKosten(){
+  const betrag = parseFloat(document.getElementById('etf-betrag').value) || 0;
+  const jahre = parseInt(document.getElementById('etf-jahre').value) || 0;
+  const rendite = parseFloat(document.getElementById('etf-rendite').value) || 0;
+  const terLow = parseFloat(document.getElementById('etf-ter-low').value) || 0;
+  const terHigh = parseFloat(document.getElementById('etf-ter-high').value) || 0;
+
+  if(betrag <= 0 || jahre <= 0 || rendite <= 0){ clearResult('etf-result'); return; }
+
+  // Jährliches Wachstum: Kapital *= (1 + (rendite - ter) / 100)
+  const rLow = (rendite - terLow) / 100;
+  const rHigh = (rendite - terHigh) / 100;
+
+  const endLow = betrag * Math.pow(1 + rLow, jahre);
+  const endHigh = betrag * Math.pow(1 + rHigh, jahre);
+  const differenz = endLow - endHigh;
+
+  const el = document.getElementById('etf-result');
+  el.innerHTML = `<h3>Ergebnis</h3>` + resultHTML(
+    'Kostenvorteil nach ' + jahre + ' Jahren',
+    fmtK(differenz),
+    `durch TER-Unterschied von ${(terHigh - terLow).toFixed(2).replace('.',',')} %`,
+    [
+      {label:`Endkapital günstig (TER ${terLow.toFixed(2).replace('.',',')} %)`, val: fmtK(endLow), cls:'pos'},
+      {label:`Endkapital teuer (TER ${terHigh.toFixed(2).replace('.',',')} %)`, val: fmtK(endHigh)},
+      {label:'Kostendifferenz (Verlust durch hohe TER)', val: fmtK(differenz), cls:'neg'},
+      {label:'Renditeminderung durch hohe TER', val: ((differenz/endLow)*100).toFixed(1).replace('.',',') + ' %', cls:'neg'},
+    ],
+    'etf-chart'
+  );
+
+  // Beide Verläufe berechnen
+  const labels = [], dataLow = [], dataHigh = [];
+  const step = jahre <= 20 ? 1 : Math.ceil(jahre/20);
+  for(let y = 0; y <= jahre; y += step){
+    labels.push(y + ' J.');
+    dataLow.push(+(betrag * Math.pow(1 + rLow, y)).toFixed(2));
+    dataHigh.push(+(betrag * Math.pow(1 + rHigh, y)).toFixed(2));
+  }
+
+  makeChart('etf-chart', {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: `Günstiger ETF (TER ${terLow.toFixed(2).replace('.',',')} %)`,
+          data: dataLow,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16,185,129,0.08)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 2
+        },
+        {
+          label: `Teurer Fonds (TER ${terHigh.toFixed(2).replace('.',',')} %)`,
+          data: dataHigh,
+          borderColor: '#ef4444',
+          backgroundColor: 'rgba(239,68,68,0.08)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}}, tooltip:{callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}},
+      scales:{x:{ticks:{font:{size:10}}}, y:{ticks:{callback: v => fmtK(v), font:{size:10}}}}
+    }
+  });
+}
+
+// ============================================================
+// NOTGROSCHEN
+// ============================================================
+function calcNotgroschen(){
+  const fix = parseFloat(document.getElementById('ng-fix').value) || 0;
+  const leben = parseFloat(document.getElementById('ng-leben').value) || 0;
+  const erspartes = parseFloat(document.getElementById('ng-erspartes').value) || 0;
+
+  if(fix <= 0 && leben <= 0){ clearResult('ng-result'); return; }
+
+  const monatsausgaben = fix + leben;
+  const ziel3 = monatsausgaben * 3;
+  const ziel4 = monatsausgaben * 4;
+  const ziel5 = monatsausgaben * 5;
+  const ziel6 = monatsausgaben * 6;
+
+  let ampelText, ampelClass, ampelIcon;
+  if(erspartes >= ziel6){
+    ampelText = 'Sehr gut abgesichert – 6+ Monatsausgaben vorhanden.';
+    ampelClass = 'info-green';
+    ampelIcon = '🟢';
+  } else if(erspartes >= ziel3){
+    ampelText = 'Grundabsicherung vorhanden – Ziel 6 Monate anstreben.';
+    ampelClass = 'info-yellow';
+    ampelIcon = '🟡';
+  } else {
+    ampelText = 'Notgroschen unzureichend – zuerst aufbauen, dann investieren!';
+    ampelClass = 'info-red';
+    ampelIcon = '🔴';
+  }
+
+  const fehlend = Math.max(0, ziel3 - erspartes);
+
+  const el = document.getElementById('ng-result');
+  el.innerHTML = `
+    <h3>Ergebnis</h3>
+    <div class="result-main fade-in">
+      <div class="rl">Empfohlener Notgroschen (3–6 Monate)</div>
+      <div class="rv">${fmtK(ziel3)} – ${fmtK(ziel6)}</div>
+      <div class="rsv">Monatliche Ausgaben: ${fmtK(monatsausgaben)}</div>
+    </div>
+    <div class="result-rows">
+      <div class="result-row"><span class="rrl">3 Monatsausgaben (Minimum)</span><span class="rrv">${fmtK(ziel3)}</span></div>
+      <div class="result-row"><span class="rrl">4 Monatsausgaben</span><span class="rrv">${fmtK(ziel4)}</span></div>
+      <div class="result-row"><span class="rrl">5 Monatsausgaben</span><span class="rrv">${fmtK(ziel5)}</span></div>
+      <div class="result-row"><span class="rrl">6 Monatsausgaben (Empfehlung)</span><span class="rrv">${fmtK(ziel6)}</span></div>
+      <div class="result-row"><span class="rrl">Aktuelles Erspartes</span><span class="rrv ${erspartes >= ziel3 ? 'pos' : 'neg'}">${fmtK(erspartes)}</span></div>
+      ${fehlend > 0 ? `<div class="result-row"><span class="rrl">Fehlend bis 3-Monats-Ziel</span><span class="rrv neg">${fmtK(fehlend)}</span></div>` : ''}
+    </div>
+    <div class="info-box ${ampelClass}" style="margin-top:12px">${ampelIcon} ${ampelText}</div>
+    <div class="chart-wrap"><canvas id="ng-chart"></canvas></div>
+  `;
+
+  makeChart('ng-chart', {
+    type: 'bar',
+    data: {
+      labels: ['Aktuelles Erspartes', '3-Monats-Ziel', '6-Monats-Ziel'],
+      datasets: [{
+        label: 'Betrag (€)',
+        data: [+erspartes.toFixed(2), +ziel3.toFixed(2), +ziel6.toFixed(2)],
+        backgroundColor: [
+          erspartes >= ziel3 ? '#10b981' : erspartes >= ziel3 * 0.5 ? '#f59e0b' : '#ef4444',
+          '#2563eb',
+          '#6366f1'
+        ],
+        borderWidth: 0,
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label: ctx => ' ' + fmtK(ctx.raw)}}},
+      scales:{x:{ticks:{font:{size:10}}}, y:{ticks:{callback: v => fmtK(v), font:{size:10}}}}
+    }
+  });
+}
+
 function clearResult(id){
   const icons = {
     'zz-result':'📊','sp-result':'💰','inf-result':'🔥',
-    'kr-result':'🏦','rd-result':'📊','fi-result':'🎯'
+    'kr-result':'🏦','rd-result':'📊','fi-result':'🎯',
+    'etf-result':'💰','ng-result':'🛡️'
   };
   const el = document.getElementById(id);
   if(el) el.innerHTML = `<h3>Ergebnis</h3><div class="result-empty"><span class="result-empty-icon">${icons[id]||'📊'}</span><p>Gib deine Werte links ein und starte die Berechnung.</p></div>`;
